@@ -1,6 +1,15 @@
 from pydantic_settings import BaseSettings
 from typing import Optional
 import os
+import shutil
+
+# 自动创建 .env 文件（如果不存在）
+_env_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), '.env')
+_env_example_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), '.env.example')
+if not os.path.exists(_env_path) and os.path.exists(_env_example_path):
+    shutil.copy(_env_example_path, _env_path)
+    print("✅ 已自动创建 .env 配置文件")
+
 
 class Settings(BaseSettings):
     # 数据库
