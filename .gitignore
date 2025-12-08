@@ -37,7 +37,6 @@ data/
 Thumbs.db
 
 # 构建产物
-backend/static/
 frontend/dist/
 
 # 日志
