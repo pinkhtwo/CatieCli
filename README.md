@@ -460,7 +460,50 @@ ALLOW_REGISTRATION=true
 # 如需自定义，取消注释并填入你的凭据
 # GOOGLE_CLIENT_ID=your-client-id
 # GOOGLE_CLIENT_SECRET=your-client-secret
+
+# Discord OAuth 登录（可选）
+# 配置后用户可通过 Discord 账号登录/注册
+# DISCORD_CLIENT_ID=你的客户端ID
+# DISCORD_CLIENT_SECRET=你的客户端密钥
+# DISCORD_REDIRECT_URI=https://你的域名/api/auth/discord/callback
 ```
+
+### Discord OAuth 登录配置（可选）
+
+如果需要用户通过 **Discord 账号登录/注册**（不是 Bot），需要配置：
+
+#### 第一步：创建 Discord 应用
+
+1. 登录 [Discord Developer Portal](https://discord.com/developers/applications)
+2. 点击 **"New Application"** 创建应用
+3. 进入应用后，点击左侧 **"OAuth2"**
+4. 在 **"Redirects"** 部分添加回调地址：
+   ```
+   https://你的域名/api/auth/discord/callback
+   ```
+   如果没有域名，使用 IP+端口：
+   ```
+   http://你的IP:5001/api/auth/discord/callback
+   ```
+5. 复制 **Client ID** 和 **Client Secret**（点击 Reset Secret 生成）
+
+#### 第二步：配置环境变量
+
+在 `.env` 文件中添加：
+
+```env
+DISCORD_CLIENT_ID=你复制的Client_ID
+DISCORD_CLIENT_SECRET=你复制的Client_Secret
+DISCORD_REDIRECT_URI=https://你的域名/api/auth/discord/callback
+```
+
+#### 第三步：重启服务
+
+重启后，登录/注册页面会显示 **"使用 Discord 登录"** 按钮。
+
+#### 第四步：设置"仅允许 Discord 登录注册"（可选）
+
+如果希望只允许通过 Discord 注册（禁用普通注册），在管理后台 **"系统设置"** 中开启 **"仅允许 Discord 登录注册"** 开关。
 
 ### Discord Bot 配置
 
