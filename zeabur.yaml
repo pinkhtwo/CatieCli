@@ -1,0 +1,39 @@
+apiVersion: zeabur.com/v1
+kind: Template
+metadata:
+  name: CatieCli
+  description: Gemini API 多用户代理服务 - 支持 OpenAI 兼容接口、凭证池管理
+  icon: https://raw.githubusercontent.com/mzrodyu/CatieCli/main/frontend/public/cat.svg
+  tags:
+    - API
+    - Gemini
+    - Proxy
+  author: Catie猫猫
+  sourceCodeUrl: https://github.com/mzrodyu/CatieCli
+
+spec:
+  services:
+    - name: catiecli
+      template: GIT_DEPLOY
+      source:
+        repoURL: https://github.com/mzrodyu/CatieCli
+        rootDirectory: backend
+      env:
+        - key: ADMIN_USERNAME
+          description: 管理员用户名
+          default: admin
+        - key: ADMIN_PASSWORD
+          description: 管理员密码
+          default: admin123
+          required: true
+        - key: SECRET_KEY
+          description: JWT 密钥（随机字符串）
+          generate:
+            type: SECRET
+        - key: PORT
+          description: 服务端口
+          default: '5001'
+      ports:
+        - id: web
+          port: 5001
+          type: HTTP
