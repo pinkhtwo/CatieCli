@@ -218,32 +218,38 @@ export default function Stats() {
           {daily.length === 0 ? (
             <p className="text-gray-400">暂无数据</p>
           ) : (
-            <div className="flex items-end justify-between gap-2" style={{ height: '200px' }}>
-              {daily.map((item, idx) => {
-                const maxCount = Math.max(...daily.map(d => d.count), 1)
-                const heightPercent = (item.count / maxCount) * 100
-                const barHeight = Math.max(heightPercent, 2)
-                return (
-                  <div key={idx} className="flex-1 flex flex-col items-center h-full">
-                    {/* 数字标签 */}
-                    <span className="text-xs text-gray-400 mb-1 h-5">{item.count}</span>
-                    {/* 柱形图容器 */}
-                    <div className="flex-1 w-full flex items-end justify-center">
+            <>
+              {/* 柱形图区域 */}
+              <div className="flex items-end gap-3 mb-2" style={{ height: '150px' }}>
+                {daily.map((item, idx) => {
+                  const maxCount = Math.max(...daily.map(d => d.count), 1)
+                  const barHeight = Math.max((item.count / maxCount) * 150, 4)
+                  return (
+                    <div 
+                      key={idx} 
+                      className="flex-1 flex flex-col items-center justify-end h-full"
+                    >
+                      <span className="text-xs text-gray-400 mb-1">{item.count}</span>
                       <div
-                        className="w-4/5 bg-blue-500 rounded-t hover:bg-blue-400 transition-all"
+                        className="w-full rounded-t transition-all hover:opacity-80"
                         style={{ 
-                          height: `${barHeight}%`,
-                          minHeight: item.count > 0 ? '8px' : '3px',
-                          backgroundColor: item.count > 0 ? '#3b82f6' : '#374151'
+                          height: `${barHeight}px`,
+                          backgroundColor: item.count > 0 ? '#3b82f6' : '#4b5563'
                         }}
                       />
                     </div>
-                    {/* 日期标签 */}
-                    <span className="text-xs text-gray-500 mt-1 h-5">{item.date?.slice(5) || ''}</span>
+                  )
+                })}
+              </div>
+              {/* 日期标签 */}
+              <div className="flex gap-3">
+                {daily.map((item, idx) => (
+                  <div key={idx} className="flex-1 text-center">
+                    <span className="text-xs text-gray-500">{item.date?.slice(5) || ''}</span>
                   </div>
-                )
-              })}
-            </div>
+                ))}
+              </div>
+            </>
           )}
         </div>
       </div>
