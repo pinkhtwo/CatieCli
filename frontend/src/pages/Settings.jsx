@@ -3,6 +3,21 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import api from '../api'
 
+// 默认配置值
+const DEFAULT_CONFIG = {
+  allow_registration: true,
+  discord_only_registration: false,
+  default_daily_quota: 100,
+  credential_reward_quota: 1000,
+  base_rpm: 5,
+  contributor_rpm: 10,
+  credential_pool_mode: 'full_shared',
+  announcement_enabled: false,
+  announcement_title: '',
+  announcement_content: '',
+  announcement_read_seconds: 5
+}
+
 export default function Settings() {
   const navigate = useNavigate()
   const [config, setConfig] = useState(null)
@@ -50,6 +65,13 @@ export default function Settings() {
       setMessage({ type: 'error', text: '保存失败: ' + (err.response?.data?.detail || err.message) })
     } finally {
       setSaving(false)
+    }
+  }
+
+  const handleReset = () => {
+    if (confirm('确定要重置所有设置为默认值吗？')) {
+      setConfig({ ...DEFAULT_CONFIG })
+      setMessage({ type: 'success', text: '已重置为默认值，请点击保存生效' })
     }
   }
 
@@ -254,12 +276,19 @@ export default function Settings() {
             )}
           </div>
 
-          {/* 保存按钮 */}
-          <div className="pt-4 border-t border-gray-700">
+          {/* 保存和重置按钮 */}
+          <div className="pt-4 border-t border-gray-700 flex gap-4">
+            <button
+              onClick={handleReset}
+              className="flex-1 py-3 bg-gray-600 hover:bg-gray-500 rounded-lg font-semibold flex items-center justify-center gap-2"
+            >
+              <RotateCcw size={18} />
+              重置为默认值
+            </button>
             <button
               onClick={handleSave}
               disabled={saving}
-              className="w-full py-3 bg-purple-600 hover:bg-purple-700 rounded-lg font-semibold flex items-center justify-center gap-2 disabled:opacity-50"
+              className="flex-1 py-3 bg-purple-600 hover:bg-purple-700 rounded-lg font-semibold flex items-center justify-center gap-2 disabled:opacity-50"
             >
               <Save size={18} />
               {saving ? '保存中...' : '保存配置'}
