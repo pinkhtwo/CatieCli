@@ -134,14 +134,14 @@ async def get_me(user: User = Depends(get_current_user), db: AsyncSession = Depe
     )
     credential_count = cred_result.scalar() or 0
     
-    # 检查是否有公共凭证
+    # 统计公开凭证数量
     public_result = await db.execute(
         select(func.count(Credential.id))
         .where(Credential.user_id == user.id)
         .where(Credential.is_public == True)
         .where(Credential.is_active == True)
     )
-    has_public_credentials = (public_result.scalar() or 0) > 0
+    public_credential_count = public_result.scalar() or 0
     
     return {
         "id": user.id,
@@ -152,7 +152,8 @@ async def get_me(user: User = Depends(get_current_user), db: AsyncSession = Depe
         "daily_quota": user.daily_quota,
         "today_usage": today_usage,
         "credential_count": credential_count,
-        "has_public_credentials": has_public_credentials,
+        "public_credential_count": public_credential_count,
+        "has_public_credentials": public_credential_count > 0,
         "created_at": user.created_at
     }
 
