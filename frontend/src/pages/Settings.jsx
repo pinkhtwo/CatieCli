@@ -143,7 +143,7 @@ export default function Settings() {
               className="w-full bg-gray-700 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500"
             />
             <p className="text-green-400 text-sm mt-2">
-              💡 当前设置：用户贡献凭证后额度 +{config?.credential_reward_quota || 1000}
+              💡 当前设置：用户贡献凭证后额度 +{config?.credential_reward_quota ?? 1000}
             </p>
           </div>
 
