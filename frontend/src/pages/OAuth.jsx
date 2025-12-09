@@ -58,7 +58,10 @@ export default function OAuth() {
     if (correct) {
       setQuizPassed(true)
       setShowQuiz(false)
-      // 不自动打开链接，显示 URL 让用户复制
+      // 打开认证链接
+      if (authUrl) {
+        window.open(authUrl, '_blank')
+      }
     } else {
       setMessage({ type: 'error', text: '❌ 答案错误，请仔细阅读操作指引！' })
     }
