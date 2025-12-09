@@ -917,7 +917,7 @@ async def discord_callback(code: str, db: AsyncSession = Depends(get_db)):
         
         user = User(
             username=username,
-            password_hash="",  # Discord 用户无密码
+            hashed_password="",  # Discord 用户无密码
             discord_id=discord_id,
             discord_name=discord_name,
             daily_quota=settings.default_daily_quota,
