@@ -491,18 +491,14 @@ export default function Admin() {
             {tab === 'credentials' && (
               <div className="space-y-4">
                 {/* OAuth 认证入口 + 一键检测 */}
-                <div className="flex gap-4">
-                  <div className="flex-1 bg-gradient-to-r from-purple-600/20 to-blue-600/20 border border-purple-500/30 rounded-xl p-4">
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <div className="font-medium text-purple-400 mb-1">🔐 OAuth 认证获取凭证</div>
-                        <p className="text-sm text-gray-400">通过 Google OAuth 自动获取 Gemini API 凭证</p>
-                      </div>
-                      <Link to="/oauth" className="btn btn-primary flex items-center gap-2">
-                        <ExternalLink size={16} />
-                        去认证
-                      </Link>
-                    </div>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="bg-gradient-to-r from-purple-600/20 to-blue-600/20 border border-purple-500/30 rounded-xl p-4">
+                    <div className="font-medium text-purple-400 mb-1">🔐 OAuth 认证获取凭证</div>
+                    <p className="text-sm text-gray-400 mb-3">通过 Google OAuth 自动获取 Gemini API 凭证</p>
+                    <Link to="/oauth" className="btn btn-primary flex items-center gap-2 w-full justify-center">
+                      <ExternalLink size={16} />
+                      去认证
+                    </Link>
                   </div>
                   
                   <div className="bg-cyan-600/20 border border-cyan-500/30 rounded-xl p-4">
@@ -511,7 +507,7 @@ export default function Admin() {
                     <button
                       onClick={verifyAllCredentials}
                       disabled={verifyingAll}
-                      className="btn bg-cyan-600 hover:bg-cyan-500 text-white flex items-center gap-2 disabled:opacity-50"
+                      className="btn bg-cyan-600 hover:bg-cyan-500 text-white flex items-center gap-2 disabled:opacity-50 w-full justify-center"
                     >
                       {verifyingAll ? <RefreshCw size={16} className="animate-spin" /> : <Check size={16} />}
                       {verifyingAll ? '检测中...' : '开始检测'}
@@ -523,7 +519,7 @@ export default function Admin() {
                     <p className="text-sm text-gray-400 mb-3">导出所有凭证为JSON</p>
                     <button
                       onClick={exportAllCredentials}
-                      className="btn bg-green-600 hover:bg-green-500 text-white flex items-center gap-2"
+                      className="btn bg-green-600 hover:bg-green-500 text-white flex items-center gap-2 w-full justify-center"
                     >
                       <Download size={16} />
                       导出全部
@@ -534,7 +530,7 @@ export default function Admin() {
                 {/* 检测结果 */}
                 {verifyResult && (
                   <div className="bg-dark-800 border border-dark-600 rounded-xl p-4">
-                    <div className="flex items-center gap-4 mb-3">
+                    <div className="flex flex-wrap items-center gap-2 md:gap-4">
                       <span className="text-gray-400">检测完成:</span>
                       <span className="text-green-400">✅ 有效 {verifyResult.valid}</span>
                       <span className="text-red-400">❌ 无效 {verifyResult.invalid}</span>
@@ -546,7 +542,7 @@ export default function Admin() {
 
                 <div className="card">
                   <h3 className="font-medium mb-3">手动添加凭证</h3>
-                  <div className="flex gap-3">
+                  <div className="flex flex-col md:flex-row gap-3">
                     <input
                       type="text"
                       value={newCredName}
@@ -561,7 +557,7 @@ export default function Admin() {
                       placeholder="Gemini API Key"
                       className="flex-1 px-4 py-2 bg-dark-800 border border-dark-600 rounded-lg text-white placeholder-gray-500"
                     />
-                    <button onClick={addCredential} className="btn btn-primary flex items-center gap-2">
+                    <button onClick={addCredential} className="btn btn-primary flex items-center gap-2 justify-center">
                       <Plus size={18} />
                       添加
                     </button>
