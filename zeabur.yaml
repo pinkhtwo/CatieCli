@@ -25,8 +25,9 @@ spec:
           description: 管理员用户名
           default: admin
         - key: ADMIN_PASSWORD
-          description: 管理员密码（请修改！）
+          description: 管理员密码（必填！请设置安全密码）
           required: true
+          expose: true
         - key: SECRET_KEY
           description: JWT 密钥（自动生成）
           generate:
