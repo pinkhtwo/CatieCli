@@ -637,10 +637,13 @@ async def verify_my_credential(
         # 更新凭证状态
         cred.is_active = is_valid
         cred.model_tier = "3" if supports_3 else "2.5"
-        if error_msg:
-            cred.last_error = error_msg
-        elif account_type != "unknown":
+        # 保存 account_type，error_msg 附加在后面
+        if account_type != "unknown":
             cred.last_error = f"account_type:{account_type}"
+            if error_msg:
+                cred.last_error += f" | {error_msg}"
+        elif error_msg:
+            cred.last_error = error_msg
         await db.commit()
         
         # 获取存储空间信息
