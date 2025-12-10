@@ -453,15 +453,17 @@ export default function Credentials() {
           )}
         </div>
 
-        {/* 说明 */}
-        <div className="mt-6 p-4 bg-amber-500/10 border border-amber-500/30 rounded-xl text-sm">
-          <div className="text-amber-400 font-medium mb-2">💡 大锅饭规则</div>
-          <ul className="text-amber-300/70 space-y-1">
-            <li>• 捐赠凭证后，您可以使用所有公共池中的凭证</li>
-            <li>• 不捐赠则只能使用自己的私有凭证</li>
-            <li>• 所有凭证数据均已加密存储，安全可靠</li>
-          </ul>
-        </div>
+        {/* 说明 - 强制捐赠时隐藏 */}
+        {!forceDonate && (
+          <div className="mt-6 p-4 bg-amber-500/10 border border-amber-500/30 rounded-xl text-sm">
+            <div className="text-amber-400 font-medium mb-2">💡 大锅饭规则</div>
+            <ul className="text-amber-300/70 space-y-1">
+              <li>• 捐赠凭证后，您可以使用所有公共池中的凭证</li>
+              <li>• 不捐赠则只能使用自己的私有凭证</li>
+              <li>• 所有凭证数据均已加密存储，安全可靠</li>
+            </ul>
+          </div>
+        )}
       </div>
 
       {/* 配额弹窗 */}

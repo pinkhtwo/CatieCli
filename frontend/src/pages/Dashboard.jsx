@@ -48,6 +48,14 @@ export default function Dashboard() {
   const [quotaModal, setQuotaModal] = useState(null)
   const [loadingQuota, setLoadingQuota] = useState(false)
   const [verifyResult, setVerifyResult] = useState(null)  // 检测结果弹窗
+  const [forceDonate, setForceDonate] = useState(false)
+
+  // 获取捐赠配置
+  useEffect(() => {
+    api.get('/api/manage/public-config').then(res => {
+      setForceDonate(res.data.force_donate || false)
+    }).catch(() => {})
+  }, [])
 
   // 处理 OAuth 回调消息
   useEffect(() => {
@@ -515,13 +523,13 @@ export default function Dashboard() {
                             </span>
                           )}
                           
-                          {/* 捐赠状态 - 紫色边框空心 */}
-                          {cred.is_public && (
+                          {/* 捐赠状态 - 强制捐赠时隐藏 */}
+                          {!forceDonate && cred.is_public && (
                             <span className="text-xs px-2.5 py-1 border border-purple-500 text-purple-400 rounded font-medium">
                               已捐赠
                             </span>
                           )}
-                          {!cred.is_public && (
+                          {!forceDonate && !cred.is_public && (
                             <span className="text-xs px-2.5 py-1 border border-gray-600 text-gray-500 rounded font-medium">
                               私有
                             </span>
@@ -574,13 +582,15 @@ export default function Dashboard() {
                         >
                           {cred.is_active !== false ? '禁用' : '启用'}
                         </button>
-                        {/* 捐赠/取消捐赠 */}
-                        <button
-                          onClick={() => toggleCredPublic(cred.id, cred.is_public)}
-                          className={`px-3 py-1.5 rounded text-xs font-medium ${cred.is_public ? 'bg-gray-600 hover:bg-gray-500' : 'bg-green-600 hover:bg-green-500'} text-white`}
-                        >
-                          {cred.is_public ? '取消捐赠' : '捐赠'}
-                        </button>
+                        {/* 捐赠/取消捐赠 - 强制捐赠时隐藏 */}
+                        {!forceDonate && (
+                          <button
+                            onClick={() => toggleCredPublic(cred.id, cred.is_public)}
+                            className={`px-3 py-1.5 rounded text-xs font-medium ${cred.is_public ? 'bg-gray-600 hover:bg-gray-500' : 'bg-green-600 hover:bg-green-500'} text-white`}
+                          >
+                            {cred.is_public ? '取消捐赠' : '捐赠'}
+                          </button>
+                        )}
                         {/* 删除 */}
                         <button
                           onClick={() => deleteCred(cred.id)}
@@ -595,13 +605,15 @@ export default function Dashboard() {
               </div>
             )}
 
-            {/* 大锅饭规则提示 */}
-            <div className="mt-6 bg-amber-500/10 border border-amber-500/30 rounded-xl p-4">
-              <div className="text-amber-400 font-medium mb-1">💡 大锅饭规则</div>
-              <div className="text-amber-300/70 text-sm">
-                捐赠凭证后，您可以使用所有公共池凭证。不捐赠则只能用自己的凭证。
+            {/* 大锅饭规则提示 - 强制捐赠时隐藏 */}
+            {!forceDonate && (
+              <div className="mt-6 bg-amber-500/10 border border-amber-500/30 rounded-xl p-4">
+                <div className="text-amber-400 font-medium mb-1">💡 大锅饭规则</div>
+                <div className="text-amber-300/70 text-sm">
+                  捐赠凭证后，您可以使用所有公共池凭证。不捐赠则只能用自己的凭证。
+                </div>
               </div>
-            </div>
+            )}
           </>
         )}
 
