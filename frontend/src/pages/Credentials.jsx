@@ -1,5 +1,6 @@
 import {
     ArrowLeft,
+    BarChart2,
     Cat,
     CheckCircle,
     Download,
@@ -7,7 +8,8 @@ import {
     RefreshCw,
     Shield,
     Trash2,
-    Upload
+    Upload,
+    X
 } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
