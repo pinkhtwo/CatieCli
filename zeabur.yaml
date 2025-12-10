@@ -42,8 +42,9 @@ spec:
         - key: DISCORD_CLIENT_SECRET
           description: Discord OAuth 客户端密钥（可选）
         - key: PORT
-          description: 服务端口
+          description: 服务端口（Zeabur必须8080，请勿修改）
           default: '8080'
+          required: true
       ports:
         - id: web
           port: 8080
