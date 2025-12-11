@@ -893,6 +893,10 @@ async def get_global_stats(
     )
     tier3_creds = tier3_cred_result.scalar() or 0
     
+    # 全站总额度（所有用户的daily_quota总和）
+    total_quota_result = await db.execute(select(func.sum(User.daily_quota)))
+    total_quota = total_quota_result.scalar() or 0
+    
     # 活跃用户数（最近24小时）
     active_users_result = await db.execute(
         select(func.count(func.distinct(UsageLog.user_id)))
@@ -921,6 +925,7 @@ async def get_global_stats(
         "users": {
             "active_24h": active_users,
         },
+        "total_quota": total_quota,  # 全站总额度
         "models": model_stats[:10],  # Top 10 模型
         "pool_mode": settings.credential_pool_mode,
     }

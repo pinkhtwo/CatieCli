@@ -271,9 +271,11 @@ async def upload_credentials(
     user: User = Depends(get_current_user),
     db: AsyncSession = Depends(get_db)
 ):
-    """上传 JSON 凭证文件（支持多文件）"""
+    """上传 JSON 凭证文件（支持多文件和ZIP压缩包）"""
     from app.services.crypto import encrypt_credential
     from app.config import settings
+    import zipfile
+    import io
     
     # 强制捐赠模式
     if settings.force_donate:
@@ -285,24 +287,43 @@ async def upload_credentials(
     results = []
     success_count = 0
     
+    # 预处理：解压ZIP文件，收集所有JSON文件
+    json_files = []  # [(filename, content_bytes), ...]
+    
     for file in files:
-        if not file.filename.endswith('.json'):
-            results.append({"filename": file.filename, "status": "error", "message": "只支持 JSON 文件"})
-            continue
-        
-        try:
+        if file.filename.endswith('.zip'):
+            # 解压ZIP文件
+            try:
+                zip_content = await file.read()
+                with zipfile.ZipFile(io.BytesIO(zip_content), 'r') as zf:
+                    for name in zf.namelist():
+                        if name.endswith('.json') and not name.startswith('__MACOSX'):
+                            json_files.append((name, zf.read(name)))
+                results.append({"filename": file.filename, "status": "info", "message": f"已解压 {len([n for n in zf.namelist() if n.endswith('.json')])} 个JSON文件"})
+            except zipfile.BadZipFile:
+                results.append({"filename": file.filename, "status": "error", "message": "无效的ZIP文件"})
+            except Exception as e:
+                results.append({"filename": file.filename, "status": "error", "message": f"解压失败: {str(e)[:50]}"})
+        elif file.filename.endswith('.json'):
             content = await file.read()
-            cred_data = json.loads(content.decode('utf-8'))
+            json_files.append((file.filename, content))
+        else:
+            results.append({"filename": file.filename, "status": "error", "message": "只支持 JSON 或 ZIP 文件"})
+    
+    # 处理所有JSON文件
+    for filename, content in json_files:
+        try:
+            cred_data = json.loads(content.decode('utf-8') if isinstance(content, bytes) else content)
             
             # 验证必要字段
             required_fields = ["refresh_token"]
             missing = [f for f in required_fields if f not in cred_data]
             if missing:
-                results.append({"filename": file.filename, "status": "error", "message": f"缺少字段: {', '.join(missing)}"})
+                results.append({"filename": filename, "status": "error", "message": f"缺少字段: {', '.join(missing)}"})
                 continue
             
             # 创建凭证（加密存储）
-            email = cred_data.get("email") or file.filename
+            email = cred_data.get("email") or filename
             project_id = cred_data.get("project_id", "")
             refresh_token = cred_data.get("refresh_token")
             
@@ -311,7 +332,7 @@ async def upload_credentials(
                 select(Credential).where(Credential.email == email)
             )
             if existing.scalar_one_or_none():
-                results.append({"filename": file.filename, "status": "skip", "message": f"凭证已存在: {email}"})
+                results.append({"filename": filename, "status": "skip", "message": f"凭证已存在: {email}"})
                 continue
             
             # 也检查 refresh_token 是否重复
@@ -320,7 +341,7 @@ async def upload_credentials(
                 select(Credential).where(Credential.refresh_token == enc(refresh_token))
             )
             if existing_token.scalar_one_or_none():
-                results.append({"filename": file.filename, "status": "skip", "message": f"凭证token已存在: {email}"})
+                results.append({"filename": filename, "status": "skip", "message": f"凭证token已存在: {email}"})
                 continue
             
             # 自动验证凭证有效性
@@ -404,16 +425,16 @@ async def upload_credentials(
             status_msg = f"上传成功 {verify_msg}"
             if is_public and not is_valid:
                 status_msg += " (无效凭证不会上传到公共池)"
-            results.append({"filename": file.filename, "status": "success" if is_valid else "warning", "message": status_msg})
+            results.append({"filename": filename, "status": "success" if is_valid else "warning", "message": status_msg})
             success_count += 1
             
         except json.JSONDecodeError:
-            results.append({"filename": file.filename, "status": "error", "message": "JSON 格式错误"})
+            results.append({"filename": filename, "status": "error", "message": "JSON 格式错误"})
         except Exception as e:
-            results.append({"filename": file.filename, "status": "error", "message": str(e)})
+            results.append({"filename": filename, "status": "error", "message": str(e)})
     
     await db.commit()
-    return {"uploaded_count": success_count, "total_count": len(files), "results": results}
+    return {"uploaded_count": success_count, "total_count": len(json_files), "results": results}
 
 
 @router.get("/credentials")

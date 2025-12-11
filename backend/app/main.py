@@ -105,10 +105,20 @@ async def public_stats():
             select(func.count(UsageLog.id)).where(func.date(UsageLog.created_at) == today)
         )).scalar() or 0
         
+        # 成功/失败统计
+        today_success = (await db.execute(
+            select(func.count(UsageLog.id))
+            .where(func.date(UsageLog.created_at) == today)
+            .where(UsageLog.status_code == 200)
+        )).scalar() or 0
+        today_failed = today_requests - today_success
+        
         return {
             "user_count": user_count,
             "active_credentials": active_credentials,
-            "today_requests": today_requests
+            "today_requests": today_requests,
+            "today_success": today_success,
+            "today_failed": today_failed
         }
 
 

@@ -204,13 +204,13 @@ export default function Credentials() {
               onDrop={(e) => {
                 e.preventDefault()
                 setDragOver(false)
-                const files = Array.from(e.dataTransfer.files).filter(f => f.name.endsWith('.json'))
+                const files = Array.from(e.dataTransfer.files).filter(f => f.name.endsWith('.json') || f.name.endsWith('.zip'))
                 if (files.length > 0) setUploadFiles(prev => [...prev, ...files])
               }}
             >
               <input
                 type="file"
-                accept=".json"
+                accept=".json,.zip"
                 multiple
                 onChange={(e) => setUploadFiles(prev => [...prev, ...Array.from(e.target.files)])}
                 className="hidden"
@@ -221,9 +221,9 @@ export default function Credentials() {
                 <div className="text-gray-300 mb-1">
                   {uploadFiles.length > 0 
                     ? `已选择 ${uploadFiles.length} 个文件` 
-                    : '点击或拖拽 JSON 凭证文件'}
+                    : '点击或拖拽 JSON/ZIP 文件'}
                 </div>
-                <div className="text-xs text-gray-500">支持多选，格式需包含 refresh_token 字段</div>
+                <div className="text-xs text-gray-500">支持多选和ZIP压缩包，JSON需包含 refresh_token 字段</div>
               </label>
             </div>
             
