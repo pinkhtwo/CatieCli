@@ -607,8 +607,23 @@ async def delete_my_inactive_credentials(
         # 失效凭证不需要扣除额度（已经扣过了）
         await db.delete(cred)
         deleted_count += 1
+        
+        # 每100个提交一次，避免大事务超时
+        if deleted_count % 100 == 0:
+            try:
+                await db.commit()
+                print(f"[批量删除] 已删除 {deleted_count} 个凭证", flush=True)
+            except Exception as e:
+                print(f"[批量删除] 提交失败: {e}", flush=True)
+                await db.rollback()
     
-    await db.commit()
+    # 最终提交
+    try:
+        await db.commit()
+    except Exception as e:
+        print(f"[批量删除] 最终提交失败: {e}", flush=True)
+        await db.rollback()
+    
     print(f"[批量删除] 用户 {user.username} 删除了 {deleted_count} 个失效凭证", flush=True)
     return {"message": f"已删除 {deleted_count} 个失效凭证", "deleted_count": deleted_count}
 
