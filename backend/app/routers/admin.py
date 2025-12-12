@@ -29,31 +29,43 @@ async def list_users(
     admin: User = Depends(get_current_admin),
     db: AsyncSession = Depends(get_db)
 ):
-    """获取所有用户"""
+    """获取所有用户（优化版：批量查询）"""
+    from app.config import settings
+    
+    # 1. 获取所有用户
     result = await db.execute(select(User).order_by(User.created_at.desc()))
     users = result.scalars().all()
     
+    if not users:
+        return {"users": [], "total": 0}
+    
+    user_ids = [u.id for u in users]
+    today = date.today()
+    
+    # 2. 批量查询今日使用量
+    usage_result = await db.execute(
+        select(UsageLog.user_id, func.count(UsageLog.id))
+        .where(UsageLog.user_id.in_(user_ids))
+        .where(func.date(UsageLog.created_at) == today)
+        .group_by(UsageLog.user_id)
+    )
+    usage_map = {row[0]: row[1] for row in usage_result.fetchall()}
+    
+    # 3. 批量查询凭证数量
+    cred_result = await db.execute(
+        select(Credential.user_id, func.count(Credential.id))
+        .where(Credential.user_id.in_(user_ids))
+        .where(Credential.is_active == True)
+        .group_by(Credential.user_id)
+    )
+    cred_map = {row[0]: row[1] for row in cred_result.fetchall()}
+    
+    # 4. 构建用户列表
     user_list = []
     for u in users:
-        # 获取今日使用量
-        today = date.today()
-        usage_result = await db.execute(
-            select(func.count(UsageLog.id))
-            .where(UsageLog.user_id == u.id)
-            .where(func.date(UsageLog.created_at) == today)
-        )
-        today_usage = usage_result.scalar() or 0
+        today_usage = usage_map.get(u.id, 0)
+        credential_count = cred_map.get(u.id, 0)
         
-        # 获取用户凭证数量（有效凭证）
-        cred_result = await db.execute(
-            select(func.count(Credential.id))
-            .where(Credential.user_id == u.id)
-            .where(Credential.is_active == True)
-        )
-        credential_count = cred_result.scalar() or 0
-        
-        # 计算有效配额：基础配额 + 奖励配额
-        from app.config import settings
         effective_quota = u.daily_quota + (u.bonus_quota or 0)
         if settings.no_credential_quota > 0 and credential_count == 0:
             effective_quota = min(effective_quota, settings.no_credential_quota)
