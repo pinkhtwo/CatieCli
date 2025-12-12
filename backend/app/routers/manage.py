@@ -967,10 +967,10 @@ async def get_global_stats(
     tier3_public_count = tier3_public_result.scalar() or 0
     tier25_public_count = public_active_count - tier3_public_count
     
-    # 计算总额度
-    total_quota_flash = public_active_count * settings.quota_flash
-    total_quota_25pro = public_active_count * settings.quota_25pro
-    total_quota_30pro = tier3_public_count * settings.quota_30pro
+    # 计算总额度（使用统计专用配置，与凭证奖励分开）
+    total_quota_flash = public_active_count * settings.stats_quota_flash
+    total_quota_25pro = public_active_count * settings.stats_quota_25pro
+    total_quota_30pro = tier3_public_count * settings.stats_quota_30pro
     
     # 活跃用户数（最近24小时）
     active_users_result = await db.execute(

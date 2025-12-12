@@ -43,15 +43,20 @@ class Settings(BaseSettings):
     # 2.5凭证用户的 3.0 模型配额（只有2.5凭证没有3.0凭证的用户）
     cred25_quota_30pro: int = 0     # 2.5凭证用户 3.0 配额（默认禁止，0=禁止）
     
-    # 凭证奖励：按模型分类的额度配置
+    # 凭证奖励：按模型分类的额度配置（用户上传凭证后获得的奖励）
     # 2.5凭证奖励 = quota_flash + quota_25pro
     # 3.0凭证奖励 = quota_flash + quota_25pro + quota_30pro
     credential_reward_quota: int = 1000  # 兼容旧配置
     credential_reward_quota_25: int = 1000  # 兼容旧配置（2.5凭证总奖励）
     credential_reward_quota_30: int = 2000  # 兼容旧配置（3.0凭证总奖励）
-    quota_flash: int = 1000  # Flash模型额度
-    quota_25pro: int = 500   # 2.5 Pro模型额度
-    quota_30pro: int = 300   # 3.0模型额度
+    quota_flash: int = 1000  # Flash模型额度（凭证奖励）
+    quota_25pro: int = 500   # 2.5 Pro模型额度（凭证奖励）
+    quota_30pro: int = 300   # 3.0模型额度（凭证奖励）
+    
+    # 全站总额度计算基数（用于统计页面显示，每个公共池凭证贡献的额度）
+    stats_quota_flash: int = 1000   # 统计用 Flash 额度基数
+    stats_quota_25pro: int = 250    # 统计用 2.5 Pro 额度基数
+    stats_quota_30pro: int = 200    # 统计用 3.0 额度基数
     
     # 速率限制 (RPM - requests per minute)
     base_rpm: int = 5  # 未上传凭证的用户
