@@ -722,6 +722,8 @@ async def get_public_config():
         "force_donate": settings.force_donate,
         "lock_donate": settings.lock_donate,
         "credential_pool_mode": settings.credential_pool_mode,
+        "base_rpm": settings.base_rpm,
+        "contributor_rpm": settings.contributor_rpm,
     }
 
 

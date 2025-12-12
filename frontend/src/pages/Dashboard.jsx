@@ -51,11 +51,16 @@ export default function Dashboard() {
   const [loadingQuota, setLoadingQuota] = useState(false)
   const [verifyResult, setVerifyResult] = useState(null)  // 检测结果弹窗
   const [forceDonate, setForceDonate] = useState(false)
+  const [rpmConfig, setRpmConfig] = useState({ base: 5, contributor: 10 })
 
   // 获取捐赠配置
   useEffect(() => {
     api.get('/api/manage/public-config').then(res => {
       setForceDonate(res.data.force_donate || false)
+      setRpmConfig({
+        base: res.data.base_rpm || 5,
+        contributor: res.data.contributor_rpm || 10
+      })
     }).catch(() => {})
   }, [])
 
@@ -695,9 +700,9 @@ export default function Dashboard() {
                     <div className="flex items-start gap-3">
                       <span className="text-amber-400 text-lg">⚠️</span>
                       <div>
-                        <div className="text-amber-400 font-medium">尚未上传有效凭证，Pro 模型调用频率限制为 5 次/分钟。</div>
+                        <div className="text-amber-400 font-medium">尚未上传有效凭证，Pro 模型调用频率限制为 {rpmConfig.base} 次/分钟。</div>
                         <div className="text-amber-300/70 text-sm mt-1">
-                          上传至少一个有效凭证即可提升到 10 次/分钟，并获得更高每日调用上限。
+                          上传至少一个有效凭证即可提升到 {rpmConfig.contributor} 次/分钟，并获得更高每日调用上限。
                         </div>
                       </div>
                     </div>
