@@ -40,6 +40,9 @@ class Settings(BaseSettings):
     no_cred_quota_25pro: int = 50   # 无凭证用户 2.5 Pro 配额
     no_cred_quota_30pro: int = 0    # 无凭证用户 3.0 配额（默认禁止）
     
+    # 2.5凭证用户的 3.0 模型配额（只有2.5凭证没有3.0凭证的用户）
+    cred25_quota_30pro: int = 0     # 2.5凭证用户 3.0 配额（默认禁止，0=禁止）
+    
     # 凭证奖励：按模型分类的额度配置
     # 2.5凭证奖励 = quota_flash + quota_25pro
     # 3.0凭证奖励 = quota_flash + quota_25pro + quota_30pro
@@ -110,6 +113,7 @@ PERSISTENT_CONFIG_KEYS = [
     "no_cred_quota_flash",
     "no_cred_quota_25pro",
     "no_cred_quota_30pro",
+    "cred25_quota_30pro",
     "credential_reward_quota",
     "credential_reward_quota_25",
     "credential_reward_quota_30",

@@ -396,7 +396,38 @@ export default function Dashboard() {
           <>
             <h2 className="text-xl font-semibold mb-4">个人使用统计</h2>
             
-            {/* 统计卡片 */}
+            {/* 按模型分类统计卡片 */}
+            <div className="grid md:grid-cols-3 gap-4 mb-6">
+              <div className="bg-gradient-to-br from-cyan-900/30 to-cyan-800/10 border border-cyan-700/30 rounded-xl p-5">
+                <div className="text-center">
+                  <div className="text-sm text-cyan-400 mb-2 font-medium">Flash 模型</div>
+                  <div className="text-3xl font-bold mb-1">
+                    <span className="text-cyan-300">{userInfo?.usage_by_model?.flash?.used || 0}</span>
+                    <span className="text-gray-500 text-xl"> / {userInfo?.usage_by_model?.flash?.quota || 0}</span>
+                  </div>
+                </div>
+              </div>
+              <div className="bg-gradient-to-br from-orange-900/30 to-orange-800/10 border border-orange-700/30 rounded-xl p-5">
+                <div className="text-center">
+                  <div className="text-sm text-orange-400 mb-2 font-medium">2.5 Pro 模型</div>
+                  <div className="text-3xl font-bold mb-1">
+                    <span className="text-orange-300">{userInfo?.usage_by_model?.pro25?.used || 0}</span>
+                    <span className="text-gray-500 text-xl"> / {userInfo?.usage_by_model?.pro25?.quota || 0}</span>
+                  </div>
+                </div>
+              </div>
+              <div className="bg-gradient-to-br from-pink-900/30 to-pink-800/10 border border-pink-700/30 rounded-xl p-5">
+                <div className="text-center">
+                  <div className="text-sm text-pink-400 mb-2 font-medium">3.0 模型</div>
+                  <div className="text-3xl font-bold mb-1">
+                    <span className="text-pink-300">{userInfo?.usage_by_model?.pro30?.used || 0}</span>
+                    <span className="text-gray-500 text-xl"> / {userInfo?.usage_by_model?.pro30?.quota || 0}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* 总配额和凭证统计 */}
             <div className="grid md:grid-cols-2 gap-4 mb-6">
               <div className="bg-dark-800 border border-dark-600 rounded-xl p-6">
                 <div className="text-center">
@@ -404,7 +435,7 @@ export default function Dashboard() {
                     <span className="text-blue-400">{userInfo?.today_usage || 0}</span>
                     <span className="text-gray-500"> / {userInfo?.daily_quota ?? 100}</span>
                   </div>
-                  <div className="text-gray-400">已使用 / 调用上限</div>
+                  <div className="text-gray-400">总已使用 / 总配额上限</div>
                 </div>
               </div>
               <div className="bg-dark-800 border border-dark-600 rounded-xl p-6">

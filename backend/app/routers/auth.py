@@ -134,6 +134,32 @@ async def get_me(user: User = Depends(get_current_user), db: AsyncSession = Depe
     )
     today_usage = result.scalar() or 0
     
+    # 按模型分类统计今日使用量
+    flash_result = await db.execute(
+        select(func.count(UsageLog.id))
+        .where(UsageLog.user_id == user.id)
+        .where(UsageLog.created_at >= start_of_day)
+        .where(UsageLog.model.notlike('%pro%'))
+    )
+    flash_usage = flash_result.scalar() or 0
+    
+    pro25_result = await db.execute(
+        select(func.count(UsageLog.id))
+        .where(UsageLog.user_id == user.id)
+        .where(UsageLog.created_at >= start_of_day)
+        .where(UsageLog.model.like('%pro%'))
+        .where(UsageLog.model.notlike('%3%'))
+    )
+    pro25_usage = pro25_result.scalar() or 0
+    
+    pro30_result = await db.execute(
+        select(func.count(UsageLog.id))
+        .where(UsageLog.user_id == user.id)
+        .where(UsageLog.created_at >= start_of_day)
+        .where(UsageLog.model.like('%3%'))
+    )
+    pro30_usage = pro30_result.scalar() or 0
+    
     # 获取用户凭证数量
     cred_result = await db.execute(
         select(func.count(Credential.id))
@@ -151,6 +177,34 @@ async def get_me(user: User = Depends(get_current_user), db: AsyncSession = Depe
     )
     public_credential_count = public_result.scalar() or 0
     
+    # 统计用户的 2.5 和 3.0 凭证数量
+    cred_25_result = await db.execute(
+        select(func.count(Credential.id))
+        .where(Credential.user_id == user.id)
+        .where(Credential.is_active == True)
+        .where(Credential.model_tier != "3")
+    )
+    cred_25_count = cred_25_result.scalar() or 0
+    
+    cred_30_result = await db.execute(
+        select(func.count(Credential.id))
+        .where(Credential.user_id == user.id)
+        .where(Credential.is_active == True)
+        .where(Credential.model_tier == "3")
+    )
+    cred_30_count = cred_30_result.scalar() or 0
+    
+    # 计算用户各类模型的配额上限
+    from app.config import settings
+    if credential_count > 0:
+        quota_flash = credential_count * settings.quota_flash
+        quota_25pro = credential_count * settings.quota_25pro
+        quota_30pro = cred_30_count * settings.quota_30pro
+    else:
+        quota_flash = settings.no_cred_quota_flash
+        quota_25pro = settings.no_cred_quota_25pro
+        quota_30pro = settings.no_cred_quota_30pro
+    
     return {
         "id": user.id,
         "username": user.username,
@@ -162,7 +216,14 @@ async def get_me(user: User = Depends(get_current_user), db: AsyncSession = Depe
         "credential_count": credential_count,
         "public_credential_count": public_credential_count,
         "has_public_credentials": public_credential_count > 0,
-        "created_at": user.created_at
+        "created_at": user.created_at,
+        "usage_by_model": {
+            "flash": {"used": flash_usage, "quota": quota_flash},
+            "pro25": {"used": pro25_usage, "quota": quota_25pro},
+            "pro30": {"used": pro30_usage, "quota": quota_30pro}
+        },
+        "cred_25_count": cred_25_count,
+        "cred_30_count": cred_30_count
     }
 
 

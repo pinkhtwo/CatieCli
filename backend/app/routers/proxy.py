@@ -49,6 +49,10 @@ async def get_user_from_api_key(request: Request, db: AsyncSession = Depends(get
     if not user.is_active:
         raise HTTPException(status_code=403, detail="账户已被禁用")
     
+    # GET 请求（如 /v1/models）不需要检查配额
+    if request.method == "GET":
+        return user
+    
     # 检查配额
     # 配额在北京时间 15:00 (UTC 07:00) 重置
     now = datetime.utcnow()
@@ -89,10 +93,15 @@ async def get_user_from_api_key(request: Request, db: AsyncSession = Depends(get
     # 计算用户各类模型的配额上限
     # Flash 配额 = 所有凭证数 × quota_flash
     # 2.5 Pro 配额 = 所有凭证数 × quota_25pro  
-    # 3.0 配额 = 3.0凭证数 × quota_30pro
+    # 3.0 配额 = 3.0凭证数 × quota_30pro（2.5凭证用户使用 cred25_quota_30pro）
     user_quota_flash = total_cred_count * settings.quota_flash if has_credential else settings.no_cred_quota_flash
     user_quota_25pro = total_cred_count * settings.quota_25pro if has_credential else settings.no_cred_quota_25pro
-    user_quota_30pro = cred_30_count * settings.quota_30pro if has_credential else settings.no_cred_quota_30pro
+    if cred_30_count > 0:
+        user_quota_30pro = cred_30_count * settings.quota_30pro
+    elif has_credential:
+        user_quota_30pro = settings.cred25_quota_30pro  # 2.5凭证用户的3.0配额
+    else:
+        user_quota_30pro = settings.no_cred_quota_30pro
 
     # 确定当前请求的模型类别和对应配额
     if required_tier == "3":
@@ -123,9 +132,9 @@ async def get_user_from_api_key(request: Request, db: AsyncSession = Depends(get
                 status_code=429, 
                 detail=f"已达到{quota_name}每日配额限制 ({current_usage}/{quota_limit})"
             )
-    elif quota_limit == 0 and required_tier == "3" and cred_30_count == 0:
-        # 没有 3.0 凭证但尝试使用 3.0 模型
-        raise HTTPException(status_code=403, detail="无 3.0 凭证，无法使用 3.0 模型")
+    elif quota_limit == 0 and required_tier == "3":
+        # 没有 3.0 配额但尝试使用 3.0 模型
+        raise HTTPException(status_code=403, detail="无 3.0 模型使用配额")
     
     # 同时检查总配额
     if has_credential:
