@@ -195,14 +195,29 @@ async def get_me(user: User = Depends(get_current_user), db: AsyncSession = Depe
     cred_30_count = cred_30_result.scalar() or 0
     
     # 计算用户各类模型的配额上限
+    # 优先使用用户设置的按模型配额，0表示使用系统默认
     from app.config import settings
-    if credential_count > 0:
+    if user.quota_flash and user.quota_flash > 0:
+        quota_flash = user.quota_flash
+    elif credential_count > 0:
         quota_flash = credential_count * settings.quota_flash
-        quota_25pro = credential_count * settings.quota_25pro
-        quota_30pro = cred_30_count * settings.quota_30pro
     else:
         quota_flash = settings.no_cred_quota_flash
+    
+    if user.quota_25pro and user.quota_25pro > 0:
+        quota_25pro = user.quota_25pro
+    elif credential_count > 0:
+        quota_25pro = credential_count * settings.quota_25pro
+    else:
         quota_25pro = settings.no_cred_quota_25pro
+    
+    if user.quota_30pro and user.quota_30pro > 0:
+        quota_30pro = user.quota_30pro
+    elif cred_30_count > 0:
+        quota_30pro = cred_30_count * settings.quota_30pro
+    elif credential_count > 0:
+        quota_30pro = settings.cred25_quota_30pro
+    else:
         quota_30pro = settings.no_cred_quota_30pro
     
     return {

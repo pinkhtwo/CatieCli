@@ -91,15 +91,27 @@ async def get_user_from_api_key(request: Request, db: AsyncSession = Depends(get
     has_credential = total_cred_count > 0
 
     # 计算用户各类模型的配额上限
-    # Flash 配额 = 所有凭证数 × quota_flash
-    # 2.5 Pro 配额 = 所有凭证数 × quota_25pro  
-    # 3.0 配额 = 3.0凭证数 × quota_30pro（2.5凭证用户使用 cred25_quota_30pro）
-    user_quota_flash = total_cred_count * settings.quota_flash if has_credential else settings.no_cred_quota_flash
-    user_quota_25pro = total_cred_count * settings.quota_25pro if has_credential else settings.no_cred_quota_25pro
-    if cred_30_count > 0:
+    # 优先使用用户设置的按模型配额，0表示使用系统默认
+    if user.quota_flash and user.quota_flash > 0:
+        user_quota_flash = user.quota_flash
+    elif has_credential:
+        user_quota_flash = total_cred_count * settings.quota_flash
+    else:
+        user_quota_flash = settings.no_cred_quota_flash
+    
+    if user.quota_25pro and user.quota_25pro > 0:
+        user_quota_25pro = user.quota_25pro
+    elif has_credential:
+        user_quota_25pro = total_cred_count * settings.quota_25pro
+    else:
+        user_quota_25pro = settings.no_cred_quota_25pro
+    
+    if user.quota_30pro and user.quota_30pro > 0:
+        user_quota_30pro = user.quota_30pro
+    elif cred_30_count > 0:
         user_quota_30pro = cred_30_count * settings.quota_30pro
     elif has_credential:
-        user_quota_30pro = settings.cred25_quota_30pro  # 2.5凭证用户的3.0配额
+        user_quota_30pro = settings.cred25_quota_30pro
     else:
         user_quota_30pro = settings.no_cred_quota_30pro
 
