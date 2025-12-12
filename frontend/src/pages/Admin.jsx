@@ -746,7 +746,7 @@ export default function Admin() {
                           </td>
                           <td>{log.username}</td>
                           <td className="font-mono text-sm">{log.model}</td>
-                          <td className="text-gray-400 text-sm">{log.endpoint}</td>
+                          <td className="text-gray-400 text-sm">{log.endpoint || '-'}</td>
                           <td>
                             <span className={log.status_code === 200 ? 'text-green-400' : 'text-red-400'}>
                               {log.status_code}
