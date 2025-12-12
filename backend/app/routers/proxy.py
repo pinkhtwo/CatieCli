@@ -58,18 +58,77 @@ async def get_user_from_api_key(request: Request, db: AsyncSession = Depends(get
     else:
         start_of_day = reset_time_utc
 
-    # 检查用户是否有有效凭证
+    # 获取请求的模型
+    body = await request.json()
+    model = body.get("model", "gemini-2.5-flash")
+    required_tier = CredentialPool.get_required_tier(model)
+    
+    # 检查用户凭证情况
     from app.models.user import Credential
-    cred_result = await db.execute(
+    
+    # 统计用户的 2.5 和 3.0 凭证数量
+    cred_25_result = await db.execute(
         select(func.count(Credential.id))
         .where(Credential.user_id == user.id)
         .where(Credential.is_active == True)
+        .where(Credential.model_tier != "3")
     )
-    has_credential = (cred_result.scalar() or 0) > 0
+    cred_25_count = cred_25_result.scalar() or 0
+    
+    cred_30_result = await db.execute(
+        select(func.count(Credential.id))
+        .where(Credential.user_id == user.id)
+        .where(Credential.is_active == True)
+        .where(Credential.model_tier == "3")
+    )
+    cred_30_count = cred_30_result.scalar() or 0
+    
+    total_cred_count = cred_25_count + cred_30_count
+    has_credential = total_cred_count > 0
 
-    # 根据是否有凭证，应用不同的配额逻辑
+    # 计算用户各类模型的配额上限
+    # Flash 配额 = 所有凭证数 × quota_flash
+    # 2.5 Pro 配额 = 所有凭证数 × quota_25pro  
+    # 3.0 配额 = 3.0凭证数 × quota_30pro
+    user_quota_flash = total_cred_count * settings.quota_flash if has_credential else settings.no_cred_quota_flash
+    user_quota_25pro = total_cred_count * settings.quota_25pro if has_credential else settings.no_cred_quota_25pro
+    user_quota_30pro = cred_30_count * settings.quota_30pro if has_credential else settings.no_cred_quota_30pro
+
+    # 确定当前请求的模型类别和对应配额
+    if required_tier == "3":
+        quota_limit = user_quota_30pro
+        model_filter = UsageLog.model.like('%3%')
+        quota_name = "3.0模型"
+    elif "pro" in model.lower():
+        quota_limit = user_quota_25pro
+        model_filter = UsageLog.model.like('%pro%')
+        quota_name = "2.5 Pro模型"
+    else:
+        quota_limit = user_quota_flash
+        model_filter = UsageLog.model.notlike('%pro%')
+        quota_name = "Flash模型"
+
+    # 检查该类别模型的使用量
+    if quota_limit > 0:
+        model_usage_result = await db.execute(
+            select(func.count(UsageLog.id)).where(
+                UsageLog.user_id == user.id,
+                UsageLog.created_at >= start_of_day,
+                model_filter
+            )
+        )
+        current_usage = model_usage_result.scalar() or 0
+        if current_usage >= quota_limit:
+            raise HTTPException(
+                status_code=429, 
+                detail=f"已达到{quota_name}每日配额限制 ({current_usage}/{quota_limit})"
+            )
+    elif quota_limit == 0 and required_tier == "3" and cred_30_count == 0:
+        # 没有 3.0 凭证但尝试使用 3.0 模型
+        raise HTTPException(status_code=403, detail="无 3.0 凭证，无法使用 3.0 模型")
+    
+    # 同时检查总配额
     if has_credential:
-        # 有凭证用户：检查总配额
         total_usage_result = await db.execute(
             select(func.count(UsageLog.id))
             .where(UsageLog.user_id == user.id)
@@ -77,37 +136,6 @@ async def get_user_from_api_key(request: Request, db: AsyncSession = Depends(get
         )
         if (total_usage_result.scalar() or 0) >= user.daily_quota:
             raise HTTPException(status_code=429, detail="已达到今日总配额限制")
-    else:
-        # 无凭证用户：按模型检查配额
-        body = await request.json()
-        model = body.get("model", "gemini-2.5-flash")
-        
-        # 确定模型类型和对应配额
-        required_tier = CredentialPool.get_required_tier(model)
-        quota_limit = 0
-        if required_tier == "3":
-            quota_limit = settings.no_cred_quota_30pro
-        elif "pro" in model:
-            quota_limit = settings.no_cred_quota_25pro
-        else: # 默认 flash
-            quota_limit = settings.no_cred_quota_flash
-
-        if quota_limit > 0:
-            # 查询该用户今天对该等级模型的使用量
-            model_usage_query = select(func.count(UsageLog.id)).where(
-                UsageLog.user_id == user.id,
-                UsageLog.created_at >= start_of_day
-            )
-            if required_tier == "3":
-                model_usage_query = model_usage_query.where(UsageLog.model.like('%3%'))
-            elif "pro" in model:
-                model_usage_query = model_usage_query.where(UsageLog.model.like('%pro%'))
-            else: # flash
-                model_usage_query = model_usage_query.where(UsageLog.model.notlike('%pro%'))
-
-            model_usage_result = await db.execute(model_usage_query)
-            if (model_usage_result.scalar() or 0) >= quota_limit:
-                raise HTTPException(status_code=429, detail=f"已达到该模型等级的每日配额限制 ({quota_limit}次)")
     
     return user
 
