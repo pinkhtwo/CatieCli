@@ -372,6 +372,6 @@ class CredentialPool:
             except Exception as e:
                 print(f"[检测账号] Drive API 异常: {e}", flush=True)
             
-            # Drive API 无权限时，返回 unknown（不再使用不可靠的连续请求检测）
-            print(f"[检测账号] Drive API 无法获取存储信息，返回 unknown", flush=True)
-            return {"account_type": "unknown", "error": "无法获取存储信息，请重新授权并勾选 Drive 权限"}
+            # Drive API 无权限时，直接返回 unknown（不做猜测）
+            print(f"[检测账号] Drive API 无权限，返回 unknown", flush=True)
+            return {"account_type": "unknown"}
