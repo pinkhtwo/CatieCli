@@ -1030,23 +1030,7 @@ async def get_global_stats(
     # 无凭证用户数
     users_no_cred = total_users - users_with_any_cred
     
-    # 直接汇总所有用户的实际配额（而非用默认值估算）
-    total_quota_flash_result = await db.execute(
-        select(func.sum(User.quota_flash)).where(User.is_active == True)
-    )
-    total_quota_flash = total_quota_flash_result.scalar() or 0
-    
-    total_quota_25pro_result = await db.execute(
-        select(func.sum(User.quota_25pro)).where(User.is_active == True)
-    )
-    total_quota_25pro = total_quota_25pro_result.scalar() or 0
-    
-    total_quota_30pro_result = await db.execute(
-        select(func.sum(User.quota_30pro)).where(User.is_active == True)
-    )
-    total_quota_30pro = total_quota_30pro_result.scalar() or 0
-    
-    # 按用户类型估算配额分解（仅供参考显示）
+    # 按用户类型计算配额分解
     no_cred_flash = users_no_cred * settings.no_cred_quota_flash
     no_cred_25pro = users_no_cred * settings.no_cred_quota_25pro
     no_cred_30pro = users_no_cred * settings.no_cred_quota_30pro
@@ -1056,6 +1040,11 @@ async def get_global_stats(
     cred30_flash = users_with_tier3 * settings.quota_flash
     cred30_25pro = users_with_tier3 * settings.quota_25pro
     cred30_30pro = users_with_tier3 * settings.quota_30pro
+    
+    # 总配额 = 各用户类型配额的累加
+    total_quota_flash = no_cred_flash + cred25_flash + cred30_flash
+    total_quota_25pro = no_cred_25pro + cred25_25pro + cred30_25pro
+    total_quota_30pro = no_cred_30pro + cred25_30pro + cred30_30pro
     
     # 活跃用户数（最近24小时）
     active_users_result = await db.execute(
