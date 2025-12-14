@@ -1033,23 +1033,99 @@ async def get_global_stats(
     # 2.5凭证数（非3.0的活跃凭证）
     creds_25_count = active_count - tier3_creds
     
-    # 按用户类型计算配额分解（基于凭证数量）
-    no_cred_flash = users_no_cred * settings.no_cred_quota_flash
-    no_cred_25pro = users_no_cred * settings.no_cred_quota_25pro
-    no_cred_30pro = users_no_cred * settings.no_cred_quota_30pro
-    # 2.5凭证用户：按2.5凭证数量计算
-    cred25_flash = creds_25_count * settings.quota_flash
-    cred25_25pro = creds_25_count * settings.quota_25pro
-    cred25_30pro = users_with_25_only * settings.cred25_quota_30pro  # 3.0配额仍按用户数（因为是限制）
-    # 3.0凭证用户：按3.0凭证数量计算
-    cred30_flash = tier3_creds * settings.quota_flash
-    cred30_25pro = tier3_creds * settings.quota_25pro
-    cred30_30pro = tier3_creds * settings.quota_30pro
+    # 计算每个用户的真实配额并汇总
+    # 获取所有活跃用户及其凭证数量
+    from sqlalchemy import case, literal
+    from sqlalchemy.orm import aliased
     
-    # 总配额 = 各类型配额的累加
-    total_quota_flash = no_cred_flash + cred25_flash + cred30_flash
-    total_quota_25pro = no_cred_25pro + cred25_25pro + cred30_25pro
-    total_quota_30pro = no_cred_30pro + cred25_30pro + cred30_30pro
+    # 子查询：每个用户的凭证统计
+    user_cred_stats = (
+        select(
+            Credential.user_id,
+            func.count(Credential.id).label('total_creds'),
+            func.sum(case((Credential.model_tier == "3", 1), else_=0)).label('creds_30')
+        )
+        .where(Credential.is_active == True)
+        .where(Credential.user_id.isnot(None))
+        .group_by(Credential.user_id)
+    ).subquery()
+    
+    # 查询所有用户的真实配额
+    users_with_quota = await db.execute(
+        select(
+            User.id,
+            User.quota_flash,
+            User.quota_25pro,
+            User.quota_30pro,
+            func.coalesce(user_cred_stats.c.total_creds, 0).label('total_creds'),
+            func.coalesce(user_cred_stats.c.creds_30, 0).label('creds_30')
+        )
+        .outerjoin(user_cred_stats, User.id == user_cred_stats.c.user_id)
+        .where(User.is_active == True)
+    )
+    
+    # 计算每个用户的真实配额并分类汇总
+    total_quota_flash = 0
+    total_quota_25pro = 0
+    total_quota_30pro = 0
+    no_cred_flash = 0
+    no_cred_25pro = 0
+    no_cred_30pro = 0
+    cred25_flash = 0
+    cred25_25pro = 0
+    cred25_30pro = 0
+    cred30_flash = 0
+    cred30_25pro = 0
+    cred30_30pro = 0
+    
+    for row in users_with_quota:
+        user_total_creds = row.total_creds or 0
+        user_creds_30 = row.creds_30 or 0
+        has_cred = user_total_creds > 0
+        has_30_cred = user_creds_30 > 0
+        
+        # 计算用户的真实配额
+        if row.quota_flash and row.quota_flash > 0:
+            user_flash = row.quota_flash
+        elif has_cred:
+            user_flash = user_total_creds * settings.quota_flash
+        else:
+            user_flash = settings.no_cred_quota_flash
+        
+        if row.quota_25pro and row.quota_25pro > 0:
+            user_25pro = row.quota_25pro
+        elif has_cred:
+            user_25pro = user_total_creds * settings.quota_25pro
+        else:
+            user_25pro = settings.no_cred_quota_25pro
+        
+        if row.quota_30pro and row.quota_30pro > 0:
+            user_30pro = row.quota_30pro
+        elif has_30_cred:
+            user_30pro = user_creds_30 * settings.quota_30pro
+        elif has_cred:
+            user_30pro = settings.cred25_quota_30pro
+        else:
+            user_30pro = settings.no_cred_quota_30pro
+        
+        # 累加到总配额
+        total_quota_flash += user_flash
+        total_quota_25pro += user_25pro
+        total_quota_30pro += user_30pro
+        
+        # 按用户类型分类
+        if not has_cred:
+            no_cred_flash += user_flash
+            no_cred_25pro += user_25pro
+            no_cred_30pro += user_30pro
+        elif has_30_cred:
+            cred30_flash += user_flash
+            cred30_25pro += user_25pro
+            cred30_30pro += user_30pro
+        else:
+            cred25_flash += user_flash
+            cred25_25pro += user_25pro
+            cred25_30pro += user_30pro
     
     # 活跃用户数（最近24小时）
     active_users_result = await db.execute(
