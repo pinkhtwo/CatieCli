@@ -53,9 +53,9 @@ export default function Settings() {
       formData.append('announcement_title', config.announcement_title || '')
       formData.append('announcement_content', config.announcement_content || '')
       formData.append('announcement_read_seconds', config.announcement_read_seconds || 5)
-      formData.append('stats_quota_flash', config.stats_quota_flash || 1000)
-      formData.append('stats_quota_25pro', config.stats_quota_25pro || 250)
-      formData.append('stats_quota_30pro', config.stats_quota_30pro || 200)
+      formData.append('stats_quota_flash', config.stats_quota_flash ?? 0)
+      formData.append('stats_quota_25pro', config.stats_quota_25pro ?? 0)
+      formData.append('stats_quota_30pro', config.stats_quota_30pro ?? 0)
       
       await api.post('/api/manage/config', formData)
       setMessage({ type: 'success', text: '配置已保存！' })
