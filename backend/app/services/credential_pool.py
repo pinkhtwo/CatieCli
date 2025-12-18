@@ -92,6 +92,9 @@ class CredentialPool:
         pool_mode = settings.credential_pool_mode
         query = select(Credential).where(Credential.is_active == True)
         
+        # 排除没有 project_id 的凭证（没有 project_id 无法调用 API）
+        query = query.where(Credential.project_id != None, Credential.project_id != "")
+        
         # 排除已尝试过的凭证
         if exclude_ids:
             query = query.where(~Credential.id.in_(exclude_ids))
