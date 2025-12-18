@@ -45,6 +45,7 @@ export default function Admin() {
   const [confirmModal, setConfirmModal] = useState({ open: false, title: '', message: '', onConfirm: null, danger: false })
   const [inputModal, setInputModal] = useState({ open: false, title: '', label: '', defaultValue: '', onSubmit: null })
   const [quotaModal, setQuotaModal] = useState({ open: false, userId: null, defaultValues: {} })
+  const [credDetailModal, setCredDetailModal] = useState({ open: false, data: null, loading: false })
 
   const showAlert = (title, message, type = 'info') => setAlertModal({ open: true, title, message, type })
   const showConfirm = (title, message, onConfirm, danger = false) => setConfirmModal({ open: true, title, message, onConfirm, danger })
@@ -257,6 +258,17 @@ export default function Admin() {
       fetchData()
     } catch (err) {
       showAlert('清理失败', err.response?.data?.detail || err.message, 'error')
+    }
+  }
+
+  const viewCredentialDetail = async (credId) => {
+    setCredDetailModal({ open: true, data: null, loading: true })
+    try {
+      const res = await api.get(`/api/admin/credentials/${credId}/detail`)
+      setCredDetailModal({ open: true, data: res.data, loading: false })
+    } catch (err) {
+      setCredDetailModal({ open: false, data: null, loading: false })
+      showAlert('获取失败', err.response?.data?.detail || err.message, 'error')
     }
   }
 
@@ -709,6 +721,13 @@ export default function Admin() {
                           <td>
                             <div className="flex gap-1">
                               <button
+                                onClick={() => viewCredentialDetail(c.id)}
+                                className="p-1.5 rounded hover:bg-dark-700 text-blue-400 hover:text-blue-300"
+                                title="查看详情"
+                              >
+                                <Eye size={16} />
+                              </button>
+                              <button
                                 onClick={() => toggleCredActive(c.id, c.is_active)}
                                 className={`p-1.5 rounded hover:bg-dark-700 ${
                                   c.is_active ? 'text-red-400' : 'text-green-400'
@@ -919,6 +938,65 @@ export default function Admin() {
         title="设置用户配额"
         defaultValues={quotaModal.defaultValues}
       />
+
+      {/* 凭证详情模态框 */}
+      {credDetailModal.open && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+          <div className="bg-dark-800 rounded-xl border border-dark-600 w-full max-w-2xl max-h-[80vh] overflow-auto">
+            <div className="flex items-center justify-between p-4 border-b border-dark-600">
+              <h3 className="text-lg font-medium">凭证详情</h3>
+              <button
+                onClick={() => setCredDetailModal({ open: false, data: null, loading: false })}
+                className="p-1.5 rounded hover:bg-dark-700 text-gray-400"
+              >
+                <X size={20} />
+              </button>
+            </div>
+            <div className="p-4">
+              {credDetailModal.loading ? (
+                <div className="text-center py-8 text-gray-400">加载中...</div>
+              ) : credDetailModal.data ? (
+                <div className="space-y-3 text-sm">
+                  <div className="grid grid-cols-2 gap-3">
+                    <div><span className="text-gray-500">ID:</span> {credDetailModal.data.id}</div>
+                    <div><span className="text-gray-500">上传者:</span> {credDetailModal.data.username || '系统'}</div>
+                    <div><span className="text-gray-500">邮箱:</span> {credDetailModal.data.email || '-'}</div>
+                    <div><span className="text-gray-500">类型:</span> {credDetailModal.data.credential_type}</div>
+                    <div><span className="text-gray-500">等级:</span> {credDetailModal.data.model_tier}</div>
+                    <div><span className="text-gray-500">账号:</span> {credDetailModal.data.account_type}</div>
+                    <div><span className="text-gray-500">状态:</span> {credDetailModal.data.is_active ? '活跃' : '禁用'}</div>
+                    <div><span className="text-gray-500">公共:</span> {credDetailModal.data.is_public ? '是' : '否'}</div>
+                    <div><span className="text-gray-500">请求:</span> {credDetailModal.data.total_requests}</div>
+                    <div><span className="text-gray-500">失败:</span> {credDetailModal.data.failed_requests}</div>
+                  </div>
+                  <div>
+                    <span className="text-gray-500">Project ID:</span>
+                    <div className="mt-1 p-2 bg-dark-900 rounded font-mono text-xs break-all">{credDetailModal.data.project_id || '-'}</div>
+                  </div>
+                  <div>
+                    <span className="text-gray-500">Refresh Token:</span>
+                    <div className="mt-1 p-2 bg-dark-900 rounded font-mono text-xs break-all max-h-24 overflow-auto">{credDetailModal.data.refresh_token || '-'}</div>
+                  </div>
+                  <div>
+                    <span className="text-gray-500">Access Token:</span>
+                    <div className="mt-1 p-2 bg-dark-900 rounded font-mono text-xs break-all max-h-24 overflow-auto">{credDetailModal.data.access_token || '-'}</div>
+                  </div>
+                  {credDetailModal.data.client_id && (
+                    <div>
+                      <span className="text-gray-500">Client ID:</span>
+                      <div className="mt-1 p-2 bg-dark-900 rounded font-mono text-xs break-all">{credDetailModal.data.client_id}</div>
+                    </div>
+                  )}
+                  <div>
+                    <span className="text-gray-500">最后错误:</span>
+                    <div className="mt-1 p-2 bg-red-900/20 border border-red-500/30 rounded text-xs text-red-300 break-all max-h-32 overflow-auto">{credDetailModal.data.last_error || '无'}</div>
+                  </div>
+                </div>
+              ) : null}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

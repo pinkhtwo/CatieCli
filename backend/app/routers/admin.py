@@ -271,28 +271,98 @@ async def delete_credential(
     return {"message": "删除成功"}
 
 
+@router.get("/credentials/{credential_id}/detail")
+async def get_credential_detail(
+    credential_id: int,
+    admin: User = Depends(get_current_admin),
+    db: AsyncSession = Depends(get_db)
+):
+    """查看凭证详情（解密后返回，用于debug）"""
+    from app.services.crypto import decrypt_credential
+    
+    result = await db.execute(
+        select(Credential, User.username)
+        .outerjoin(User, Credential.user_id == User.id)
+        .where(Credential.id == credential_id)
+    )
+    row = result.first()
+    if not row:
+        raise HTTPException(status_code=404, detail="凭证不存在")
+    
+    c = row[0]
+    username = row[1]
+    
+    return {
+        "id": c.id,
+        "email": c.email,
+        "name": c.name,
+        "username": username,
+        "credential_type": c.credential_type,
+        "refresh_token": decrypt_credential(c.refresh_token) if c.refresh_token else None,
+        "access_token": decrypt_credential(c.access_token) if c.access_token else None,
+        "api_key": decrypt_credential(c.api_key) if c.api_key else None,
+        "client_id": decrypt_credential(c.client_id) if c.client_id else None,
+        "client_secret": decrypt_credential(c.client_secret) if c.client_secret else None,
+        "project_id": c.project_id,
+        "model_tier": c.model_tier,
+        "account_type": c.account_type,
+        "is_active": c.is_active,
+        "is_public": c.is_public,
+        "total_requests": c.total_requests,
+        "failed_requests": c.failed_requests,
+        "last_used_at": c.last_used_at.isoformat() + "Z" if c.last_used_at else None,
+        "last_error": c.last_error,
+        "created_at": c.created_at.isoformat() + "Z" if c.created_at else None
+    }
+
+
 @router.get("/credentials/export")
 async def export_all_credentials(
     admin: User = Depends(get_current_admin),
     db: AsyncSession = Depends(get_db)
 ):
-    """导出所有凭证（包含 refresh_token）"""
-    credentials = await CredentialPool.get_all_credentials(db)
+    """导出所有凭证（包含 refresh_token，解密后导出）"""
+    from app.services.crypto import decrypt_credential
+    
+    # 关联查询用户名
+    result = await db.execute(
+        select(Credential, User.username)
+        .outerjoin(User, Credential.user_id == User.id)
+        .order_by(Credential.created_at.desc())
+    )
+    rows = result.all()
+    
     export_data = []
-    for c in credentials:
-        export_data.append({
-            "id": c.id,
-            "email": c.email,
-            "name": c.name,
-            "refresh_token": c.refresh_token,
-            "access_token": c.access_token,
-            "project_id": c.project_id,
-            "model_tier": c.model_tier,
-            "is_active": c.is_active,
-            "is_public": c.is_public,
-            "user_id": c.user_id,
-            "created_at": c.created_at.isoformat() if c.created_at else None
-        })
+    for row in rows:
+        c = row[0]  # Credential
+        username = row[1]  # username (可能为 None)
+        try:
+            export_data.append({
+                "id": c.id,
+                "email": c.email,
+                "name": c.name,
+                "username": username,  # 上传者用户名
+                "refresh_token": decrypt_credential(c.refresh_token) if c.refresh_token else None,
+                "access_token": decrypt_credential(c.access_token) if c.access_token else None,
+                "client_id": decrypt_credential(c.client_id) if c.client_id else None,
+                "client_secret": decrypt_credential(c.client_secret) if c.client_secret else None,
+                "project_id": c.project_id,
+                "model_tier": c.model_tier,
+                "is_active": c.is_active,
+                "is_public": c.is_public,
+                "user_id": c.user_id,
+                "created_at": c.created_at.isoformat() if c.created_at else None
+            })
+        except Exception as e:
+            # 单条凭证解密失败不影响其他
+            export_data.append({
+                "id": c.id,
+                "email": c.email,
+                "name": c.name,
+                "username": username,
+                "error": f"解密失败: {str(e)[:50]}",
+                "is_active": c.is_active
+            })
     return export_data
 
 
