@@ -299,8 +299,7 @@ async def get_credential_detail(
         "username": username,
         "credential_type": c.credential_type,
         "refresh_token": decrypt_credential(c.refresh_token) if c.refresh_token else None,
-        "access_token": decrypt_credential(c.access_token) if c.access_token else None,
-        "api_key": decrypt_credential(c.api_key) if c.api_key else None,
+        "access_token": decrypt_credential(c.api_key) if c.api_key else None,
         "client_id": decrypt_credential(c.client_id) if c.client_id else None,
         "client_secret": decrypt_credential(c.client_secret) if c.client_secret else None,
         "project_id": c.project_id,
@@ -343,7 +342,7 @@ async def export_all_credentials(
                 "name": c.name,
                 "username": username,  # 上传者用户名
                 "refresh_token": decrypt_credential(c.refresh_token) if c.refresh_token else None,
-                "access_token": decrypt_credential(c.access_token) if c.access_token else None,
+                "access_token": decrypt_credential(c.api_key) if c.api_key else None,
                 "client_id": decrypt_credential(c.client_id) if c.client_id else None,
                 "client_secret": decrypt_credential(c.client_secret) if c.client_secret else None,
                 "project_id": c.project_id,
