@@ -166,6 +166,11 @@ export default function Admin() {
     showConfirm('删除凭证', '确定删除此凭证？此操作不可恢复！', async () => {
       try {
         await api.delete(`/api/admin/credentials/${credId}`)
+        // 如果当前页只剩一个凭证且不是第一页，则回退一页
+        const currentPageCreds = credentials.slice((credPage - 1) * credPerPage, credPage * credPerPage)
+        if (currentPageCreds.length <= 1 && credPage > 1) {
+          setCredPage(credPage - 1)
+        }
         fetchData()
         showAlert('成功', '凭证已删除', 'success')
       } catch (err) {
@@ -257,6 +262,7 @@ export default function Admin() {
     try {
       const res = await api.delete('/api/manage/credentials/inactive')
       showAlert('清理完成', res.data.message, 'success')
+      setCredPage(1)  // 重置分页到第一页
       fetchData()
     } catch (err) {
       showAlert('清理失败', err.response?.data?.detail || err.message, 'error')
