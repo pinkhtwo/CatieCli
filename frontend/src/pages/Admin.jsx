@@ -978,33 +978,65 @@ export default function Admin() {
                     </div>
                   ) : (
                     <>
-                      <div className="flex flex-wrap gap-3 mb-6">
+                      <div className="space-y-3">
                         {Object.entries(errorStats.by_code).map(([code, count]) => (
-                          <div key={code} className={`px-4 py-3 rounded-lg ${
-                            code === '429' ? 'bg-orange-500/20 border border-orange-500/50' :
-                            code === '401' || code === '403' ? 'bg-red-500/20 border border-red-500/50' :
-                            code === '500' ? 'bg-purple-500/20 border border-purple-500/50' :
-                            'bg-gray-500/20 border border-gray-500/50'
-                          }`}>
-                            <div className={`text-2xl font-bold ${
-                              code === '429' ? 'text-orange-400' :
-                              code === '401' || code === '403' ? 'text-red-400' :
-                              code === '500' ? 'text-purple-400' :
-                              'text-gray-400'
-                            }`}>{count}</div>
-                            <div className="text-sm text-gray-400">
-                              {code === '429' ? '限速 (429)' :
-                               code === '401' ? '未认证 (401)' :
-                               code === '403' ? '禁止访问 (403)' :
-                               code === '500' ? '服务器错误 (500)' :
-                               `错误 (${code})`}
-                            </div>
+                          <div key={code}>
+                            <button
+                              onClick={() => setExpandedErrors(prev => ({ ...prev, [code]: !prev[code] }))}
+                              className={`w-full px-4 py-3 rounded-lg flex items-center justify-between cursor-pointer transition-colors ${
+                                code === '429' ? 'bg-orange-500/20 border border-orange-500/50 hover:bg-orange-500/30' :
+                                code === '401' || code === '403' ? 'bg-red-500/20 border border-red-500/50 hover:bg-red-500/30' :
+                                code === '500' ? 'bg-purple-500/20 border border-purple-500/50 hover:bg-purple-500/30' :
+                                'bg-gray-500/20 border border-gray-500/50 hover:bg-gray-500/30'
+                              }`}
+                            >
+                              <div className="flex items-center gap-3">
+                                <div className={`text-2xl font-bold ${
+                                  code === '429' ? 'text-orange-400' :
+                                  code === '401' || code === '403' ? 'text-red-400' :
+                                  code === '500' ? 'text-purple-400' :
+                                  'text-gray-400'
+                                }`}>{count}</div>
+                                <div className="text-sm text-gray-400">
+                                  {code === '429' ? '限速 (429)' :
+                                   code === '401' ? '未认证 (401)' :
+                                   code === '403' ? '禁止访问 (403)' :
+                                   code === '500' ? '服务器错误 (500)' :
+                                   `错误 (${code})`}
+                                </div>
+                              </div>
+                              {expandedErrors[code] ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+                            </button>
+                            
+                            {expandedErrors[code] && (
+                              <div className="mt-2 ml-4 border-l-2 border-dark-600 pl-4 space-y-2">
+                                {errorStats.recent
+                                  .filter(err => String(err.status_code) === code)
+                                  .slice(0, 10)
+                                  .map(err => (
+                                    <div key={err.id} className="text-sm flex items-center justify-between py-1">
+                                      <span className="text-gray-400">
+                                        <span className="text-white">{err.username}</span>
+                                        <span className="mx-2">·</span>
+                                        <span className="font-mono">{err.model}</span>
+                                        {err.cd_seconds && <span className="ml-2 text-orange-400">CD:{err.cd_seconds}s</span>}
+                                      </span>
+                                      <span className="text-gray-500 text-xs">
+                                        {new Date(err.created_at).toLocaleTimeString()}
+                                      </span>
+                                    </div>
+                                  ))}
+                                {errorStats.recent.filter(err => String(err.status_code) === code).length === 0 && (
+                                  <div className="text-gray-500 text-sm py-2">暂无详细记录</div>
+                                )}
+                              </div>
+                            )}
                           </div>
                         ))}
                       </div>
                       
-                      <div className="text-sm text-gray-500 mb-2">
-                        总计：{Object.values(errorStats.by_code).reduce((a, b) => a + b, 0)} 次报错
+                      <div className="text-sm text-gray-500 mt-4">
+                        总计：{Object.values(errorStats.by_code).reduce((a, b) => a + b, 0)} 次报错（点击展开详情）
                       </div>
                     </>
                   )}
