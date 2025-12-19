@@ -367,6 +367,27 @@ export default function Credentials() {
                         )}
                       </div>
                       
+                      {/* CD 状态行 */}
+                      {(cred.cd_flash > 0 || cred.cd_pro > 0 || cred.cd_30 > 0) && (
+                        <div className="flex items-center gap-2 mb-1 flex-wrap">
+                          {cred.cd_flash > 0 && (
+                            <span className="text-xs px-2 py-0.5 bg-cyan-500/20 text-cyan-400 rounded">
+                              Flash CD: {cred.cd_flash}s
+                            </span>
+                          )}
+                          {cred.cd_pro > 0 && (
+                            <span className="text-xs px-2 py-0.5 bg-orange-500/20 text-orange-400 rounded">
+                              Pro CD: {cred.cd_pro}s
+                            </span>
+                          )}
+                          {cred.cd_30 > 0 && (
+                            <span className="text-xs px-2 py-0.5 bg-pink-500/20 text-pink-400 rounded">
+                              3.0 CD: {cred.cd_30}s
+                            </span>
+                          )}
+                        </div>
+                      )}
+                      
                       {/* 信息行 */}
                       <div className="text-xs text-gray-500">
                         最后成功: {cred.last_used_at ? new Date(cred.last_used_at).toLocaleString() : '从未使用'}

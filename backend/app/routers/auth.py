@@ -555,10 +555,23 @@ async def upload_credentials(
 @router.get("/credentials")
 async def list_my_credentials(user: User = Depends(get_current_user), db: AsyncSession = Depends(get_db)):
     """获取我的凭证列表"""
+    from datetime import datetime, timedelta
+    from app.config import settings
+    
     result = await db.execute(
         select(Credential).where(Credential.user_id == user.id).order_by(Credential.created_at.desc())
     )
     creds = result.scalars().all()
+    
+    now = datetime.utcnow()
+    
+    def get_cd_remaining(last_used, cd_seconds):
+        """计算 CD 剩余秒数"""
+        if not last_used or cd_seconds <= 0:
+            return 0
+        cd_end = last_used + timedelta(seconds=cd_seconds)
+        remaining = (cd_end - now).total_seconds()
+        return max(0, int(remaining))
     
     return [
         {
@@ -571,7 +584,10 @@ async def list_my_credentials(user: User = Depends(get_current_user), db: AsyncS
             "account_type": c.account_type or "free",
             "total_requests": c.total_requests or 0,
             "last_used_at": (c.last_used_at.isoformat() + "Z") if c.last_used_at else None,
-            "created_at": (c.created_at.isoformat() + "Z") if c.created_at else None
+            "created_at": (c.created_at.isoformat() + "Z") if c.created_at else None,
+            "cd_flash": get_cd_remaining(c.last_used_flash, settings.cd_flash),
+            "cd_pro": get_cd_remaining(c.last_used_pro, settings.cd_pro),
+            "cd_30": get_cd_remaining(c.last_used_30, settings.cd_30),
         }
         for c in creds
     ]
