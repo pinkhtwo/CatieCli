@@ -71,6 +71,10 @@ async def init_db():
                 "ALTER TABLE credentials ADD COLUMN last_used_pro DATETIME",
                 "ALTER TABLE credentials ADD COLUMN last_used_30 DATETIME",
                 "ALTER TABLE usage_logs ADD COLUMN cd_seconds INTEGER",
+                "ALTER TABLE usage_logs ADD COLUMN error_message TEXT",
+                "ALTER TABLE usage_logs ADD COLUMN request_body TEXT",
+                "ALTER TABLE usage_logs ADD COLUMN client_ip VARCHAR(50)",
+                "ALTER TABLE usage_logs ADD COLUMN user_agent VARCHAR(500)",
             ]
         else:
             # PostgreSQL 迁移（使用 IF NOT EXISTS 语法）
@@ -87,6 +91,10 @@ async def init_db():
                 "ALTER TABLE credentials ADD COLUMN IF NOT EXISTS last_used_pro TIMESTAMP",
                 "ALTER TABLE credentials ADD COLUMN IF NOT EXISTS last_used_30 TIMESTAMP",
                 "ALTER TABLE usage_logs ADD COLUMN IF NOT EXISTS cd_seconds INTEGER",
+                "ALTER TABLE usage_logs ADD COLUMN IF NOT EXISTS error_message TEXT",
+                "ALTER TABLE usage_logs ADD COLUMN IF NOT EXISTS request_body TEXT",
+                "ALTER TABLE usage_logs ADD COLUMN IF NOT EXISTS client_ip VARCHAR(50)",
+                "ALTER TABLE usage_logs ADD COLUMN IF NOT EXISTS user_agent VARCHAR(500)",
             ]
         
         for sql in migrations:
