@@ -1168,6 +1168,9 @@ async def get_discord_user_stats(discord_id: str, db: AsyncSession = Depends(get
 
 # ===== Discord OAuth 登录/注册 =====
 
+# 用于防止 code 重复使用的缓存 (code -> timestamp)
+_used_discord_codes: dict = {}
+
 @router.get("/discord/login")
 async def discord_login_url():
     """获取 Discord OAuth 登录 URL"""
@@ -1175,23 +1178,59 @@ async def discord_login_url():
         raise HTTPException(status_code=503, detail="Discord OAuth 未配置")
     
     import urllib.parse
+    import secrets
+    
+    # 生成 state 参数防止 CSRF
+    state = secrets.token_urlsafe(16)
+    
     params = {
         "client_id": settings.discord_client_id,
         "redirect_uri": settings.discord_redirect_uri,
         "response_type": "code",
-        "scope": "identify"
+        "scope": "identify",
+        "state": state
     }
     url = f"https://discord.com/oauth2/authorize?{urllib.parse.urlencode(params)}"
-    return {"url": url}
+    return {"url": url, "state": state}
 
 
 @router.get("/discord/callback")
-async def discord_callback(code: str, db: AsyncSession = Depends(get_db)):
+async def discord_callback(code: str, state: str = None, db: AsyncSession = Depends(get_db)):
     """Discord OAuth 回调处理"""
     import httpx
+    import time
+    from fastapi.responses import HTMLResponse
     
     if not settings.discord_client_id or not settings.discord_client_secret:
         raise HTTPException(status_code=503, detail="Discord OAuth 未配置")
+    
+    # 检查 code 是否已被使用（防止浏览器预加载/刷新导致重复请求）
+    current_time = time.time()
+    
+    # 清理过期的 code 记录（超过5分钟的）
+    expired_codes = [c for c, t in _used_discord_codes.items() if current_time - t > 300]
+    for c in expired_codes:
+        _used_discord_codes.pop(c, None)
+    
+    # 检查是否已使用
+    if code in _used_discord_codes:
+        print(f"[Discord OAuth] Code 已被使用，可能是浏览器重复请求", flush=True)
+        # 返回友好的页面，提示用户关闭窗口
+        html = """
+        <!DOCTYPE html>
+        <html>
+        <head><title>请重试</title></head>
+        <body style="font-family: sans-serif; text-align: center; padding: 50px;">
+        <h2>授权码已使用</h2>
+        <p>请关闭此窗口，重新点击 Discord 登录按钮</p>
+        <script>setTimeout(() => window.close(), 3000);</script>
+        </body>
+        </html>
+        """
+        return HTMLResponse(content=html)
+    
+    # 标记 code 为已使用
+    _used_discord_codes[code] = current_time
     
     # 1. 用 code 换取 access_token
     token_url = "https://discord.com/api/oauth2/token"
@@ -1208,6 +1247,23 @@ async def discord_callback(code: str, db: AsyncSession = Depends(get_db)):
         if token_resp.status_code != 200:
             error_detail = token_resp.text[:200] if token_resp.text else "未知错误"
             print(f"[Discord OAuth] Token请求失败: {token_resp.status_code} - {error_detail}", flush=True)
+            
+            # 如果是 invalid_grant，从缓存中移除，允许用户重试
+            if "invalid_grant" in error_detail:
+                _used_discord_codes.pop(code, None)
+                html = """
+                <!DOCTYPE html>
+                <html>
+                <head><title>授权失败</title></head>
+                <body style="font-family: sans-serif; text-align: center; padding: 50px;">
+                <h2>授权失败</h2>
+                <p>授权码已过期或无效，请关闭此窗口重新登录</p>
+                <script>setTimeout(() => window.close(), 3000);</script>
+                </body>
+                </html>
+                """
+                return HTMLResponse(content=html)
+            
             raise HTTPException(status_code=400, detail=f"Discord 授权失败: {error_detail}")
         token_data = token_resp.json()
         access_token = token_data.get("access_token")
