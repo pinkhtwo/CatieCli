@@ -497,9 +497,9 @@ async def chat_completions(
                                     **{k: v for k, v in body.items() if k not in ["model", "messages", "stream"]}
                                 ):
                                     yield chunk
-                                yield "data: [DONE]\n\n"
-                            # 使用独立会话记录日志
+                            # 在发送 [DONE] 之前先记录日志，避免客户端关闭连接后日志丢失
                             await log_usage_in_stream(cred_id=credential.id, cred_email=credential.email)
+                            yield "data: [DONE]\n\n"
                             return  # 成功，退出
                         except Exception as e:
                             error_str = str(e)
@@ -823,33 +823,59 @@ async def gemini_stream_generate_content(
     project_id = credential.project_id or ""
     print(f"[Gemini Stream] 使用凭证: {credential.email}, project_id: {project_id}, model: {model}", flush=True)
     
-    # 记录日志
+    # 记录日志 - 使用独立会话，避免流式响应后 db 会话被关闭的问题
     async def log_usage(status_code: int = 200, cd_seconds: int = None, error_msg: str = None):
-        latency = (time.time() - start_time) * 1000
-        
-        # 错误分类
-        error_type = None
-        error_code = None
-        if status_code != 200 and error_msg:
-            error_type, error_code = classify_error_simple(status_code, error_msg)
-        
-        log = UsageLog(
-            user_id=user.id,
-            credential_id=credential.id,
-            model=model,
-            endpoint="/v1beta/streamGenerateContent",
-            status_code=status_code,
-            latency_ms=latency,
-            cd_seconds=cd_seconds,
-            error_message=error_msg[:2000] if error_msg else None,
-            error_type=error_type,
-            error_code=error_code,
-            credential_email=credential.email if credential else None
-        )
-        db.add(log)
-        credential.total_requests = (credential.total_requests or 0) + 1
-        credential.last_used_at = datetime.utcnow()
-        await db.commit()
+        try:
+            latency = (time.time() - start_time) * 1000
+            
+            # 错误分类
+            error_type = None
+            error_code = None
+            if status_code != 200 and error_msg:
+                error_type, error_code = classify_error_simple(status_code, error_msg)
+            
+            # 使用独立的数据库会话
+            async with async_session() as stream_db:
+                log = UsageLog(
+                    user_id=user.id,
+                    credential_id=credential.id,
+                    model=model,
+                    endpoint="/v1beta/streamGenerateContent",
+                    status_code=status_code,
+                    latency_ms=latency,
+                    cd_seconds=cd_seconds,
+                    error_message=error_msg[:2000] if error_msg else None,
+                    error_type=error_type,
+                    error_code=error_code,
+                    credential_email=credential.email if credential else None
+                )
+                stream_db.add(log)
+                
+                # 更新凭证使用次数
+                from app.models.user import Credential
+                cred_result = await stream_db.execute(
+                    select(Credential).where(Credential.id == credential.id)
+                )
+                cred = cred_result.scalar_one_or_none()
+                if cred:
+                    cred.total_requests = (cred.total_requests or 0) + 1
+                    cred.last_used_at = datetime.utcnow()
+                
+                await stream_db.commit()
+            
+            # WebSocket 实时通知
+            await notify_log_update({
+                "username": user.username,
+                "model": model,
+                "status_code": status_code,
+                "error_type": error_type,
+                "latency_ms": round(latency, 0),
+                "created_at": datetime.utcnow().isoformat()
+            })
+            await notify_stats_update()
+            print(f"[Gemini Stream] ✅ 流式日志已记录: user={user.username}, model={model}, status={status_code}", flush=True)
+        except Exception as log_err:
+            print(f"[Gemini Stream] ❌ 流式日志记录失败: {log_err}", flush=True)
     
     # 流式转发
     import httpx
@@ -886,19 +912,17 @@ async def gemini_stream_generate_content(
                         error = await response.aread()
                         error_text = error.decode()[:500]
                         print(f"[Gemini Stream] ❌ 错误 {response.status_code}: {error_text}", flush=True)
-                        # 401/403 错误自动禁用凭证
-                        if response.status_code in [401, 403]:
-                            await CredentialPool.handle_credential_failure(db, credential.id, f"API Error {response.status_code}: {error_text}")
-                            await log_usage(response.status_code, error_msg=error_text)
-                        # 429 错误解析 Google 返回的 CD 时间
-                        elif response.status_code == 429:
-                            cd_sec = await CredentialPool.handle_429_rate_limit(
-                                db, credential.id, model, error_text, dict(response.headers)
-                            )
-                            await log_usage(response.status_code, cd_seconds=cd_sec, error_msg=error_text)
-                        # 其他错误（500等）也要记录
-                        else:
-                            await log_usage(response.status_code, error_msg=error_text)
+                        # 使用独立会话处理凭证失败
+                        async with async_session() as err_db:
+                            # 401/403 错误自动禁用凭证
+                            if response.status_code in [401, 403]:
+                                await CredentialPool.handle_credential_failure(err_db, credential.id, f"API Error {response.status_code}: {error_text}")
+                            # 429 错误解析 Google 返回的 CD 时间
+                            elif response.status_code == 429:
+                                await CredentialPool.handle_429_rate_limit(
+                                    err_db, credential.id, model, error_text, dict(response.headers)
+                                )
+                        await log_usage(response.status_code, error_msg=error_text)
                         yield f"data: {json.dumps({'error': error.decode()})}\n\n"
                         return
                     
@@ -924,7 +948,9 @@ async def gemini_stream_generate_content(
             await log_usage()
         except Exception as e:
             error_str = str(e)
-            await CredentialPool.handle_credential_failure(db, credential.id, error_str)
+            # 使用独立会话处理凭证失败
+            async with async_session() as err_db:
+                await CredentialPool.handle_credential_failure(err_db, credential.id, error_str)
             status_code = extract_status_code(error_str)
             await log_usage(status_code, error_msg=error_str)
             yield f"data: {json.dumps({'error': error_str})}\n\n"
