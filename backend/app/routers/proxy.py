@@ -313,6 +313,20 @@ async def chat_completions(
                 detail=f"速率限制: {max_rpm} 次/分钟。{'上传凭证可提升至 ' + str(settings.contributor_rpm) + ' 次/分钟' if not user_has_public else ''}"
             )
     
+    # 立即插入占位记录以计入 RPM（防止 BackgroundTasks 导致 RPM 失效）
+    placeholder_log = UsageLog(
+        user_id=user.id,
+        model=model,
+        endpoint="/v1/chat/completions",
+        status_code=0,  # 0 表示处理中
+        latency_ms=0,
+        client_ip=client_ip,
+        user_agent=user_agent
+    )
+    db.add(placeholder_log)
+    await db.commit()
+    await db.refresh(placeholder_log)  # 获取插入后的 ID
+    
     # 重试逻辑：报错时切换凭证重试
     max_retries = settings.error_retry_count
     last_error = None
@@ -363,7 +377,7 @@ async def chat_completions(
         
         client = GeminiClient(access_token, project_id)
         
-        # 记录使用日志
+        # 记录使用日志（更新占位记录）
         async def log_usage(status_code: int = 200, cred=credential, error_msg: str = None):
             latency = (time.time() - start_time) * 1000
             
@@ -373,22 +387,15 @@ async def chat_completions(
             if status_code != 200 and error_msg:
                 error_type, error_code = classify_error_simple(status_code, error_msg)
             
-            log = UsageLog(
-                user_id=user.id,
-                credential_id=cred.id,
-                model=model,
-                endpoint="/v1/chat/completions",
-                status_code=status_code,
-                latency_ms=latency,
-                error_message=error_msg[:2000] if error_msg else None,
-                error_type=error_type,
-                error_code=error_code,
-                credential_email=cred.email if cred else None,
-                request_body=request_body_str if status_code != 200 else None,
-                client_ip=client_ip,
-                user_agent=user_agent
-            )
-            db.add(log)
+            # 更新占位记录
+            placeholder_log.credential_id = cred.id
+            placeholder_log.status_code = status_code
+            placeholder_log.latency_ms = latency
+            placeholder_log.error_message = error_msg[:2000] if error_msg else None
+            placeholder_log.error_type = error_type
+            placeholder_log.error_code = error_code
+            placeholder_log.credential_email = cred.email if cred else None
+            placeholder_log.request_body = request_body_str if status_code != 200 else None
             await db.commit()
             
             # 更新凭证使用次数
@@ -411,7 +418,7 @@ async def chat_completions(
         use_fake_streaming = client.is_fake_streaming(model)
         
         async def save_log_background(log_data: dict):
-            """后台任务：记录日志（避免在流式响应中占用数据库连接）"""
+            """后台任务：更新占位日志记录"""
             try:
                 async with async_session() as bg_db:
                     latency = log_data.get("latency_ms", 0)
@@ -424,22 +431,20 @@ async def chat_completions(
                     if status_code != 200 and error_msg:
                         error_type, error_code = classify_error_simple(status_code, error_msg)
                     
-                    log = UsageLog(
-                        user_id=user.id,
-                        credential_id=log_data.get("cred_id"),
-                        model=model,
-                        endpoint="/v1/chat/completions",
-                        status_code=status_code,
-                        latency_ms=latency,
-                        error_message=error_msg[:2000] if error_msg else None,
-                        error_type=error_type,
-                        error_code=error_code,
-                        credential_email=log_data.get("cred_email"),
-                        request_body=request_body_str if status_code != 200 else None,
-                        client_ip=client_ip,
-                        user_agent=user_agent
+                    # 更新占位记录
+                    log_result = await bg_db.execute(
+                        select(UsageLog).where(UsageLog.id == placeholder_log.id)
                     )
-                    bg_db.add(log)
+                    log = log_result.scalar_one_or_none()
+                    if log:
+                        log.credential_id = log_data.get("cred_id")
+                        log.status_code = status_code
+                        log.latency_ms = latency
+                        log.error_message = error_msg[:2000] if error_msg else None
+                        log.error_type = error_type
+                        log.error_code = error_code
+                        log.credential_email = log_data.get("cred_email")
+                        log.request_body = request_body_str if status_code != 200 else None
                     
                     # 更新凭证使用次数
                     cred_id = log_data.get("cred_id")
