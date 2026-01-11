@@ -419,6 +419,9 @@ class GeminiClient:
             return {"thinkingConfig": {"thinkingBudget": 32768, "includeThoughts": True}}
         # 显式指定 nothinking
         elif "-nothinking" in model:
+            # pro 模型最低 thinkingBudget 为 128
+            if "pro" in model:
+                return {"thinkingConfig": {"thinkingBudget": 128}}
             return {"thinkingConfig": {"thinkingBudget": 0}}
         # gemini-3-pro-preview 默认需要 thinkingBudget
         elif "gemini-3" in model:
