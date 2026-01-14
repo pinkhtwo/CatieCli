@@ -1,0 +1,2579 @@
+INFO:     Started server process [7]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:5001 (Press CTRL+C to quit)
+✅ 已自动创建 .env 配置文件
+[Config] 从数据库加载: allow_registration = True
+[Config] 从数据库加载: discord_only_registration = True
+[Config] 从数据库加载: discord_oauth_only = True
+[Config] 从数据库加载: default_daily_quota = -2
+[Config] 从数据库加载: no_credential_quota = 0
+[Config] 从数据库加载: no_cred_quota_flash = 100
+[Config] 从数据库加载: no_cred_quota_25pro = 50
+[Config] 从数据库加载: no_cred_quota_30pro = 0
+[Config] 从数据库加载: cred25_quota_30pro = 9999
+[Config] 从数据库加载: credential_reward_quota = 1000
+[Config] 从数据库加载: quota_flash = 1000
+[Config] 从数据库加载: quota_25pro = 250
+[Config] 从数据库加载: quota_30pro = 200
+[Config] 从数据库加载: base_rpm = 10
+[Config] 从数据库加载: contributor_rpm = 10
+[Config] 从数据库加载: credential_pool_mode = full_shared
+[Config] 从数据库加载: error_retry_count = 3
+[Config] 从数据库加载: force_donate = False
+[Config] 从数据库加载: lock_donate = False
+[Config] 从数据库加载: announcement_enabled = False
+[Config] 从数据库加载: announcement_read_seconds = 5
+✅ 已加载持久化配置
+✅ 已同步管理员账号: iulove
+INFO:     172.26.0.1:4814 - "GET /v1/models HTTP/1.1" 200 OK
+INFO:     172.26.0.1:16434 - "GET /v1/models HTTP/1.1" 200 OK
+INFO:     172.26.0.1:58316 - "GET /v1/models HTTP/1.1" 200 OK
+INFO:     172.26.0.1:41888 - "GET /v1/models HTTP/1.1" 200 OK
+INFO:     172.26.0.1:38512 - "GET /v1/models HTTP/1.1" 200 OK
+INFO:     172.26.0.1:40980 - "GET / HTTP/1.1" 200 OK
+INFO:     172.26.0.1:26370 - "GET /v1/models HTTP/1.1" 200 OK
+INFO:     172.26.0.1:13480 - "GET /v1/models HTTP/1.1" 200 OK
+INFO:     172.26.0.1:36730 - "GET / HTTP/1.1" 200 OK
+INFO:     172.26.0.1:32050 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     172.26.0.1:24102 - "GET / HTTP/1.1" 200 OK
+INFO:     172.26.0.1:52372 - "GET /robots.txt HTTP/1.1" 200 OK
+INFO:     172.26.0.1:20490 - "GET / HTTP/1.1" 200 OK
+INFO:     172.26.0.1:39332 - "GET / HTTP/1.1" 200 OK
+INFO:     95.214.55.246:52492 - "POST / HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:52498 - "POST /_next HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:52504 - "POST /api HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:52512 - "POST /_next/server HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:52526 - "POST /app HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:52538 - "POST /api/route HTTP/1.1" 405 Method Not Allowed
+INFO:     205.210.31.141:58126 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     185.247.137.139:54681 - "GET / HTTP/1.1" 200 OK
+INFO:     185.247.137.156:54341 - "GET /cat.svg HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     91.230.168.93:47255 - "GET / HTTP/1.1" 200 OK
+INFO:     91.230.168.148:56911 - "GET /cat.svg HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     91.231.89.233:42165 - "GET / HTTP/1.1" 200 OK
+INFO:     91.196.152.4:34327 - "GET /cat.svg HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     66.132.153.119:8578 - "GET /.well-known/security.txt HTTP/1.1" 200 OK
+INFO:     66.132.153.119:8604 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     66.132.153.119:8610 - "GET /favicon.ico HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     162.142.125.207:56576 - "GET /sitemap.xml HTTP/1.1" 200 OK
+INFO:     162.142.125.207:39348 - "GET /cat.svg HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     167.94.138.168:52270 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     167.94.138.168:34688 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     167.94.138.168:13862 - "GET /favicon.ico HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     162.142.125.204:16560 - "GET /wiki HTTP/1.1" 200 OK
+INFO:     162.142.125.204:16572 - "GET /cat.svg HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     167.94.138.168:43116 - "GET /sitemap.xml HTTP/1.1" 200 OK
+INFO:     167.94.138.168:43140 - "GET /favicon.ico HTTP/1.1" 200 OK
+INFO:     172.26.0.1:8220 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     172.26.0.1:31490 - "GET / HTTP/1.1" 200 OK
+INFO:     172.26.0.1:31500 - "GET /assets/index-DW2WhjNt.js HTTP/1.1" 200 OK
+INFO:     172.26.0.1:31502 - "GET /assets/index-Do2UsQMk.css HTTP/1.1" 200 OK
+INFO:     172.26.0.1:31508 - "GET /api/manage/announcement HTTP/1.1" 200 OK
+INFO:     172.26.0.1:31518 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     172.26.0.1:31520 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     172.26.0.1:31562 - "GET /api/manage/public-config HTTP/1.1" 200 OK
+INFO:     172.26.0.1:31538 - "GET /api/auth/api-keys HTTP/1.1" 200 OK
+INFO:     172.26.0.1:31576 - "GET /api/public/stats HTTP/1.1" 200 OK
+INFO:     172.26.0.1:31536 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     172.26.0.1:31586 - "WebSocket /ws?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJpdWxvdmUiLCJleHAiOjE3NjY5OTAyODR9.Vnom3lFUfgWdNyKww04xi9DWvP9FP0B38qFQD2LPtiA" [accepted]
+INFO:     connection open
+INFO:     172.26.0.1:31590 - "GET /api/auth/credentials HTTP/1.1" 200 OK
+[凭证检测] 开始检测凭证 12
+[凭证检测] 凭证 key7.json 开始获取 token
+[Token刷新] 使用凭证自己的 client_id: 681255809395-oo8ft2o...
+[Token刷新] 开始刷新 token, refresh_token 前20字符: 1//0e7os7T1f4RPzCgYI...
+[Token刷新] 响应状态: 200
+[Token刷新] 刷新成功!
+[凭证检测] 获取到 token，开始测试
+[检测账号] 尝试使用 Drive API 检测存储空间...
+[检测账号] Drive API 响应: 403
+[检测账号] Drive API 无权限，回退到连续请求检测
+[检测账号] Drive API 无权限，使用连续请求检测...
+[检测账号] 等待 2 秒后开始连续请求检测...
+[检测账号] 第 1 次请求: 200
+[检测账号] 第 2 次请求: 200
+[检测账号] 第 3 次请求: 200
+[检测账号] 第 4 次请求: 200
+[检测账号] 第 5 次请求: 429
+[检测账号] 429 详情: {
+  "error": {
+    "code": 429,
+    "message": "You have exhausted your capacity on this model. Your quota will reset after 52s.",
+    "status": "RESOURCE_EXHAUSTED",
+    "details": [
+      {
+        
+[检测账号] RPM 限速，等待后继续...
+[检测账号] 4/5 次请求成功，判定为 Pro
+[凭证检测] 账号类型检测结果: {'account_type': 'pro'}
+[凭证检测] gemini-2.5-flash 响应: 200
+[凭证检测] gemini-3-pro-preview 响应: 200
+[凭证检测] 完成: valid=True, tier=3, type=pro, storage=NoneGB
+INFO:     172.26.0.1:26542 - "POST /api/auth/credentials/12/verify HTTP/1.1" 200 OK
+INFO:     172.26.0.1:57934 - "GET /api/auth/credentials HTTP/1.1" 200 OK
+INFO:     172.26.0.1:29866 - "GET /api/auth/credentials HTTP/1.1" 200 OK
+INFO:     connection closed
+INFO:     172.26.0.1:7786 - "GET /api/manage/config HTTP/1.1" 200 OK
+INFO:     172.26.0.1:7788 - "GET /?z=8155344563369773506 HTTP/1.1" 200 OK
+INFO:     172.26.0.1:48682 - "WebSocket /ws?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJpdWxvdmUiLCJleHAiOjE3NjY5OTAyODR9.Vnom3lFUfgWdNyKww04xi9DWvP9FP0B38qFQD2LPtiA" [accepted]
+INFO:     connection open
+INFO:     172.26.0.1:3552 - "POST /api/manage/config HTTP/1.1" 200 OK
+INFO:     172.26.0.1:3564 - "GET /api/manage/public-config HTTP/1.1" 200 OK
+INFO:     172.26.0.1:3600 - "GET /api/auth/api-keys HTTP/1.1" 200 OK
+INFO:     172.26.0.1:3586 - "GET /api/public/stats HTTP/1.1" 200 OK
+INFO:     172.26.0.1:3570 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     172.26.0.1:3616 - "WebSocket /ws?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJpdWxvdmUiLCJleHAiOjE3NjY5OTAyODR9.Vnom3lFUfgWdNyKww04xi9DWvP9FP0B38qFQD2LPtiA" [accepted]
+INFO:     connection open
+INFO:     172.26.0.1:3628 - "GET /api/auth/credentials HTTP/1.1" 200 OK
+INFO:     connection closed
+INFO:     connection closed
+INFO:     172.26.0.1:23632 - "WebSocket /ws?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJpdWxvdmUiLCJleHAiOjE3NjY5OTAyODR9.Vnom3lFUfgWdNyKww04xi9DWvP9FP0B38qFQD2LPtiA" [accepted]
+INFO:     connection open
+INFO:     172.26.0.1:23646 - "WebSocket /ws?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJpdWxvdmUiLCJleHAiOjE3NjY5OTAyODR9.Vnom3lFUfgWdNyKww04xi9DWvP9FP0B38qFQD2LPtiA" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     connection closed
+INFO:     172.26.0.1:7134 - "WebSocket /ws?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJpdWxvdmUiLCJleHAiOjE3NjY5OTAyODR9.Vnom3lFUfgWdNyKww04xi9DWvP9FP0B38qFQD2LPtiA" [accepted]
+INFO:     connection open
+INFO:     172.26.0.1:7144 - "WebSocket /ws?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJpdWxvdmUiLCJleHAiOjE3NjY5OTAyODR9.Vnom3lFUfgWdNyKww04xi9DWvP9FP0B38qFQD2LPtiA" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     connection closed
+INFO:     172.26.0.1:26588 - "WebSocket /ws?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJpdWxvdmUiLCJleHAiOjE3NjY5OTAyODR9.Vnom3lFUfgWdNyKww04xi9DWvP9FP0B38qFQD2LPtiA" [accepted]
+INFO:     connection open
+INFO:     172.26.0.1:26600 - "WebSocket /ws?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJpdWxvdmUiLCJleHAiOjE3NjY5OTAyODR9.Vnom3lFUfgWdNyKww04xi9DWvP9FP0B38qFQD2LPtiA" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     connection closed
+INFO:     172.26.0.1:42628 - "WebSocket /ws?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJpdWxvdmUiLCJleHAiOjE3NjY5OTAyODR9.Vnom3lFUfgWdNyKww04xi9DWvP9FP0B38qFQD2LPtiA" [accepted]
+INFO:     connection open
+INFO:     172.26.0.1:42634 - "WebSocket /ws?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJpdWxvdmUiLCJleHAiOjE3NjY5OTAyODR9.Vnom3lFUfgWdNyKww04xi9DWvP9FP0B38qFQD2LPtiA" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     connection closed
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     172.26.0.1:39118 - "GET / HTTP/1.1" 200 OK
+INFO:     172.26.0.1:32398 - "GET / HTTP/1.1" 200 OK
+INFO:     172.26.0.1:1176 - "GET / HTTP/1.1" 200 OK
+INFO:     172.26.0.1:38910 - "GET / HTTP/1.1" 200 OK
+INFO:     172.26.0.1:21138 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     172.26.0.1:11184 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     216.180.246.103:37606 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     216.180.246.103:30306 - "GET /favicon.ico HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     95.214.55.246:34350 - "POST / HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:34356 - "POST /_next HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:34358 - "POST /api HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:34364 - "POST /_next/server HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:34374 - "POST /app HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:34382 - "POST /api/route HTTP/1.1" 405 Method Not Allowed
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     172.26.0.1:17586 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     172.26.0.1:36776 - "GET /robots.txt HTTP/1.1" 200 OK
+INFO:     172.26.0.1:36784 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     47.254.152.7:56318 - "POST /api/auth/login HTTP/1.1" 401 Unauthorized
+INFO:     172.26.0.1:58448 - "POST /api/auth/login HTTP/1.1" 401 Unauthorized
+INFO:     61.133.118.242:35087 - "POST /api/auth/login HTTP/1.1" 401 Unauthorized
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     87.236.176.103:36781 - "GET / HTTP/1.1" 200 OK
+INFO:     87.236.176.20:54121 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     172.26.0.1:59582 - "GET / HTTP/1.1" 200 OK
+INFO:     205.210.31.233:57606 - "GET / HTTP/1.1" 200 OK
+INFO:     172.26.0.1:25912 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     3.149.59.26:40898 - "GET / HTTP/1.1" 200 OK
+INFO:     3.149.59.26:38804 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     167.94.138.178:62378 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     167.94.138.178:62398 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     167.94.138.178:62400 - "GET /favicon.ico HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     66.132.153.115:9762 - "GET /wiki HTTP/1.1" 200 OK
+INFO:     66.132.153.115:9768 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     66.132.153.115:9770 - "GET /favicon.ico HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     66.132.153.126:40610 - "GET /sitemap.xml HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     167.94.138.178:62542 - "GET /.well-known/security.txt HTTP/1.1" 200 OK
+INFO:     167.94.138.178:62550 - "GET /favicon.ico HTTP/1.1" 200 OK
+INFO:     66.132.153.126:40638 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     66.132.153.126:40648 - "GET /favicon.ico HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     162.142.125.217:4982 - "GET /.well-known/security.txt HTTP/1.1" 200 OK
+INFO:     162.142.125.217:4986 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     162.142.125.217:5002 - "GET /favicon.ico HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     172.26.0.1:4322 - "GET / HTTP/1.1" 200 OK
+INFO:     172.26.0.1:4324 - "GET /cat.svg HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     66.132.153.112:10062 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     66.132.153.112:1092 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     66.132.153.112:60534 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     66.132.153.112:60562 - "GET /favicon.ico HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     66.132.153.112:60582 - "GET /sitemap.xml HTTP/1.1" 200 OK
+INFO:     66.132.153.112:60590 - "GET /favicon.ico HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     172.26.0.1:12178 - "GET /robots.txt HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     172.26.0.1:63374 - "GET / HTTP/1.1" 200 OK
+INFO:     172.26.0.1:63386 - "GET /apps HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     185.247.137.151:36677 - "GET / HTTP/1.1" 200 OK
+INFO:     185.247.137.137:56649 - "GET /cat.svg HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     18.97.26.46:34738 - "GET / HTTP/1.1" 200 OK
+INFO:     18.97.26.46:34746 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     198.235.24.165:59804 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     121.199.5.102:58892 - "GET / HTTP/1.1" 200 OK
+INFO:     121.199.5.102:58924 - "GET /cat.svg HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     87.236.176.142:42431 - "GET / HTTP/1.1" 200 OK
+INFO:     87.236.176.113:36977 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     3.130.96.91:52728 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     66.132.153.118:26134 - "GET /wiki HTTP/1.1" 200 OK
+INFO:     66.132.153.118:26138 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     66.132.153.118:23608 - "GET /favicon.ico HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     162.142.125.206:44242 - "GET /.well-known/security.txt HTTP/1.1" 200 OK
+INFO:     162.142.125.206:44266 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     162.142.125.206:44278 - "GET /favicon.ico HTTP/1.1" 200 OK
+INFO:     46.151.178.49:36716 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     66.132.153.114:37954 - "GET /sitemap.xml HTTP/1.1" 200 OK
+INFO:     66.132.153.114:37962 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     66.132.153.114:37974 - "GET /favicon.ico HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     206.168.34.33:32656 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     206.168.34.33:32684 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     206.168.34.33:32698 - "GET /favicon.ico HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     206.168.34.33:5210 - "GET /login HTTP/1.1" 200 OK
+INFO:     206.168.34.33:5218 - "GET /favicon.ico HTTP/1.1" 200 OK
+INFO:     172.26.0.1:51792 - "GET /robots.txt HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     45.82.78.108:55716 - "GET / HTTP/1.1" 200 OK
+INFO:     45.131.155.111:38580 - "GET /cat.svg HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     62.60.135.190:43340 - "GET /../../../../../../etc/passwd HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     62.60.135.190:53592 - "GET /../../../../../../root/.zsh_history HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     62.60.135.190:53616 - "GET /../../../../../../root/.bash_history HTTP/1.1" 200 OK
+INFO:     62.60.135.190:53628 - "GET /../../../../../../root/.viminfo HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     62.60.135.190:53646 - "GET /../../../../../../root/.bashrc HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     62.60.135.190:53656 - "GET /../../../../../../root/.zshrc HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     62.60.135.190:53682 - "GET /../../../../../../root/.oh_my_zsh HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     62.60.135.190:53698 - "GET /../../../../../../root/.profile HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     62.60.135.190:53716 - "GET /../../../../../../root/.npmrc HTTP/1.1" 200 OK
+INFO:     62.60.135.190:53734 - "GET /../../../../../../root/docker-compose.yml HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     62.60.135.190:53754 - "GET /../../../../../../root/.git-credentials HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     62.60.135.190:53774 - "GET /../../../../../../root/.docker/config.json HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     62.60.135.190:53796 - "GET /../../../../../../root/.ssh/id_ed25519 HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     62.60.135.190:53806 - "GET /../../../../../../root/.ssh/id_rsa HTTP/1.1" 200 OK
+INFO:     62.60.135.190:53824 - "GET /../../../../../../root/.git/config HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     62.60.135.190:53850 - "GET /../../../../../../bin/.bash_history HTTP/1.1" 200 OK
+INFO:     62.60.135.190:53860 - "GET /../../../../../../bin/.zsh_history HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     62.60.135.190:53878 - "GET /../../../../../../bin/.bashrc HTTP/1.1" 200 OK
+INFO:     62.60.135.190:53886 - "GET /../../../../../../bin/.viminfo HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     62.60.135.190:53924 - "GET /../../../../../../bin/.zshrc HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     62.60.135.190:53940 - "GET /../../../../../../bin/.oh_my_zsh HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     62.60.135.190:53956 - "GET /../../../../../../bin/.npmrc HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     62.60.135.190:53964 - "GET /../../../../../../bin/.profile HTTP/1.1" 200 OK
+INFO:     62.60.135.190:53974 - "GET /../../../../../../bin/docker-compose.yml HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     62.60.135.190:54002 - "GET /../../../../../../bin/.git-credentials HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     62.60.135.190:54014 - "GET /../../../../../../bin/.docker/config.json HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     62.60.135.190:54020 - "GET /../../../../../../bin/.ssh/id_ed25519 HTTP/1.1" 200 OK
+INFO:     62.60.135.190:54046 - "GET /../../../../../../bin/.ssh/id_rsa HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     62.60.135.190:54054 - "GET /../../../../../../bin/.git/config HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     62.60.135.190:54074 - "GET /../../../../../../root/.ssh/id_rsa HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     62.60.135.190:54092 - "GET /../../../../../../etc/shadow HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     62.60.135.190:54112 - "GET /../../../../../../etc/shells HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     62.60.135.190:54122 - "GET /../../../../../../etc/services HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     62.60.135.190:54138 - "GET /../../../../../../proc/self/maps HTTP/1.1" 200 OK
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/protocols/http/httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/applications.py", line 1139, in __call__
+    await super().__call__(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 120, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 107, in app
+    await response(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/responses.py", line 365, in __call__
+    await self._handle_simple(send, send_header_only, send_pathsend)
+  File "/usr/local/lib/python3.11/site-packages/starlette/responses.py", line 396, in _handle_simple
+    await send({"type": "http.response.body", "body": chunk, "more_body": more_body})
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 39, in sender
+    await send(message)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 39, in sender
+    await send(message)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 161, in _send
+    await send(message)
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/protocols/http/httptools_impl.py", line 536, in send
+    raise RuntimeError("Response content longer than Content-Length")
+RuntimeError: Response content longer than Content-Length
+WARNING:  Invalid HTTP request received.
+INFO:     62.60.135.190:54154 - "GET /../../../../../../proc/self/cwd/.git/config HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     62.60.135.190:54172 - "GET /../../../../../../proc/self/cmdline HTTP/1.1" 200 OK
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/protocols/http/httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/applications.py", line 1139, in __call__
+    await super().__call__(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 120, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 107, in app
+    await response(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/responses.py", line 365, in __call__
+    await self._handle_simple(send, send_header_only, send_pathsend)
+  File "/usr/local/lib/python3.11/site-packages/starlette/responses.py", line 396, in _handle_simple
+    await send({"type": "http.response.body", "body": chunk, "more_body": more_body})
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 39, in sender
+    await send(message)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 39, in sender
+    await send(message)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 161, in _send
+    await send(message)
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/protocols/http/httptools_impl.py", line 536, in send
+    raise RuntimeError("Response content longer than Content-Length")
+RuntimeError: Response content longer than Content-Length
+WARNING:  Invalid HTTP request received.
+INFO:     62.60.135.190:54188 - "GET /../../../../../../proc/self/environ HTTP/1.1" 200 OK
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/protocols/http/httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/applications.py", line 1139, in __call__
+    await super().__call__(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 120, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 107, in app
+    await response(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/responses.py", line 365, in __call__
+    await self._handle_simple(send, send_header_only, send_pathsend)
+  File "/usr/local/lib/python3.11/site-packages/starlette/responses.py", line 396, in _handle_simple
+    await send({"type": "http.response.body", "body": chunk, "more_body": more_body})
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 39, in sender
+    await send(message)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 39, in sender
+    await send(message)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 161, in _send
+    await send(message)
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/protocols/http/httptools_impl.py", line 536, in send
+    raise RuntimeError("Response content longer than Content-Length")
+RuntimeError: Response content longer than Content-Length
+WARNING:  Invalid HTTP request received.
+INFO:     62.60.135.190:54212 - "GET /../../../../../../proc/self/cwd HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     62.60.135.190:54242 - "GET /../../../../../../proc/self/cwd/app.py HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     62.60.135.190:54270 - "GET /../../../../../../proc/self/cwd/.env HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     62.60.135.190:54312 - "GET /../../../../../../proc/self/cwd/.aws/credentials HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     62.60.135.190:54324 - "GET /../../../../../../proc/self/cwd/.bash_history HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     62.60.135.190:54336 - "GET /../../../../../../proc/self/cwd/.zsh_history HTTP/1.1" 200 OK
+INFO:     62.60.135.190:54350 - "GET /../../../../../../proc/self/cwd/.oh_my_zsh HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     62.60.135.190:54364 - "GET /../../../../../../proc/self/cwd/.bashrc HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     62.60.135.190:54278 - "GET /../../../../../../proc/self/cwd/config.py HTTP/1.1" 200 OK
+INFO:     62.60.135.190:54382 - "GET /../../../../../../proc/self/cwd/.viminfo HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     62.60.135.190:54402 - "GET /../../../../../../proc/self/cwd/.ssh/id_rsa HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     62.60.135.190:54408 - "GET /../../../../../../proc/self/cwd/.ssh/id_ed25519 HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     62.60.135.190:54414 - "GET /../../../../../../proc/self/cwd/.zshrc HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     62.60.135.190:54426 - "GET /../../../../../../proc/self/cwd/.git-credentials HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     62.60.135.190:54448 - "GET /../../../../../../proc/self/cwd/.npmrc HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     62.60.135.190:54466 - "GET /../../../../../../proc/self/cwd/.docker/config.json HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     62.60.135.190:54482 - "GET /../../../../../../proc/self/cwd/.profile HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     62.60.135.190:54502 - "GET /../../../../../../proc/self/cwd/docker-compose.yml HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     62.60.135.190:54524 - "GET /../../../../../../etc/shells HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     62.60.135.190:54538 - "GET /../../../../../../etc/services HTTP/1.1" 200 OK
+INFO:     62.60.135.190:54552 - "GET /../../../../../../proc/self/maps HTTP/1.1" 200 OK
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/protocols/http/httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/applications.py", line 1139, in __call__
+    await super().__call__(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 120, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 107, in app
+    await response(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/responses.py", line 365, in __call__
+    await self._handle_simple(send, send_header_only, send_pathsend)
+  File "/usr/local/lib/python3.11/site-packages/starlette/responses.py", line 396, in _handle_simple
+    await send({"type": "http.response.body", "body": chunk, "more_body": more_body})
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 39, in sender
+    await send(message)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 39, in sender
+    await send(message)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 161, in _send
+    await send(message)
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/protocols/http/httptools_impl.py", line 536, in send
+    raise RuntimeError("Response content longer than Content-Length")
+RuntimeError: Response content longer than Content-Length
+INFO:     62.60.135.190:54562 - "GET /../../../../../../proc/self/cwd/.git/config HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     52.165.80.170:44054 - "GET /v2/ HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     95.214.55.246:36436 - "POST / HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:36442 - "POST / HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:36448 - "POST /_next HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:36452 - "POST /_next HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:36456 - "POST /api HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:36464 - "POST /api HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:36480 - "POST /_next/server HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:36482 - "POST / HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:36490 - "POST /_next/server HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:36492 - "POST /app HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:36508 - "POST /app HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:36520 - "POST /api/route HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:36530 - "POST /api/route HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:36542 - "POST / HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:36556 - "POST /_next HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:36570 - "POST /api HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:36494 - "POST /_next HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:36594 - "POST / HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:36610 - "POST /_next/server HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:36624 - "POST /_next HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:36628 - "POST /app HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:36636 - "POST /api HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:36650 - "POST /api/route HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:36662 - "POST /_next/server HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:36674 - "POST / HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:36690 - "POST /app HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:36706 - "POST /_next HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:36620 - "POST /api HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:36718 - "POST /api/route HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:36726 - "POST /api HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:36742 - "POST /_next/server HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:36752 - "POST / HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:36760 - "POST /_next/server HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:36764 - "POST /app HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:36776 - "POST /_next HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:36780 - "POST /app HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:34792 - "POST /api/route HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:34796 - "POST /api HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:34800 - "POST / HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:34806 - "POST /api/route HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:34816 - "POST /_next/server HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:34822 - "POST /_next HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:34832 - "POST /app HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:34838 - "POST /api HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:34844 - "POST / HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:34860 - "POST /api/route HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:34870 - "POST /_next/server HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:34874 - "POST /_next HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:34878 - "POST /app HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:34890 - "POST /api HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:34906 - "POST / HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:34912 - "POST /api/route HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:34926 - "POST /_next/server HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:34942 - "POST /_next HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:34972 - "POST / HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:34976 - "POST /app HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:34982 - "POST /api HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:34986 - "POST /_next HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:34996 - "POST /api/route HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:34998 - "POST /_next/server HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:35012 - "POST / HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:35024 - "POST /api HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:35028 - "POST /app HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:35034 - "POST /_next HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:35042 - "POST /_next/server HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:35058 - "POST /api/route HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:35064 - "POST /api HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:35074 - "POST /app HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:35084 - "POST /_next/server HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:35094 - "POST /api/route HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:35108 - "POST /app HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:35120 - "POST /api/route HTTP/1.1" 405 Method Not Allowed
+INFO:     62.60.135.190:52848 - "HEAD /../../../../../../etc/ssl/private/ssl-cert-snakeoil.key HTTP/1.1" 405 Method Not Allowed
+INFO:     62.60.135.190:52858 - "HEAD /../../../../../../home/deploy/.ssh/id_rsa HTTP/1.1" 405 Method Not Allowed
+INFO:     62.60.135.190:52862 - "HEAD /../../../../../../home/ubuntu/.aws/credentials HTTP/1.1" 405 Method Not Allowed
+INFO:     62.60.135.190:52874 - "HEAD /../../../../../../home/ubuntu/.config/gcloud/application_default_credentials.json HTTP/1.1" 405 Method Not Allowed
+INFO:     62.60.135.190:52890 - "GET /../../../../../../etc/ssl/private/ssl-cert-snakeoil.key HTTP/1.1" 200 OK
+INFO:     62.60.135.190:52902 - "GET /../../../../../../home/deploy/.ssh/id_rsa HTTP/1.1" 200 OK
+INFO:     62.60.135.190:52912 - "GET /../../../../../../home/ubuntu/.aws/credentials HTTP/1.1" 200 OK
+INFO:     62.60.135.190:52922 - "GET /../../../../../../home/ubuntu/.config/gcloud/application_default_credentials.json HTTP/1.1" 200 OK
+INFO:     62.60.135.190:52936 - "HEAD /../../../../../../home/ubuntu/.git-credentials HTTP/1.1" 405 Method Not Allowed
+INFO:     62.60.135.190:52940 - "HEAD /../../../../../../home/ubuntu/.ssh/id_rsa HTTP/1.1" 405 Method Not Allowed
+INFO:     62.60.135.190:52954 - "GET /../../../../../../home/ubuntu/.git-credentials HTTP/1.1" 200 OK
+INFO:     62.60.135.190:52966 - "GET /../../../../../../home/ubuntu/.ssh/id_rsa HTTP/1.1" 200 OK
+INFO:     62.60.135.190:52980 - "HEAD /../../../../../../home/www-data/.npmrc HTTP/1.1" 405 Method Not Allowed
+INFO:     62.60.135.190:52986 - "GET /../../../../../../home/www-data/.npmrc HTTP/1.1" 200 OK
+INFO:     62.60.135.190:53002 - "HEAD /../../../../../../home/www-data/.ssh/id_rsa HTTP/1.1" 405 Method Not Allowed
+INFO:     62.60.135.190:53008 - "GET /../../../../../../home/www-data/.ssh/id_rsa HTTP/1.1" 200 OK
+INFO:     62.60.135.190:53022 - "HEAD /../../../../../../proc/self/cwd/.env HTTP/1.1" 405 Method Not Allowed
+INFO:     62.60.135.190:53034 - "HEAD /../../../../../../proc/self/cwd/.env.bak HTTP/1.1" 405 Method Not Allowed
+INFO:     62.60.135.190:53028 - "GET /../../../../../../proc/self/cwd/.env HTTP/1.1" 200 OK
+INFO:     62.60.135.190:53036 - "GET /../../../../../../proc/self/cwd/.env.bak HTTP/1.1" 200 OK
+INFO:     62.60.135.190:53040 - "HEAD /../../../../../../proc/self/cwd/.env.example HTTP/1.1" 405 Method Not Allowed
+INFO:     62.60.135.190:53046 - "GET /../../../../../../proc/self/cwd/.env.example HTTP/1.1" 200 OK
+INFO:     62.60.135.190:53062 - "HEAD /../../../../../../proc/self/cwd/.env.local HTTP/1.1" 405 Method Not Allowed
+INFO:     62.60.135.190:53078 - "GET /../../../../../../proc/self/cwd/.env.local HTTP/1.1" 200 OK
+INFO:     62.60.135.190:53088 - "HEAD /../../../../../../proc/self/cwd/.env.production HTTP/1.1" 405 Method Not Allowed
+INFO:     62.60.135.190:53094 - "GET /../../../../../../proc/self/cwd/.env.production HTTP/1.1" 200 OK
+INFO:     62.60.135.190:53102 - "HEAD /../../../../../../proc/self/cwd/.env.test HTTP/1.1" 405 Method Not Allowed
+INFO:     62.60.135.190:53110 - "GET /../../../../../../proc/self/cwd/.env.test HTTP/1.1" 200 OK
+INFO:     62.60.135.190:53118 - "HEAD /../../../../../../proc/self/cwd/.git/config HTTP/1.1" 405 Method Not Allowed
+INFO:     62.60.135.190:53126 - "GET /../../../../../../proc/self/cwd/.git/config HTTP/1.1" 200 OK
+INFO:     62.60.135.190:53128 - "HEAD /../../../../../../proc/self/cwd/.git-credentials HTTP/1.1" 405 Method Not Allowed
+INFO:     62.60.135.190:53144 - "GET /../../../../../../proc/self/cwd/.git-credentials HTTP/1.1" 200 OK
+INFO:     62.60.135.190:53156 - "HEAD /../../../../../../proc/self/cwd/config/credentials.yml.enc HTTP/1.1" 405 Method Not Allowed
+INFO:     62.60.135.190:53158 - "GET /../../../../../../proc/self/cwd/config/credentials.yml.enc HTTP/1.1" 200 OK
+INFO:     62.60.135.190:53166 - "HEAD /../../../../../../proc/self/cwd/config/master.key HTTP/1.1" 405 Method Not Allowed
+INFO:     62.60.135.190:53180 - "HEAD /../../../../../../proc/self/cwd/config.py HTTP/1.1" 405 Method Not Allowed
+INFO:     62.60.135.190:53184 - "GET /../../../../../../proc/self/cwd/config/master.key HTTP/1.1" 200 OK
+INFO:     62.60.135.190:53200 - "GET /../../../../../../proc/self/cwd/config.py HTTP/1.1" 200 OK
+INFO:     62.60.135.190:53202 - "HEAD /../../../../../../proc/self/cwd/data/gemini_proxy.db HTTP/1.1" 405 Method Not Allowed
+INFO:     62.60.135.190:53218 - "GET /../../../../../../proc/self/cwd/data/gemini_proxy.db HTTP/1.1" 200 OK
+INFO:     62.60.135.190:53226 - "HEAD /../../../../../../proc/self/cwd/google_client_secret.json HTTP/1.1" 405 Method Not Allowed
+INFO:     62.60.135.190:53230 - "GET /../../../../../../proc/self/cwd/google_client_secret.json HTTP/1.1" 200 OK
+INFO:     62.60.135.190:53242 - "HEAD /../../../../../../proc/self/cwd/instance/.env HTTP/1.1" 405 Method Not Allowed
+INFO:     62.60.135.190:53258 - "GET /../../../../../../proc/self/cwd/instance/.env HTTP/1.1" 200 OK
+INFO:     62.60.135.190:53272 - "HEAD /../../../../../../proc/self/cwd/jwt_private.pem HTTP/1.1" 405 Method Not Allowed
+INFO:     62.60.135.190:53276 - "HEAD /../../../../../../proc/self/cwd/service-account.json HTTP/1.1" 405 Method Not Allowed
+INFO:     62.60.135.190:53292 - "GET /../../../../../../proc/self/cwd/jwt_private.pem HTTP/1.1" 200 OK
+INFO:     62.60.135.190:53300 - "GET /../../../../../../proc/self/cwd/service-account.json HTTP/1.1" 200 OK
+INFO:     62.60.135.190:53304 - "HEAD /../../../../../../proc/self/cwd/settings.py HTTP/1.1" 405 Method Not Allowed
+INFO:     62.60.135.190:53324 - "GET /../../../../../../proc/self/cwd/settings.py HTTP/1.1" 200 OK
+INFO:     62.60.135.190:53340 - "HEAD /../../../../../../root/.bash_history HTTP/1.1" 405 Method Not Allowed
+INFO:     62.60.135.190:53356 - "HEAD /../../../../../../root/.docker/config.json HTTP/1.1" 405 Method Not Allowed
+INFO:     62.60.135.190:53344 - "GET /../../../../../../root/.bash_history HTTP/1.1" 200 OK
+INFO:     62.60.135.190:53362 - "GET /../../../../../../root/.docker/config.json HTTP/1.1" 200 OK
+INFO:     62.60.135.190:53378 - "HEAD /../../../../../../root/.ssh/id_rsa HTTP/1.1" 405 Method Not Allowed
+INFO:     62.60.135.190:53398 - "HEAD /../../../../../../run/secrets/kubernetes.io/serviceaccount/token HTTP/1.1" 405 Method Not Allowed
+INFO:     62.60.135.190:53388 - "GET /../../../../../../root/.ssh/id_rsa HTTP/1.1" 200 OK
+INFO:     62.60.135.190:53410 - "HEAD /../../../../../../var/lib/jenkins/credentials.xml HTTP/1.1" 405 Method Not Allowed
+INFO:     62.60.135.190:53416 - "GET /../../../../../../run/secrets/kubernetes.io/serviceaccount/token HTTP/1.1" 200 OK
+INFO:     62.60.135.190:53316 - "HEAD /../../../../../../root/.aws/credentials HTTP/1.1" 405 Method Not Allowed
+INFO:     62.60.135.190:53428 - "GET /../../../../../../var/lib/jenkins/credentials.xml HTTP/1.1" 200 OK
+INFO:     62.60.135.190:53434 - "GET /../../../../../../root/.aws/credentials HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     198.235.24.193:64778 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     20.29.19.156:48612 - "GET /v2/ HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     167.94.138.198:46146 - "GET /.well-known/security.txt HTTP/1.1" 200 OK
+INFO:     167.94.138.198:46160 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     167.94.138.198:46166 - "GET /favicon.ico HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     206.168.34.213:32592 - "GET /wiki HTTP/1.1" 200 OK
+INFO:     206.168.34.213:32606 - "GET /cat.svg HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     185.247.137.75:46129 - "GET / HTTP/1.1" 200 OK
+INFO:     87.236.176.142:56307 - "GET /cat.svg HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     95.214.55.246:59846 - "POST / HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:59848 - "POST /_next HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:59860 - "POST /api HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:59862 - "POST /_next/server HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:59878 - "POST /app HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:59890 - "POST /api/route HTTP/1.1" 405 Method Not Allowed
+WARNING:  Invalid HTTP request received.
+INFO:     66.132.153.139:33272 - "GET /login HTTP/1.1" 200 OK
+INFO:     66.132.153.139:33280 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     66.132.153.139:33296 - "GET /favicon.ico HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     162.142.125.116:53248 - "GET /sitemap.xml HTTP/1.1" 200 OK
+INFO:     162.142.125.116:53256 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     162.142.125.116:53264 - "GET /favicon.ico HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     206.168.34.200:23808 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     206.168.34.200:36092 - "GET /favicon.ico HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     206.168.34.200:64002 - "GET /.well-known/security.txt HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     172.26.0.1:63692 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     104.152.52.126:34807 - "GET / HTTP/1.1" 200 OK
+INFO:     104.152.52.126:43145 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     46.151.178.49:38642 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     198.235.24.80:58768 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     172.26.0.1:34734 - "GET /robots.txt HTTP/1.1" 200 OK
+INFO:     172.26.0.1:34744 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     95.214.55.246:50928 - "POST / HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:50944 - "POST /_next HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:50954 - "POST /api HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:50966 - "POST /_next/server HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:50968 - "POST /app HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:50980 - "POST /api/route HTTP/1.1" 405 Method Not Allowed
+INFO:     172.26.0.1:16752 - "GET / HTTP/1.1" 200 OK
+INFO:     172.26.0.1:45722 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     172.26.0.1:45734 - "GET /js/twint_ch.js HTTP/1.1" 200 OK
+INFO:     172.26.0.1:45746 - "GET /css/support_parent.css HTTP/1.1" 200 OK
+INFO:     172.26.0.1:45752 - "GET /js/lkk_ch.js HTTP/1.1" 200 OK
+INFO:     172.26.0.1:3630 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     66.132.153.120:20268 - "GET /wiki HTTP/1.1" 200 OK
+INFO:     66.132.153.120:20362 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     66.132.153.120:20378 - "GET /favicon.ico HTTP/1.1" 200 OK
+INFO:     130.12.180.207:33330 - "POST / HTTP/1.1" 405 Method Not Allowed
+INFO:     172.26.0.1:6030 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     167.94.138.198:29670 - "GET /.well-known/security.txt HTTP/1.1" 200 OK
+INFO:     167.94.138.198:29702 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     167.94.138.198:28142 - "GET /favicon.ico HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     162.142.125.123:31564 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     162.142.125.123:31580 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     162.142.125.212:30210 - "GET /sitemap.xml HTTP/1.1" 200 OK
+INFO:     162.142.125.123:31612 - "GET /favicon.ico HTTP/1.1" 200 OK
+INFO:     162.142.125.212:23864 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     162.142.125.212:2906 - "GET /favicon.ico HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     162.142.125.123:21980 - "GET /security.txt HTTP/1.1" 200 OK
+INFO:     162.142.125.123:22006 - "GET /favicon.ico HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     206.168.34.54:54302 - "GET /login HTTP/1.1" 200 OK
+INFO:     172.26.0.1:31596 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     69.235.150.62:57786 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     194.164.107.6:37738 - "GET / HTTP/1.1" 200 OK
+INFO:     194.164.107.6:41194 - "GET /cat.svg HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     95.214.55.246:44454 - "POST / HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:44456 - "POST /_next HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:44468 - "POST /api HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:44482 - "POST /_next/server HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:44494 - "POST /app HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:44506 - "POST /api/route HTTP/1.1" 405 Method Not Allowed
+INFO:     172.26.0.1:30438 - "GET /robots.txt HTTP/1.1" 200 OK
+INFO:     118.212.120.75:11626 - "GET / HTTP/1.1" 200 OK
+INFO:     220.167.232.34:63121 - "GET / HTTP/1.1" 200 OK
+INFO:     1.24.16.38:45532 - "GET /cat.svg HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     172.26.0.1:64796 - "GET /robots.txt HTTP/1.1" 200 OK
+INFO:     198.235.24.222:60696 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     172.26.0.1:56882 - "GET / HTTP/1.1" 200 OK
+INFO:     152.32.134.45:6742 - "GET / HTTP/1.1" 200 OK
+INFO:     152.32.134.45:7176 - "GET / HTTP/1.1" 200 OK
+INFO:     152.32.134.45:7230 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     152.32.134.45:7252 - "GET /assets/index-DW2WhjNt.js HTTP/1.1" 200 OK
+INFO:     3.130.96.91:52596 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     147.185.132.219:61690 - "GET /.well-known/security.txt HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     162.142.125.121:52592 - "GET /wiki HTTP/1.1" 200 OK
+INFO:     162.142.125.121:52600 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     162.142.125.121:52608 - "GET /favicon.ico HTTP/1.1" 200 OK
+INFO:     172.26.0.1:26622 - "GET / HTTP/1.1" 200 OK
+INFO:     79.127.248.2:14422 - "GET / HTTP/1.1" 200 OK
+INFO:     192.197.201.114:49176 - "GET / HTTP/1.1" 200 OK
+INFO:     192.197.201.114:24026 - "GET /assets/index-DW2WhjNt.js HTTP/1.1" 200 OK
+INFO:     192.197.201.114:24044 - "GET /api/manage/announcement HTTP/1.1" 200 OK
+INFO:     192.197.201.114:24036 - "GET /api/auth/discord/config HTTP/1.1" 200 OK
+INFO:     192.197.201.114:24060 - "GET /cat.svg HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     66.132.153.116:16394 - "GET /login HTTP/1.1" 200 OK
+INFO:     66.132.153.116:45488 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     66.132.153.116:45498 - "GET /favicon.ico HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     206.168.34.122:23464 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     162.142.125.195:17938 - "GET /sitemap.xml HTTP/1.1" 200 OK
+INFO:     206.168.34.122:23486 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     206.168.34.122:59572 - "GET /favicon.ico HTTP/1.1" 200 OK
+INFO:     162.142.125.195:17966 - "GET /cat.svg HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     206.168.34.122:9634 - "GET /wiki HTTP/1.1" 200 OK
+INFO:     206.168.34.122:1146 - "GET /favicon.ico HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     206.168.34.196:5336 - "GET /.well-known/security.txt HTTP/1.1" 200 OK
+INFO:     206.168.34.196:5364 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     206.168.34.196:18108 - "GET /favicon.ico HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     162.142.125.201:23954 - "GET /security.txt HTTP/1.1" 200 OK
+INFO:     162.142.125.201:23970 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     162.142.125.201:4520 - "GET /favicon.ico HTTP/1.1" 200 OK
+INFO:     172.26.0.1:41344 - "GET /robots.txt HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     112.124.38.235:51098 - "GET / HTTP/1.0" 200 OK
+INFO:     112.124.38.235:52554 - "POST /sdk HTTP/1.1" 405 Method Not Allowed
+INFO:     112.124.38.235:52532 - "GET /nmaplowercheck1766960541 HTTP/1.1" 200 OK
+INFO:     112.124.38.235:52526 - "GET / HTTP/1.0" 200 OK
+INFO:     112.124.38.235:52594 - "GET /NmapUpperCheck1766960541 HTTP/1.1" 200 OK
+INFO:     112.124.38.235:52638 - "GET /Nmap/folder/check1766960541 HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     112.124.38.235:53830 - "GET / HTTP/1.0" 200 OK
+INFO:     112.124.38.235:53850 - "GET / HTTP/1.1" 200 OK
+INFO:     172.26.0.1:17032 - "GET / HTTP/1.1" 200 OK
+INFO:     20.64.105.25:38906 - "GET /v2/ HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     198.235.24.66:62506 - "GET / HTTP/1.1" 200 OK
+INFO:     3.137.73.221:41196 - "GET / HTTP/1.1" 200 OK
+INFO:     3.137.73.221:40794 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     172.26.0.1:18000 - "GET / HTTP/1.1" 200 OK
+INFO:     172.26.0.1:18008 - "GET /assets/index-DW2WhjNt.js HTTP/1.1" 200 OK
+INFO:     172.26.0.1:18010 - "GET /assets/index-Do2UsQMk.css HTTP/1.1" 200 OK
+INFO:     172.26.0.1:18012 - "GET /api/manage/announcement HTTP/1.1" 200 OK
+INFO:     172.26.0.1:18028 - "GET /api/auth/me HTTP/1.1" 401 Unauthorized
+INFO:     172.26.0.1:18042 - "GET /login HTTP/1.1" 200 OK
+INFO:     172.26.0.1:18054 - "GET /api/auth/discord/config HTTP/1.1" 200 OK
+INFO:     172.26.0.1:18058 - "GET /api/auth/discord/config HTTP/1.1" 200 OK
+INFO:     172.26.0.1:18060 - "GET /api/manage/announcement HTTP/1.1" 200 OK
+INFO:     172.26.0.1:18064 - "GET /api/auth/discord/config HTTP/1.1" 200 OK
+INFO:     172.26.0.1:22216 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     172.26.0.1:22232 - "GET /api/manage/public-config HTTP/1.1" 200 OK
+INFO:     172.26.0.1:22252 - "GET /api/auth/api-keys HTTP/1.1" 200 OK
+INFO:     172.26.0.1:22250 - "GET /api/public/stats HTTP/1.1" 200 OK
+INFO:     172.26.0.1:22246 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     172.26.0.1:22254 - "WebSocket /ws?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJpdWxvdmUiLCJleHAiOjE3Njc2MDI0OTV9.3WS_JBeDNotxWhmVxYtlSoOCz8zY5lxnghiyZNYDhUw" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     172.26.0.1:22270 - "GET /api/manage/config HTTP/1.1" 200 OK
+INFO:     172.26.0.1:22276 - "GET /?z=6055774469053924493 HTTP/1.1" 200 OK
+INFO:     172.26.0.1:22284 - "GET /api/manage/public-config HTTP/1.1" 200 OK
+INFO:     172.26.0.1:22290 - "GET /api/auth/api-keys HTTP/1.1" 200 OK
+INFO:     172.26.0.1:22318 - "GET /api/public/stats HTTP/1.1" 200 OK
+INFO:     172.26.0.1:22306 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     172.26.0.1:22320 - "WebSocket /ws?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJpdWxvdmUiLCJleHAiOjE3Njc2MDI0OTV9.3WS_JBeDNotxWhmVxYtlSoOCz8zY5lxnghiyZNYDhUw" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     172.26.0.1:22322 - "GET /api/auth/discord/config HTTP/1.1" 200 OK
+INFO:     172.26.0.1:22336 - "GET /api/auth/discord/config HTTP/1.1" 200 OK
+INFO:     172.26.0.1:22346 - "GET /?z=6868398322539414126 HTTP/1.1" 200 OK
+INFO:     172.26.0.1:20454 - "POST /api/auth/register HTTP/1.1" 403 Forbidden
+INFO:     172.26.0.1:13430 - "GET /api/auth/discord/config HTTP/1.1" 200 OK
+INFO:     172.26.0.1:13434 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     172.26.0.1:13438 - "GET /api/manage/public-config HTTP/1.1" 200 OK
+INFO:     172.26.0.1:13470 - "GET /api/auth/api-keys HTTP/1.1" 200 OK
+INFO:     172.26.0.1:13454 - "GET /api/public/stats HTTP/1.1" 200 OK
+INFO:     172.26.0.1:13440 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     172.26.0.1:13480 - "WebSocket /ws?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJpdWxvdmUiLCJleHAiOjE3Njc2MDI1MzF9.ggN4NGSGZNegrt0mwely_YXhr3EgiRnNjUW8p2U46Rg" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     172.26.0.1:13484 - "GET /api/manage/config HTTP/1.1" 200 OK
+INFO:     172.26.0.1:13490 - "GET /?z=8117064092531608896 HTTP/1.1" 200 OK
+INFO:     172.26.0.1:33564 - "POST /api/manage/config HTTP/1.1" 200 OK
+INFO:     172.26.0.1:33566 - "WebSocket /ws?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJpdWxvdmUiLCJleHAiOjE3Njc2MDI1MzF9.ggN4NGSGZNegrt0mwely_YXhr3EgiRnNjUW8p2U46Rg" [accepted]
+INFO:     connection open
+INFO:     172.26.0.1:33568 - "GET /api/manage/public-config HTTP/1.1" 200 OK
+INFO:     172.26.0.1:33590 - "GET /api/auth/api-keys HTTP/1.1" 200 OK
+INFO:     172.26.0.1:33586 - "GET /api/public/stats HTTP/1.1" 200 OK
+INFO:     172.26.0.1:33580 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     172.26.0.1:33598 - "WebSocket /ws?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJpdWxvdmUiLCJleHAiOjE3Njc2MDI1MzF9.ggN4NGSGZNegrt0mwely_YXhr3EgiRnNjUW8p2U46Rg" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     172.26.0.1:33614 - "GET /api/auth/discord/config HTTP/1.1" 200 OK
+INFO:     172.26.0.1:33624 - "GET /?z=7275010631731162615 HTTP/1.1" 200 OK
+INFO:     172.26.0.1:33628 - "GET /api/auth/discord/config HTTP/1.1" 200 OK
+INFO:     172.26.0.1:48916 - "POST /api/auth/register HTTP/1.1" 403 Forbidden
+INFO:     172.26.0.1:53034 - "GET /api/auth/discord/config HTTP/1.1" 200 OK
+INFO:     172.26.0.1:53046 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     172.26.0.1:53060 - "GET /api/manage/public-config HTTP/1.1" 200 OK
+INFO:     172.26.0.1:53096 - "GET /api/auth/api-keys HTTP/1.1" 200 OK
+INFO:     172.26.0.1:53084 - "GET /api/public/stats HTTP/1.1" 200 OK
+INFO:     172.26.0.1:53072 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     172.26.0.1:53104 - "WebSocket /ws?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJpdWxvdmUiLCJleHAiOjE3Njc2MDI1NjF9.L7ATpvYAk6vw8Es6kV7vWmYSz2xicANqkNLzDTDXplE" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     connection closed
+INFO:     172.26.0.1:15554 - "GET /?z=4703790330253972611 HTTP/1.1" 200 OK
+INFO:     172.26.0.1:15558 - "GET /?z=5628859104147577839 HTTP/1.1" 200 OK
+INFO:     172.26.0.1:15562 - "WebSocket /ws?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJpdWxvdmUiLCJleHAiOjE3Njc2MDI1NjF9.L7ATpvYAk6vw8Es6kV7vWmYSz2xicANqkNLzDTDXplE" [accepted]
+INFO:     connection open
+INFO:     172.26.0.1:15572 - "WebSocket /ws?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJpdWxvdmUiLCJleHAiOjE3Njc2MDI1NjF9.L7ATpvYAk6vw8Es6kV7vWmYSz2xicANqkNLzDTDXplE" [accepted]
+INFO:     connection open
+WARNING:  Invalid HTTP request received.
+INFO:     connection closed
+INFO:     connection closed
+INFO:     172.26.0.1:25682 - "WebSocket /ws?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJpdWxvdmUiLCJleHAiOjE3Njc2MDI1NjF9.L7ATpvYAk6vw8Es6kV7vWmYSz2xicANqkNLzDTDXplE" [accepted]
+INFO:     connection open
+INFO:     172.26.0.1:25696 - "WebSocket /ws?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJpdWxvdmUiLCJleHAiOjE3Njc2MDI1NjF9.L7ATpvYAk6vw8Es6kV7vWmYSz2xicANqkNLzDTDXplE" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     connection closed
+INFO:     172.26.0.1:35072 - "WebSocket /ws?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJpdWxvdmUiLCJleHAiOjE3Njc2MDI1NjF9.L7ATpvYAk6vw8Es6kV7vWmYSz2xicANqkNLzDTDXplE" [accepted]
+INFO:     connection open
+INFO:     172.26.0.1:35076 - "WebSocket /ws?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJpdWxvdmUiLCJleHAiOjE3Njc2MDI1NjF9.L7ATpvYAk6vw8Es6kV7vWmYSz2xicANqkNLzDTDXplE" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     connection closed
+INFO:     172.26.0.1:60732 - "WebSocket /ws?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJpdWxvdmUiLCJleHAiOjE3Njc2MDI1NjF9.L7ATpvYAk6vw8Es6kV7vWmYSz2xicANqkNLzDTDXplE" [accepted]
+INFO:     connection open
+INFO:     172.26.0.1:60738 - "WebSocket /ws?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJpdWxvdmUiLCJleHAiOjE3Njc2MDI1NjF9.L7ATpvYAk6vw8Es6kV7vWmYSz2xicANqkNLzDTDXplE" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     connection closed
+INFO:     172.26.0.1:2834 - "WebSocket /ws?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJpdWxvdmUiLCJleHAiOjE3Njc2MDI1NjF9.L7ATpvYAk6vw8Es6kV7vWmYSz2xicANqkNLzDTDXplE" [accepted]
+INFO:     connection open
+INFO:     172.26.0.1:2844 - "WebSocket /ws?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJpdWxvdmUiLCJleHAiOjE3Njc2MDI1NjF9.L7ATpvYAk6vw8Es6kV7vWmYSz2xicANqkNLzDTDXplE" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     connection closed
+INFO:     172.26.0.1:54022 - "GET /?z=4380549997009668061 HTTP/1.1" 200 OK
+INFO:     172.26.0.1:54026 - "GET /?z=3528847480327429177 HTTP/1.1" 200 OK
+INFO:     172.26.0.1:54032 - "WebSocket /ws?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJpdWxvdmUiLCJleHAiOjE3Njc2MDI1NjF9.L7ATpvYAk6vw8Es6kV7vWmYSz2xicANqkNLzDTDXplE" [accepted]
+INFO:     connection open
+INFO:     172.26.0.1:54042 - "WebSocket /ws?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJpdWxvdmUiLCJleHAiOjE3Njc2MDI1NjF9.L7ATpvYAk6vw8Es6kV7vWmYSz2xicANqkNLzDTDXplE" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     connection closed
+INFO:     172.26.0.1:21648 - "WebSocket /ws?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJpdWxvdmUiLCJleHAiOjE3Njc2MDI1NjF9.L7ATpvYAk6vw8Es6kV7vWmYSz2xicANqkNLzDTDXplE" [accepted]
+INFO:     connection open
+INFO:     172.26.0.1:21662 - "WebSocket /ws?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJpdWxvdmUiLCJleHAiOjE3Njc2MDI1NjF9.L7ATpvYAk6vw8Es6kV7vWmYSz2xicANqkNLzDTDXplE" [accepted]
+INFO:     connection open
+INFO:     95.214.55.246:54810 - "POST / HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:54822 - "POST /_next HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:54834 - "POST /api HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:54838 - "POST /_next/server HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:54846 - "POST /app HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:54848 - "POST /api/route HTTP/1.1" 405 Method Not Allowed
+INFO:     connection closed
+INFO:     connection closed
+WARNING:  Invalid HTTP request received.
+INFO:     185.247.137.179:42791 - "GET / HTTP/1.1" 200 OK
+INFO:     185.247.137.239:58045 - "GET /cat.svg HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     167.94.138.188:63632 - "GET /sitemap.xml HTTP/1.1" 200 OK
+INFO:     167.94.138.188:63664 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     167.94.138.188:63694 - "GET /favicon.ico HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     66.132.153.138:54360 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     66.132.153.138:54384 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     66.132.153.138:17598 - "GET /favicon.ico HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     66.132.153.138:17610 - "GET /robots.txt HTTP/1.1" 200 OK
+INFO:     66.132.153.138:17612 - "GET /favicon.ico HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     66.132.153.127:60668 - "GET /wiki HTTP/1.1" 200 OK
+INFO:     66.132.153.127:53386 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     66.132.153.127:53402 - "GET /favicon.ico HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     167.94.138.185:9826 - "GET /security.txt HTTP/1.1" 200 OK
+INFO:     167.94.138.185:9838 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     167.94.138.185:9842 - "GET /favicon.ico HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     206.168.34.37:24690 - "GET /.well-known/security.txt HTTP/1.1" 200 OK
+INFO:     206.168.34.37:24724 - "GET /cat.svg HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     167.94.138.161:49994 - "GET /login HTTP/1.1" 200 OK
+INFO:     167.94.138.161:50010 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     167.94.138.161:40814 - "GET /favicon.ico HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     45.79.190.208:37984 - "GET / HTTP/1.0" 200 OK
+INFO:     45.79.190.208:37986 - "OPTIONS / HTTP/1.0" 405 Method Not Allowed
+INFO:     45.79.190.208:38010 - "OPTIONS / HTTP/1.0" 405 Method Not Allowed
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     45.79.190.208:38096 - "GET /nice%20ports%2C/Trinity.txt.bak HTTP/1.0" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     45.79.190.208:34498 - "GET /devicedesc.xml HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     45.79.190.208:54980 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     198.235.24.98:64508 - "GET / HTTP/1.1" 200 OK
+INFO:     172.26.0.1:18028 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     91.231.89.173:58579 - "GET / HTTP/1.1" 200 OK
+INFO:     91.196.152.6:54883 - "GET /cat.svg HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     95.214.55.246:38550 - "POST / HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:38554 - "POST /_next HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:38564 - "POST /api HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:38568 - "POST /_next/server HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:38580 - "POST /app HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:38582 - "POST /api/route HTTP/1.1" 405 Method Not Allowed
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     152.32.216.28:57326 - "GET / HTTP/1.1" 200 OK
+INFO:     152.32.216.28:57340 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     152.32.216.28:57344 - "GET /robots.txt HTTP/1.1" 200 OK
+INFO:     152.32.216.28:57350 - "GET /sitemap.xml HTTP/1.1" 200 OK
+INFO:     152.32.216.28:57356 - "GET /assets/index-DW2WhjNt.js HTTP/1.1" 200 OK
+INFO:     152.32.216.28:57366 - "GET /config.json HTTP/1.1" 200 OK
+INFO:     152.32.216.28:57370 - "GET /sse HTTP/1.1" 200 OK
+INFO:     152.32.216.28:60280 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     152.32.216.28:60290 - "GET /mcp-sse HTTP/1.1" 200 OK
+INFO:     172.26.0.1:13362 - "GET / HTTP/1.1" 200 OK
+INFO:     172.26.0.1:13370 - "GET /assets/index-Do2UsQMk.css HTTP/1.1" 200 OK
+INFO:     172.26.0.1:13386 - "GET /assets/index-DW2WhjNt.js HTTP/1.1" 200 OK
+INFO:     172.26.0.1:31580 - "GET /api/manage/announcement HTTP/1.1" 200 OK
+INFO:     172.26.0.1:31596 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     172.26.0.1:31598 - "GET /api/manage/public-config HTTP/1.1" 200 OK
+INFO:     172.26.0.1:31626 - "GET /api/auth/api-keys HTTP/1.1" 200 OK
+INFO:     172.26.0.1:31612 - "GET /api/public/stats HTTP/1.1" 200 OK
+INFO:     172.26.0.1:31642 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     172.26.0.1:31656 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     172.26.0.1:31662 - "WebSocket /ws?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJpdWxvdmUiLCJleHAiOjE3Njc2MDI1NjF9.L7ATpvYAk6vw8Es6kV7vWmYSz2xicANqkNLzDTDXplE" [accepted]
+INFO:     connection open
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     172.26.0.1:17014 - "GET /api/auth/credentials HTTP/1.1" 200 OK
+INFO:     connection closed
+WARNING:  Invalid HTTP request received.
+INFO:     162.142.125.212:49126 - "GET /security.txt HTTP/1.1" 200 OK
+INFO:     162.142.125.212:25318 - "GET /cat.svg HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     66.132.153.117:11546 - "GET /sitemap.xml HTTP/1.1" 200 OK
+INFO:     66.132.153.117:11552 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     66.132.153.117:11564 - "GET /favicon.ico HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     167.94.138.190:34704 - "GET /login HTTP/1.1" 200 OK
+INFO:     167.94.138.190:34710 - "GET /cat.svg HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     167.94.138.190:34734 - "GET /favicon.ico HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     167.94.138.177:18338 - "GET /.well-known/security.txt HTTP/1.1" 200 OK
+INFO:     167.94.138.191:39456 - "GET /wiki HTTP/1.1" 200 OK
+INFO:     167.94.138.191:39530 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     167.94.138.201:11810 - "GET / HTTP/1.1" 200 OK
+INFO:     167.94.138.191:39538 - "GET /favicon.ico HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     167.94.138.177:48122 - "GET /cat.svg HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     167.94.138.201:11850 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     162.142.125.201:41422 - "GET /robots.txt HTTP/1.1" 200 OK
+INFO:     167.94.138.177:48138 - "GET /favicon.ico HTTP/1.1" 200 OK
+INFO:     162.142.125.201:41438 - "GET /cat.svg HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     167.94.138.201:19682 - "GET /.well-known/security.txt HTTP/1.1" 200 OK
+INFO:     167.94.138.201:19720 - "GET /favicon.ico HTTP/1.1" 200 OK
+INFO:     61.133.118.242:22962 - "POST /api/auth/login HTTP/1.1" 401 Unauthorized
+WARNING:  Invalid HTTP request received.
+INFO:     185.247.137.88:37431 - "GET / HTTP/1.1" 200 OK
+INFO:     87.236.176.93:55115 - "GET /cat.svg HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     204.76.203.215:11710 - "GET /../../../../../../etc/passwd HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     204.76.203.215:25444 - "GET /../../../../../../root/.bash_history HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     204.76.203.215:25450 - "GET /../../../../../../root/.zsh_history HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     204.76.203.215:25470 - "GET /../../../../../../root/.viminfo HTTP/1.1" 200 OK
+INFO:     204.76.203.215:25490 - "GET /../../../../../../root/.bashrc HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     204.76.203.215:25514 - "GET /../../../../../../root/.zshrc HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     204.76.203.215:25542 - "GET /../../../../../../root/.oh_my_zsh HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     204.76.203.215:25560 - "GET /../../../../../../root/.npmrc HTTP/1.1" 200 OK
+INFO:     204.76.203.215:25584 - "GET /../../../../../../root/.profile HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     204.76.203.215:25606 - "GET /../../../../../../root/.git-credentials HTTP/1.1" 200 OK
+INFO:     204.76.203.215:25622 - "GET /../../../../../../root/docker-compose.yml HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     204.76.203.215:25666 - "GET /../../../../../../root/.docker/config.json HTTP/1.1" 200 OK
+INFO:     204.76.203.215:25670 - "GET /../../../../../../root/.ssh/id_ed25519 HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     204.76.203.215:25690 - "GET /../../../../../../root/.git/config HTTP/1.1" 200 OK
+INFO:     204.76.203.215:25698 - "GET /../../../../../../root/.ssh/id_rsa HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     204.76.203.215:25724 - "GET /../../../../../../bin/.bash_history HTTP/1.1" 200 OK
+INFO:     204.76.203.215:25740 - "GET /../../../../../../bin/.zsh_history HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     204.76.203.215:25774 - "GET /../../../../../../bin/.viminfo HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     204.76.203.215:25800 - "GET /../../../../../../bin/.zshrc HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     204.76.203.215:25826 - "GET /../../../../../../bin/.oh_my_zsh HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     204.76.203.215:25850 - "GET /../../../../../../bin/.profile HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     204.76.203.215:25874 - "GET /../../../../../../bin/.npmrc HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     204.76.203.215:25902 - "GET /../../../../../../bin/docker-compose.yml HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     204.76.203.215:25776 - "GET /../../../../../../bin/.bashrc HTTP/1.1" 200 OK
+INFO:     204.76.203.215:25922 - "GET /../../../../../../bin/.git-credentials HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     204.76.203.215:25958 - "GET /../../../../../../bin/.docker/config.json HTTP/1.1" 200 OK
+INFO:     204.76.203.215:25964 - "GET /../../../../../../bin/.ssh/id_ed25519 HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     204.76.203.215:25982 - "GET /../../../../../../bin/.ssh/id_rsa HTTP/1.1" 200 OK
+INFO:     204.76.203.215:25992 - "GET /../../../../../../bin/.git/config HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     204.76.203.215:26018 - "GET /../../../../../../root/.ssh/id_rsa HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     204.76.203.215:26064 - "GET /../../../../../../etc/shadow HTTP/1.1" 200 OK
+INFO:     204.76.203.215:26074 - "GET /../../../../../../etc/shells HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     204.76.203.215:26096 - "GET /../../../../../../etc/services HTTP/1.1" 200 OK
+INFO:     204.76.203.215:26112 - "GET /../../../../../../proc/self/cwd/.git/config HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     204.76.203.215:26140 - "GET /../../../../../../proc/self/maps HTTP/1.1" 200 OK
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/protocols/http/httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/applications.py", line 1139, in __call__
+    await super().__call__(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 120, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 107, in app
+    await response(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/responses.py", line 365, in __call__
+    await self._handle_simple(send, send_header_only, send_pathsend)
+  File "/usr/local/lib/python3.11/site-packages/starlette/responses.py", line 396, in _handle_simple
+    await send({"type": "http.response.body", "body": chunk, "more_body": more_body})
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 39, in sender
+    await send(message)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 39, in sender
+    await send(message)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 161, in _send
+    await send(message)
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/protocols/http/httptools_impl.py", line 536, in send
+    raise RuntimeError("Response content longer than Content-Length")
+RuntimeError: Response content longer than Content-Length
+INFO:     204.76.203.215:26142 - "GET /../../../../../../proc/self/cmdline HTTP/1.1" 200 OK
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/protocols/http/httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/applications.py", line 1139, in __call__
+    await super().__call__(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 120, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 107, in app
+    await response(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/responses.py", line 365, in __call__
+    await self._handle_simple(send, send_header_only, send_pathsend)
+  File "/usr/local/lib/python3.11/site-packages/starlette/responses.py", line 396, in _handle_simple
+    await send({"type": "http.response.body", "body": chunk, "more_body": more_body})
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 39, in sender
+    await send(message)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 39, in sender
+    await send(message)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 161, in _send
+    await send(message)
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/protocols/http/httptools_impl.py", line 536, in send
+    raise RuntimeError("Response content longer than Content-Length")
+RuntimeError: Response content longer than Content-Length
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     204.76.203.215:26178 - "GET /../../../../../../proc/self/environ HTTP/1.1" 200 OK
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/protocols/http/httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/applications.py", line 1139, in __call__
+    await super().__call__(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 120, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 107, in app
+    await response(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/responses.py", line 365, in __call__
+    await self._handle_simple(send, send_header_only, send_pathsend)
+  File "/usr/local/lib/python3.11/site-packages/starlette/responses.py", line 396, in _handle_simple
+    await send({"type": "http.response.body", "body": chunk, "more_body": more_body})
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 39, in sender
+    await send(message)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 39, in sender
+    await send(message)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 161, in _send
+    await send(message)
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/protocols/http/httptools_impl.py", line 536, in send
+    raise RuntimeError("Response content longer than Content-Length")
+RuntimeError: Response content longer than Content-Length
+INFO:     204.76.203.215:26180 - "GET /../../../../../../proc/self/cwd HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     204.76.203.215:26216 - "GET /../../../../../../proc/self/cwd/app.py HTTP/1.1" 200 OK
+INFO:     204.76.203.215:26226 - "GET /../../../../../../proc/self/cwd/config.py HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     204.76.203.215:26266 - "GET /../../../../../../proc/self/cwd/.env HTTP/1.1" 200 OK
+INFO:     204.76.203.215:26272 - "GET /../../../../../../proc/self/cwd/.aws/credentials HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     204.76.203.215:26298 - "GET /../../../../../../proc/self/cwd/.bash_history HTTP/1.1" 200 OK
+INFO:     204.76.203.215:26312 - "GET /../../../../../../proc/self/cwd/.zsh_history HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     204.76.203.215:26346 - "GET /../../../../../../proc/self/cwd/.zshrc HTTP/1.1" 200 OK
+INFO:     204.76.203.215:26360 - "GET /../../../../../../proc/self/cwd/.bashrc HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     204.76.203.215:26386 - "GET /../../../../../../proc/self/cwd/.oh_my_zsh HTTP/1.1" 200 OK
+INFO:     204.76.203.215:26402 - "GET /../../../../../../proc/self/cwd/.viminfo HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     204.76.203.215:26422 - "GET /../../../../../../proc/self/cwd/.ssh/id_rsa HTTP/1.1" 200 OK
+INFO:     204.76.203.215:26444 - "GET /../../../../../../proc/self/cwd/.ssh/id_ed25519 HTTP/1.1" 200 OK
+INFO:     204.76.203.215:26456 - "GET /../../../../../../proc/self/cwd/.git-credentials HTTP/1.1" 200 OK
+INFO:     204.76.203.215:26466 - "GET /../../../../../../proc/self/cwd/.npmrc HTTP/1.1" 200 OK
+INFO:     204.76.203.215:26476 - "GET /../../../../../../proc/self/cwd/.docker/config.json HTTP/1.1" 200 OK
+INFO:     204.76.203.215:26492 - "GET /../../../../../../proc/self/cwd/.profile HTTP/1.1" 200 OK
+INFO:     204.76.203.215:26500 - "GET /../../../../../../proc/self/cwd/docker-compose.yml HTTP/1.1" 200 OK
+INFO:     204.76.203.215:26504 - "GET /../../../../../../etc/shells HTTP/1.1" 200 OK
+INFO:     204.76.203.215:26510 - "GET /../../../../../../etc/services HTTP/1.1" 200 OK
+INFO:     204.76.203.215:26522 - "GET /../../../../../../proc/self/maps HTTP/1.1" 200 OK
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/protocols/http/httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/applications.py", line 1139, in __call__
+    await super().__call__(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 120, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 107, in app
+    await response(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/responses.py", line 365, in __call__
+    await self._handle_simple(send, send_header_only, send_pathsend)
+  File "/usr/local/lib/python3.11/site-packages/starlette/responses.py", line 396, in _handle_simple
+    await send({"type": "http.response.body", "body": chunk, "more_body": more_body})
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 39, in sender
+    await send(message)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 39, in sender
+    await send(message)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 161, in _send
+    await send(message)
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/protocols/http/httptools_impl.py", line 536, in send
+    raise RuntimeError("Response content longer than Content-Length")
+RuntimeError: Response content longer than Content-Length
+INFO:     204.76.203.215:26524 - "GET /../../../../../../proc/self/cwd/.git/config HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     85.11.183.6:47826 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     87.236.176.125:41981 - "GET / HTTP/1.1" 200 OK
+INFO:     87.236.176.181:35981 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     198.235.24.218:62152 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     172.26.0.1:12754 - "GET / HTTP/1.1" 200 OK
+INFO:     172.26.0.1:42820 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     3.130.96.91:38780 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     172.26.0.1:62084 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     167.94.138.179:59066 - "GET /sitemap.xml HTTP/1.1" 200 OK
+INFO:     167.94.138.179:59078 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     167.94.138.179:13104 - "GET /favicon.ico HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     167.94.138.176:19844 - "GET /robots.txt HTTP/1.1" 200 OK
+INFO:     167.94.138.176:19854 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     66.132.153.120:6030 - "GET / HTTP/1.1" 200 OK
+INFO:     167.94.138.176:19858 - "GET /favicon.ico HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     167.94.138.178:47944 - "GET /.well-known/security.txt HTTP/1.1" 200 OK
+INFO:     167.94.138.178:48020 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     66.132.153.120:28520 - "GET /favicon.ico HTTP/1.1" 200 OK
+INFO:     167.94.138.178:59008 - "GET /favicon.ico HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     206.168.34.37:48022 - "GET /login HTTP/1.1" 200 OK
+INFO:     206.168.34.37:48036 - "GET /cat.svg HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     206.168.34.37:48044 - "GET /favicon.ico HTTP/1.1" 200 OK
+INFO:     206.168.34.117:64292 - "GET /security.txt HTTP/1.1" 200 OK
+INFO:     206.168.34.117:39220 - "GET /favicon.ico HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     162.142.125.201:56138 - "GET /wiki HTTP/1.1" 200 OK
+INFO:     162.142.125.201:15386 - "GET /favicon.ico HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     66.132.153.120:12042 - "GET /login HTTP/1.1" 200 OK
+INFO:     66.132.153.120:12078 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     66.132.153.120:12084 - "GET /favicon.ico HTTP/1.1" 200 OK
+INFO:     172.26.0.1:35376 - "GET / HTTP/1.1" 200 OK
+INFO:     121.43.118.4:34832 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     172.26.0.1:53392 - "GET / HTTP/1.1" 200 OK
+INFO:     95.214.55.246:51364 - "POST / HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:51370 - "POST /_next HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:51382 - "POST /api HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:51392 - "POST /_next/server HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:51402 - "POST /app HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:51404 - "POST /api/route HTTP/1.1" 405 Method Not Allowed
+INFO:     82.23.183.43:43194 - "POST /_next HTTP/1.1" 405 Method Not Allowed
+INFO:     82.23.183.43:43202 - "POST /api HTTP/1.1" 405 Method Not Allowed
+INFO:     82.23.183.43:50064 - "POST /_next/server HTTP/1.1" 405 Method Not Allowed
+INFO:     82.23.183.43:37108 - "POST /api/route HTTP/1.1" 405 Method Not Allowed
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     185.247.137.114:43385 - "GET / HTTP/1.1" 200 OK
+INFO:     87.236.176.151:46393 - "GET /cat.svg HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     20.65.194.111:37018 - "GET /v2/ HTTP/1.1" 200 OK
+INFO:     205.210.31.251:62400 - "GET / HTTP/1.1" 200 OK
+INFO:     172.26.0.1:15476 - "GET /robots.txt HTTP/1.1" 200 OK
+INFO:     172.26.0.1:15480 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     3.143.33.63:41040 - "GET / HTTP/1.1" 200 OK
+INFO:     3.143.33.63:53552 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     95.214.55.246:45722 - "POST / HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:45736 - "POST /_next HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:45742 - "POST /api HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:45752 - "POST /_next/server HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:45754 - "POST /app HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:45760 - "POST /api/route HTTP/1.1" 405 Method Not Allowed
+INFO:     172.26.0.1:56216 - "GET /.env HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     66.132.153.115:45604 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     66.132.153.115:45622 - "GET /cat.svg HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     66.132.153.115:45638 - "GET /favicon.ico HTTP/1.1" 200 OK
+INFO:     66.132.153.125:30104 - "GET /.well-known/security.txt HTTP/1.1" 200 OK
+INFO:     66.132.153.125:30116 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     66.132.153.125:30126 - "GET /favicon.ico HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     66.132.153.115:63010 - "GET /sitemap.xml HTTP/1.1" 200 OK
+INFO:     66.132.153.115:64656 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     66.132.153.115:64690 - "GET /favicon.ico HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     66.132.153.120:9172 - "GET /security.txt HTTP/1.1" 200 OK
+INFO:     66.132.153.120:13432 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     66.132.153.120:13444 - "GET /favicon.ico HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     206.168.34.123:46968 - "GET /login HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     206.168.34.54:13472 - "GET /sitemap.xml HTTP/1.1" 200 OK
+INFO:     206.168.34.59:16496 - "GET /wiki HTTP/1.1" 200 OK
+INFO:     206.168.34.54:13490 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     206.168.34.59:45512 - "GET /favicon.ico HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     162.142.125.35:12242 - "GET /login HTTP/1.1" 200 OK
+INFO:     162.142.125.35:63080 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     162.142.125.35:16280 - "GET /favicon.ico HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     167.94.138.32:10140 - "GET /robots.txt HTTP/1.1" 200 OK
+INFO:     167.94.138.32:10170 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     167.94.138.32:17906 - "GET /favicon.ico HTTP/1.1" 200 OK
+INFO:     185.242.226.33:36104 - "GET / HTTP/1.1" 200 OK
+INFO:     185.242.226.33:34066 - "GET /cat.svg HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     172.26.0.1:9254 - "GET / HTTP/1.1" 200 OK
+INFO:     172.26.0.1:9270 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     172.26.0.1:9280 - "GET /favicon.ico HTTP/1.1" 200 OK
+INFO:     198.235.24.246:64452 - "GET / HTTP/1.1" 200 OK
+INFO:     95.214.55.246:47176 - "POST / HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:41992 - "POST /_next HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:41994 - "POST /api HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:42010 - "POST /_next/server HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:42018 - "POST /app HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:42024 - "POST /api/route HTTP/1.1" 405 Method Not Allowed
+WARNING:  Invalid HTTP request received.
+INFO:     91.230.168.191:45043 - "GET / HTTP/1.1" 200 OK
+INFO:     91.230.168.65:36897 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     3.132.23.201:45246 - "GET / HTTP/1.1" 200 OK
+INFO:     3.132.23.201:37310 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     172.26.0.1:54192 - "GET /robots.txt HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     104.152.52.55:53551 - "GET / HTTP/1.1" 200 OK
+INFO:     104.152.52.55:50261 - "GET /cat.svg HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     66.132.153.116:53626 - "GET /wiki HTTP/1.1" 200 OK
+INFO:     66.132.153.116:53638 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     66.132.153.116:53652 - "GET /favicon.ico HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     66.132.153.116:53742 - "GET /.well-known/security.txt HTTP/1.1" 200 OK
+INFO:     66.132.153.116:53754 - "GET /favicon.ico HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     162.142.125.116:35906 - "GET /login HTTP/1.1" 200 OK
+INFO:     162.142.125.116:35914 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     162.142.125.116:35932 - "GET /favicon.ico HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     167.94.138.113:4536 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     167.94.138.113:30820 - "GET /cat.svg HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     167.94.138.113:63798 - "GET /robots.txt HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     162.142.125.127:7984 - "GET /security.txt HTTP/1.1" 200 OK
+INFO:     167.94.138.113:21442 - "GET /favicon.ico HTTP/1.1" 200 OK
+INFO:     162.142.125.127:8008 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     162.142.125.127:8012 - "GET /favicon.ico HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     167.94.138.188:46108 - "GET /sitemap.xml HTTP/1.1" 200 OK
+INFO:     167.94.138.188:46124 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     167.94.138.188:46134 - "GET /favicon.ico HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     167.94.138.118:15072 - "GET /robots.txt HTTP/1.1" 200 OK
+INFO:     167.94.138.118:15088 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     167.94.138.118:15092 - "GET /favicon.ico HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     104.152.52.203:43969 - "GET / HTTP/1.1" 200 OK
+INFO:     104.152.52.203:48381 - "GET /cat.svg HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     216.180.246.93:55322 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     216.180.246.93:39996 - "GET /favicon.ico HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     172.26.0.1:38896 - "GET / HTTP/1.1" 200 OK
+INFO:     147.185.132.237:58630 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     69.164.207.173:39694 - "GET / HTTP/1.0" 200 OK
+INFO:     69.164.207.173:39706 - "OPTIONS / HTTP/1.0" 405 Method Not Allowed
+INFO:     69.164.207.173:39720 - "OPTIONS / HTTP/1.0" 405 Method Not Allowed
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     69.164.207.173:39828 - "GET /nice%20ports%2C/Trinity.txt.bak HTTP/1.0" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     69.164.207.173:40020 - "GET /devicedesc.xml HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     172.26.0.1:47936 - "GET / HTTP/1.1" 200 OK
+INFO:     172.26.0.1:19706 - "GET / HTTP/1.1" 200 OK
+INFO:     172.26.0.1:51662 - "GET /robots.txt HTTP/1.1" 200 OK
+INFO:     95.214.55.246:48102 - "POST / HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:48116 - "POST /_next HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:48130 - "POST /api HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:48132 - "POST /_next/server HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:48148 - "POST /app HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:48156 - "POST /api/route HTTP/1.1" 405 Method Not Allowed
+INFO:     172.26.0.1:51232 - "GET / HTTP/1.1" 200 OK
+INFO:     172.26.0.1:51236 - "GET /assets/index-DW2WhjNt.js HTTP/1.1" 200 OK
+INFO:     172.26.0.1:51244 - "GET /assets/index-Do2UsQMk.css HTTP/1.1" 200 OK
+INFO:     172.26.0.1:51252 - "GET /api/manage/announcement HTTP/1.1" 200 OK
+INFO:     172.26.0.1:51266 - "GET /api/auth/discord/config HTTP/1.1" 200 OK
+INFO:     172.26.0.1:59852 - "GET / HTTP/1.1" 200 OK
+INFO:     172.26.0.1:59860 - "GET /api/auth/discord/config HTTP/1.1" 200 OK
+INFO:     172.26.0.1:59866 - "GET /api/manage/announcement HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     3.143.33.63:54998 - "GET / HTTP/1.1" 200 OK
+INFO:     3.143.33.63:38386 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     138.68.58.229:43340 - "GET / HTTP/1.0" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     216.180.246.186:33496 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     216.180.246.186:26588 - "GET /favicon.ico HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     66.132.153.116:14100 - "GET /sitemap.xml HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     167.94.138.184:8934 - "GET /login HTTP/1.1" 200 OK
+INFO:     167.94.138.184:17414 - "GET /cat.svg HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     66.132.153.116:31972 - "GET /favicon.ico HTTP/1.1" 200 OK
+INFO:     167.94.138.184:17452 - "GET /favicon.ico HTTP/1.1" 200 OK
+INFO:     206.168.34.198:8130 - "GET /.well-known/security.txt HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     206.168.34.50:44616 - "GET /wiki HTTP/1.1" 200 OK
+INFO:     206.168.34.50:53010 - "GET /favicon.ico HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     206.168.34.36:2016 - "GET /robots.txt HTTP/1.1" 200 OK
+INFO:     167.94.138.35:22070 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     206.168.34.36:50980 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     206.168.34.36:50992 - "GET /favicon.ico HTTP/1.1" 200 OK
+INFO:     167.94.138.35:16188 - "GET /favicon.ico HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     162.142.125.126:63722 - "GET /security.txt HTTP/1.1" 200 OK
+INFO:     162.142.125.126:63746 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     162.142.125.126:63758 - "GET /favicon.ico HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     167.94.138.35:51090 - "GET /sitemap.xml HTTP/1.1" 200 OK
+INFO:     167.94.138.35:51096 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     95.214.55.246:43910 - "POST / HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:43920 - "POST /_next HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:43932 - "POST /api HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:43942 - "POST /_next/server HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:43958 - "POST /app HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:43972 - "POST /api/route HTTP/1.1" 405 Method Not Allowed
+WARNING:  Invalid HTTP request received.
+INFO:     87.236.176.179:33039 - "GET / HTTP/1.1" 200 OK
+INFO:     87.236.176.39:42097 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     130.12.180.207:35614 - "POST / HTTP/1.1" 405 Method Not Allowed
+INFO:     130.12.180.207:31690 - "POST / HTTP/1.1" 405 Method Not Allowed
+INFO:     130.12.180.207:56934 - "POST / HTTP/1.1" 405 Method Not Allowed
+INFO:     147.185.132.174:60414 - "GET / HTTP/1.1" 200 OK
+INFO:     130.12.180.207:39220 - "POST / HTTP/1.1" 405 Method Not Allowed
+INFO:     172.26.0.1:20028 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     172.26.0.1:52986 - "GET /robots.txt HTTP/1.1" 200 OK
+INFO:     172.26.0.1:53000 - "GET / HTTP/1.1" 200 OK
+INFO:     205.210.31.162:59506 - "GET /.well-known/security.txt HTTP/1.1" 200 OK
+INFO:     172.202.118.43:59716 - "GET /v2/ HTTP/1.1" 200 OK
+INFO:     172.26.0.1:2220 - "POST /api/auth/login HTTP/1.1" 401 Unauthorized
+INFO:     104.28.165.53:26734 - "POST /api/auth/login HTTP/1.1" 401 Unauthorized
+INFO:     104.28.160.181:56378 - "POST /api/auth/login HTTP/1.1" 401 Unauthorized
+WARNING:  Invalid HTTP request received.
+INFO:     216.180.246.237:42990 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     216.180.246.237:44054 - "GET /favicon.ico HTTP/1.1" 200 OK
+INFO:     130.110.245.213:45242 - "POST /api/auth/login HTTP/1.1" 401 Unauthorized
+WARNING:  Invalid HTTP request received.
+INFO:     3.149.59.26:50928 - "GET / HTTP/1.1" 200 OK
+INFO:     3.149.59.26:60940 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     95.214.55.246:34318 - "POST / HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:34330 - "POST /_next HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:34336 - "POST /api HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:34346 - "POST /_next/server HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:34404 - "POST /app HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:34416 - "POST /api/route HTTP/1.1" 405 Method Not Allowed
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     194.164.107.5:50228 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     121.41.164.184:39108 - "GET / HTTP/1.0" 200 OK
+INFO:     194.164.107.5:41880 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     121.41.164.184:39478 - "POST /sdk HTTP/1.1" 405 Method Not Allowed
+INFO:     121.41.164.184:39468 - "GET / HTTP/1.0" 200 OK
+INFO:     121.41.164.184:39470 - "GET /nmaplowercheck1767551927 HTTP/1.1" 200 OK
+INFO:     121.41.164.184:39508 - "GET /NmapUpperCheck1767551927 HTTP/1.1" 200 OK
+INFO:     121.41.164.184:39550 - "GET /Nmap/folder/check1767551927 HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     121.41.164.184:41244 - "GET / HTTP/1.0" 200 OK
+INFO:     121.41.164.184:41270 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     66.132.153.136:7250 - "GET /security.txt HTTP/1.1" 200 OK
+INFO:     66.132.153.136:18976 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     66.132.153.136:18980 - "GET /favicon.ico HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     167.94.138.42:60324 - "GET /.well-known/security.txt HTTP/1.1" 200 OK
+INFO:     167.94.138.42:64046 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     167.94.138.42:51560 - "GET /favicon.ico HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     66.132.153.118:5506 - "GET /wiki HTTP/1.1" 200 OK
+INFO:     66.132.153.118:5516 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     66.132.153.118:5522 - "GET /favicon.ico HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     167.94.138.197:39676 - "GET /sitemap.xml HTTP/1.1" 200 OK
+INFO:     167.94.138.197:39684 - "GET /cat.svg HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     66.132.153.115:16974 - "GET /robots.txt HTTP/1.1" 200 OK
+INFO:     66.132.153.115:16992 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     66.132.153.115:6776 - "GET /favicon.ico HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     162.142.125.44:18300 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     167.94.138.45:5214 - "GET /login HTTP/1.1" 200 OK
+INFO:     167.94.138.45:39076 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     167.94.138.45:39104 - "GET /favicon.ico HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     162.142.125.44:24038 - "GET /robots.txt HTTP/1.1" 200 OK
+INFO:     162.142.125.44:16268 - "GET /favicon.ico HTTP/1.1" 200 OK
+INFO:     172.26.0.1:26528 - "GET /robots.txt HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     71.6.135.131:56544 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     91.196.152.46:55295 - "GET / HTTP/1.1" 200 OK
+INFO:     91.196.152.79:55217 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     123.58.209.39:48308 - "GET / HTTP/1.1" 200 OK
+INFO:     123.58.209.39:49348 - "GET / HTTP/1.1" 200 OK
+INFO:     123.58.209.39:49510 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     123.58.209.39:49604 - "GET /assets/index-DW2WhjNt.js HTTP/1.1" 200 OK
+INFO:     147.185.132.240:59610 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     95.214.55.246:48714 - "POST / HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:48720 - "POST /_next HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:48734 - "POST /api HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:48750 - "POST /_next/server HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:48760 - "POST /app HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:48762 - "POST /api/route HTTP/1.1" 405 Method Not Allowed
+INFO:     172.26.0.1:33264 - "GET /v1/models HTTP/1.1" 401 Unauthorized
+INFO:     172.26.0.1:33274 - "GET /v1/models HTTP/1.1" 401 Unauthorized
+INFO:     172.26.0.1:33290 - "GET /v1/models HTTP/1.1" 200 OK
+INFO:     172.26.0.1:26668 - "GET /v1/models HTTP/1.1" 200 OK
+[Token刷新] 使用凭证自己的 client_id: 681255809395-oo8ft2o...
+[Token刷新] 开始刷新 token, refresh_token 前20字符: 1//067vtzmCloc2pCgYI...
+[Token刷新] 响应状态: 200
+[Token刷新] 刷新成功!
+[Proxy] 使用凭证: key6.json, project_id: gen-lang-client-0357090659, model: gemini-3-pro-preview (尝试 1/4)
+INFO:     172.26.0.1:26680 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+[GeminiClient] 流式请求: model=gemini-3-pro-preview, project=gen-lang-client-0357090659
+[Token刷新] 使用凭证自己的 client_id: 681255809395-oo8ft2o...
+[Token刷新] 开始刷新 token, refresh_token 前20字符: 1//06T9ra0vo-Tj3CgYI...
+[Token刷新] 响应状态: 200
+[Token刷新] 刷新成功!
+[Proxy] 使用凭证: key3.json, project_id: gen-lang-client-0034995100, model: gemini-3-pro-preview (尝试 1/4)
+INFO:     172.26.0.1:27652 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+[GeminiClient] 流式请求: model=gemini-3-pro-preview, project=gen-lang-client-0034995100
+INFO:     172.26.0.1:2252 - "GET /v1/models HTTP/1.1" 200 OK
+[Token刷新] 使用凭证自己的 client_id: 681255809395-oo8ft2o...
+[Token刷新] 开始刷新 token, refresh_token 前20字符: 1//06riTw7d7ZDMGCgYI...
+[Token刷新] 响应状态: 200
+[Token刷新] 刷新成功!
+[Proxy] 使用凭证: key8.json, project_id: dzmm-479611, model: gemini-3-pro-preview (尝试 1/4)
+INFO:     172.26.0.1:35230 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+[GeminiClient] 流式请求: model=gemini-3-pro-preview, project=dzmm-479611
+[Token刷新] 使用凭证自己的 client_id: 681255809395-oo8ft2o...
+[Token刷新] 开始刷新 token, refresh_token 前20字符: 1//0eY3e_JNoefkvCgYI...
+[Token刷新] 响应状态: 200
+[Token刷新] 刷新成功!
+[Proxy] 使用凭证: key10.json, project_id: gen-lang-client-0189185794, model: gemini-3-pro-preview (尝试 1/4)
+INFO:     172.26.0.1:42906 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+[GeminiClient] 流式请求: model=gemini-3-pro-preview, project=gen-lang-client-0189185794
+[Token刷新] 使用凭证自己的 client_id: 681255809395-oo8ft2o...
+[Token刷新] 开始刷新 token, refresh_token 前20字符: 1//0emLbayFbWvouCgYI...
+[Token刷新] 响应状态: 200
+[Token刷新] 刷新成功!
+[Proxy] 使用凭证: key11.json, project_id: gen-lang-client-0981747763, model: gemini-3-pro-preview (尝试 1/4)
+INFO:     172.26.0.1:13234 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+[GeminiClient] 流式请求: model=gemini-3-pro-preview, project=gen-lang-client-0981747763
+INFO:     3.130.96.91:52224 - "GET / HTTP/1.1" 200 OK
+INFO:     3.130.96.91:42382 - "GET / HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     172.26.0.1:62538 - "GET / HTTP/1.1" 200 OK
+INFO:     172.26.0.1:62546 - "GET //wp-includes/wlwmanifest.xml HTTP/1.1" 200 OK
+INFO:     172.26.0.1:62562 - "GET //xmlrpc.php?rsd HTTP/1.1" 200 OK
+INFO:     172.26.0.1:62572 - "GET / HTTP/1.1" 200 OK
+INFO:     172.26.0.1:62578 - "GET //blog/wp-includes/wlwmanifest.xml HTTP/1.1" 200 OK
+INFO:     172.26.0.1:62590 - "GET //web/wp-includes/wlwmanifest.xml HTTP/1.1" 200 OK
+INFO:     172.26.0.1:62600 - "GET //wordpress/wp-includes/wlwmanifest.xml HTTP/1.1" 200 OK
+INFO:     172.26.0.1:62602 - "GET //website/wp-includes/wlwmanifest.xml HTTP/1.1" 200 OK
+INFO:     172.26.0.1:62608 - "GET //wp/wp-includes/wlwmanifest.xml HTTP/1.1" 200 OK
+INFO:     172.26.0.1:62610 - "GET //news/wp-includes/wlwmanifest.xml HTTP/1.1" 200 OK
+INFO:     172.26.0.1:62614 - "GET //2018/wp-includes/wlwmanifest.xml HTTP/1.1" 200 OK
+INFO:     172.26.0.1:62616 - "GET //2019/wp-includes/wlwmanifest.xml HTTP/1.1" 200 OK
+INFO:     172.26.0.1:62618 - "GET //shop/wp-includes/wlwmanifest.xml HTTP/1.1" 200 OK
+INFO:     172.26.0.1:62634 - "GET //wp1/wp-includes/wlwmanifest.xml HTTP/1.1" 200 OK
+INFO:     172.26.0.1:62642 - "GET //test/wp-includes/wlwmanifest.xml HTTP/1.1" 200 OK
+INFO:     172.26.0.1:62646 - "GET //media/wp-includes/wlwmanifest.xml HTTP/1.1" 200 OK
+INFO:     172.26.0.1:62648 - "GET //wp2/wp-includes/wlwmanifest.xml HTTP/1.1" 200 OK
+INFO:     172.26.0.1:62656 - "GET //site/wp-includes/wlwmanifest.xml HTTP/1.1" 200 OK
+INFO:     172.26.0.1:62668 - "GET //cms/wp-includes/wlwmanifest.xml HTTP/1.1" 200 OK
+INFO:     172.26.0.1:62674 - "GET //sito/wp-includes/wlwmanifest.xml HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     66.132.153.123:20974 - "GET /login HTTP/1.1" 200 OK
+INFO:     66.132.153.123:25564 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     66.132.153.123:25588 - "GET /favicon.ico HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     66.132.153.115:7952 - "GET / HTTP/1.1" 200 OK
+INFO:     66.132.153.117:51094 - "GET /.well-known/security.txt HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     66.132.153.115:7970 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     66.132.153.117:51100 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     66.132.153.117:51108 - "GET /favicon.ico HTTP/1.1" 200 OK
+INFO:     66.132.153.115:8004 - "GET /favicon.ico HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     66.132.153.115:43672 - "GET /.well-known/security.txt HTTP/1.1" 200 OK
+INFO:     66.132.153.115:43688 - "GET /favicon.ico HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     162.142.125.223:38370 - "GET /security.txt HTTP/1.1" 200 OK
+INFO:     162.142.125.223:38372 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     162.142.125.223:38384 - "GET /favicon.ico HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     206.168.34.207:13620 - "GET /robots.txt HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     206.168.34.116:14318 - "GET /sitemap.xml HTTP/1.1" 200 OK
+INFO:     206.168.34.116:58128 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     206.168.34.207:63714 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     206.168.34.116:58144 - "GET /favicon.ico HTTP/1.1" 200 OK
+INFO:     206.168.34.207:63730 - "GET /favicon.ico HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     167.94.138.169:48042 - "GET /wiki HTTP/1.1" 200 OK
+INFO:     167.94.138.169:48044 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     198.235.24.79:58998 - "GET / HTTP/1.1" 200 OK
+INFO:     172.26.0.1:18344 - "GET /robots.txt HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     91.231.89.80:32769 - "GET / HTTP/1.1" 200 OK
+INFO:     91.196.152.126:46635 - "GET /cat.svg HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     95.214.55.246:59612 - "POST / HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:59624 - "POST /_next HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:59632 - "POST /api HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:59634 - "POST /_next/server HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:59640 - "POST /app HTTP/1.1" 405 Method Not Allowed
+INFO:     95.214.55.246:59646 - "POST /api/route HTTP/1.1" 405 Method Not Allowed
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     Started server process [7]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:5001 (Press CTRL+C to quit)
+[Config] 从数据库加载: allow_registration = True
+[Config] 从数据库加载: discord_only_registration = False
+[Config] 从数据库加载: discord_oauth_only = True
+[Config] 从数据库加载: default_daily_quota = -2
+[Config] 从数据库加载: no_credential_quota = 0
+[Config] 从数据库加载: no_cred_quota_flash = 100
+[Config] 从数据库加载: no_cred_quota_25pro = 50
+[Config] 从数据库加载: no_cred_quota_30pro = 0
+[Config] 从数据库加载: cred25_quota_30pro = 9999
+[Config] 从数据库加载: credential_reward_quota = 1000
+[Config] 从数据库加载: quota_flash = 1000
+[Config] 从数据库加载: quota_25pro = 250
+[Config] 从数据库加载: quota_30pro = 200
+[Config] 从数据库加载: base_rpm = 10
+[Config] 从数据库加载: contributor_rpm = 10
+[Config] 从数据库加载: credential_pool_mode = full_shared
+[Config] 从数据库加载: error_retry_count = 3
+[Config] 从数据库加载: force_donate = True
+[Config] 从数据库加载: lock_donate = True
+[Config] 从数据库加载: announcement_enabled = False
+[Config] 从数据库加载: announcement_read_seconds = 5
+✅ 已加载持久化配置
+✅ 已同步管理员账号: iulove
+INFO:     172.26.0.1:24700 - "GET / HTTP/1.1" 200 OK
+INFO:     172.26.0.1:24716 - "GET /assets/index-DW2WhjNt.js HTTP/1.1" 200 OK
+INFO:     172.26.0.1:24722 - "GET /assets/index-Do2UsQMk.css HTTP/1.1" 200 OK
+INFO:     172.26.0.1:24724 - "GET /api/manage/announcement HTTP/1.1" 200 OK
+INFO:     172.26.0.1:24726 - "GET /api/auth/me HTTP/1.1" 401 Unauthorized
+INFO:     172.26.0.1:24738 - "GET /login HTTP/1.1" 200 OK
+INFO:     172.26.0.1:24746 - "GET /api/auth/discord/config HTTP/1.1" 200 OK
+INFO:     172.26.0.1:7540 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     172.26.0.1:7548 - "GET /api/manage/announcement HTTP/1.1" 200 OK
+INFO:     172.26.0.1:7550 - "GET /api/auth/discord/config HTTP/1.1" 200 OK
+INFO:     172.26.0.1:7560 - "GET /api/auth/discord/config HTTP/1.1" 200 OK
+INFO:     172.26.0.1:7574 - "GET /?z=688309405784627080 HTTP/1.1" 200 OK
+INFO:     172.26.0.1:22170 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     172.26.0.1:22212 - "GET /api/manage/public-config HTTP/1.1" 200 OK
+INFO:     172.26.0.1:22186 - "GET /api/auth/api-keys HTTP/1.1" 200 OK
+INFO:     172.26.0.1:22202 - "GET /api/public/stats HTTP/1.1" 200 OK
+INFO:     172.26.0.1:22184 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     172.26.0.1:22228 - "WebSocket /ws?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJpdWxvdmUiLCJleHAiOjE3Njg1NzUxMDZ9.J3OO9WOeuEIsZN9ojwyi6QinnfvDQ5lJPzT54c2smLM" [accepted]
+INFO:     connection open
+INFO:     172.26.0.1:60810 - "GET /v1 HTTP/1.1" 200 OK
+INFO:     172.26.0.1:29832 - "GET /v1 HTTP/1.1" 200 OK
+INFO:     172.26.0.1:29846 - "GET /assets/index-DW2WhjNt.js HTTP/1.1" 200 OK
+INFO:     172.26.0.1:29858 - "GET /assets/index-Do2UsQMk.css HTTP/1.1" 200 OK
+INFO:     172.26.0.1:29866 - "GET /api/manage/announcement HTTP/1.1" 200 OK
+INFO:     172.26.0.1:29870 - "GET /cat.svg HTTP/1.1" 200 OK
+INFO:     172.26.0.1:25538 - "GET /v1/models HTTP/1.1" 200 OK
+INFO:     172.26.0.1:25540 - "GET /v1/models HTTP/1.1" 200 OK
+INFO:     172.26.0.1:51028 - "GET /v1/models HTTP/1.1" 200 OK
+INFO:     172.26.0.1:57332 - "GET /?z=3944517012382319390 HTTP/1.1" 200 OK
+INFO:     172.26.0.1:44616 - "GET /api/auth/credentials HTTP/1.1" 200 OK
+INFO:     172.26.0.1:44618 - "GET /api/manage/config HTTP/1.1" 200 OK
+INFO:     connection closed
+INFO:     172.26.0.1:44630 - "GET /?z=9125638664430627036 HTTP/1.1" 200 OK
+INFO:     172.26.0.1:34016 - "GET /api/manage/public-config HTTP/1.1" 200 OK
+INFO:     172.26.0.1:34038 - "GET /api/auth/api-keys HTTP/1.1" 200 OK
+INFO:     172.26.0.1:34032 - "GET /api/public/stats HTTP/1.1" 200 OK
+INFO:     172.26.0.1:34018 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     172.26.0.1:34042 - "WebSocket /ws?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJpdWxvdmUiLCJleHAiOjE3Njg1NzUxMDZ9.J3OO9WOeuEIsZN9ojwyi6QinnfvDQ5lJPzT54c2smLM" [accepted]
+INFO:     connection open
+INFO:     172.26.0.1:34048 - "WebSocket /ws?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJpdWxvdmUiLCJleHAiOjE3Njg1NzUxMDZ9.J3OO9WOeuEIsZN9ojwyi6QinnfvDQ5lJPzT54c2smLM" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     172.26.0.1:34062 - "GET /api/manage/config HTTP/1.1" 200 OK
+INFO:     172.26.0.1:34070 - "GET /?z=2696857919699551546 HTTP/1.1" 200 OK
+INFO:     172.26.0.1:34082 - "GET /api/manage/public-config HTTP/1.1" 200 OK
+INFO:     172.26.0.1:34094 - "GET /api/auth/api-keys HTTP/1.1" 200 OK
+INFO:     172.26.0.1:34086 - "GET /api/public/stats HTTP/1.1" 200 OK
+INFO:     172.26.0.1:34076 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     172.26.0.1:34108 - "WebSocket /ws?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJpdWxvdmUiLCJleHAiOjE3Njg1NzUxMDZ9.J3OO9WOeuEIsZN9ojwyi6QinnfvDQ5lJPzT54c2smLM" [accepted]
+INFO:     connection open
+INFO:     172.26.0.1:34118 - "GET /api/auth/credentials HTTP/1.1" 200 OK
+INFO:     172.26.0.1:34134 - "WebSocket /ws?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJpdWxvdmUiLCJleHAiOjE3Njg1NzUxMDZ9.J3OO9WOeuEIsZN9ojwyi6QinnfvDQ5lJPzT54c2smLM" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     172.26.0.1:31964 - "GET /api/manage/stats/by-model?days=7 HTTP/1.1" 200 OK
+INFO:     172.26.0.1:31978 - "GET /api/manage/stats/daily?days=7 HTTP/1.1" 200 OK
+INFO:     172.26.0.1:31980 - "GET /api/manage/stats/by-user?days=7 HTTP/1.1" 200 OK
+INFO:     172.26.0.1:31950 - "GET /api/manage/stats/overview HTTP/1.1" 200 OK
+INFO:     172.26.0.1:31974 - "GET /api/manage/stats/global HTTP/1.1" 200 OK
+INFO:     172.26.0.1:31988 - "WebSocket /ws?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJpdWxvdmUiLCJleHAiOjE3Njg1NzUxMDZ9.J3OO9WOeuEIsZN9ojwyi6QinnfvDQ5lJPzT54c2smLM" [accepted]
+INFO:     connection open
+INFO:     172.26.0.1:31646 - "GET /api/manage/public-config HTTP/1.1" 200 OK
+INFO:     172.26.0.1:31672 - "GET /api/auth/api-keys HTTP/1.1" 200 OK
+INFO:     172.26.0.1:31662 - "GET /api/public/stats HTTP/1.1" 200 OK
+INFO:     172.26.0.1:31664 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     172.26.0.1:31688 - "WebSocket /ws?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJpdWxvdmUiLCJleHAiOjE3Njg1NzUxMDZ9.J3OO9WOeuEIsZN9ojwyi6QinnfvDQ5lJPzT54c2smLM" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     172.26.0.1:31696 - "GET /api/manage/config HTTP/1.1" 200 OK
+INFO:     172.26.0.1:31704 - "GET /?z=2559052289241046289 HTTP/1.1" 200 OK
+INFO:     172.26.0.1:9226 - "WebSocket /ws?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJpdWxvdmUiLCJleHAiOjE3Njg1NzUxMDZ9.J3OO9WOeuEIsZN9ojwyi6QinnfvDQ5lJPzT54c2smLM" [accepted]
+INFO:     connection open
+INFO:     172.26.0.1:47712 - "WebSocket /ws?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJpdWxvdmUiLCJleHAiOjE3Njg1NzUxMDZ9.J3OO9WOeuEIsZN9ojwyi6QinnfvDQ5lJPzT54c2smLM" [accepted]
+INFO:     connection open
+INFO:     172.26.0.1:47728 - "GET /api/manage/public-config HTTP/1.1" 200 OK
+INFO:     172.26.0.1:47724 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     172.26.0.1:47734 - "GET /api/public/stats HTTP/1.1" 200 OK
+INFO:     172.26.0.1:47740 - "GET /api/auth/api-keys HTTP/1.1" 200 OK
+INFO:     172.26.0.1:47750 - "GET /?z=3961793944667642980 HTTP/1.1" 200 OK
+INFO:     172.26.0.1:47760 - "GET /api/auth/credentials HTTP/1.1" 200 OK
+INFO:     172.26.0.1:47768 - "GET /?z=1331067800105283553 HTTP/1.1" 200 OK
+INFO:     172.26.0.1:47784 - "GET /?z=6502048980806434141 HTTP/1.1" 200 OK
+INFO:     connection closed
+INFO:     172.26.0.1:47786 - "GET /api/manage/config HTTP/1.1" 200 OK
+INFO:     172.26.0.1:22250 - "GET /?z=8043336605845510957 HTTP/1.1" 200 OK
+INFO:     172.26.0.1:22270 - "GET /api/manage/public-config HTTP/1.1" 200 OK
+INFO:     172.26.0.1:22286 - "GET /api/auth/api-keys HTTP/1.1" 200 OK
+INFO:     172.26.0.1:22280 - "GET /api/public/stats HTTP/1.1" 200 OK
+INFO:     172.26.0.1:22254 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     172.26.0.1:22292 - "WebSocket /ws?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJpdWxvdmUiLCJleHAiOjE3Njg1NzUxMDZ9.J3OO9WOeuEIsZN9ojwyi6QinnfvDQ5lJPzT54c2smLM" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     172.26.0.1:22308 - "GET /api/admin/users HTTP/1.1" 200 OK
+INFO:     172.26.0.1:22322 - "GET /?z=3688764932303153306 HTTP/1.1" 200 OK
+INFO:     172.26.0.1:22336 - "WebSocket /ws?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJpdWxvdmUiLCJleHAiOjE3Njg1NzUxMDZ9.J3OO9WOeuEIsZN9ojwyi6QinnfvDQ5lJPzT54c2smLM" [accepted]
+INFO:     connection open
+INFO:     172.26.0.1:22338 - "GET /api/admin/credentials HTTP/1.1" 200 OK
+INFO:     172.26.0.1:22348 - "WebSocket /ws?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJpdWxvdmUiLCJleHAiOjE3Njg1NzUxMDZ9.J3OO9WOeuEIsZN9ojwyi6QinnfvDQ5lJPzT54c2smLM" [accepted]
+INFO:     connection open
+INFO:     172.26.0.1:22362 - "WebSocket /ws?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJpdWxvdmUiLCJleHAiOjE3Njg1NzUxMDZ9.J3OO9WOeuEIsZN9ojwyi6QinnfvDQ5lJPzT54c2smLM" [accepted]
+INFO:     connection open
+INFO:     172.26.0.1:57538 - "GET /?z=7910051615382227087 HTTP/1.1" 200 OK
+INFO:     172.26.0.1:54386 - "GET /api/admin/users HTTP/1.1" 200 OK
+INFO:     172.26.0.1:54390 - "GET /api/admin/credentials HTTP/1.1" 200 OK

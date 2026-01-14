@@ -5,6 +5,7 @@ import Announcement from './components/Announcement'
 import Admin from './pages/Admin'
 import Credentials from './pages/Credentials'
 import Dashboard from './pages/Dashboard'
+import ErrorMessages from './pages/ErrorMessages'
 import Login from './pages/Login'
 import OAuth from './pages/OAuth'
 import Register from './pages/Register'
@@ -90,6 +91,9 @@ function App() {
           } />
           <Route path="/settings" element={
             <ProtectedRoute adminOnly><Settings /></ProtectedRoute>
+          } />
+          <Route path="/error-messages" element={
+            <ProtectedRoute adminOnly><ErrorMessages /></ProtectedRoute>
           } />
           <Route path="/" element={<Navigate to="/dashboard" />} />
         </Routes>

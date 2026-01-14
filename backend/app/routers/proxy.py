@@ -13,6 +13,7 @@ from app.services.credential_pool import CredentialPool
 from app.services.gemini_client import GeminiClient
 from app.services.websocket import notify_log_update, notify_stats_update
 from app.services.error_classifier import classify_error_simple
+from app.services.error_message_service import get_custom_error_message
 from app.config import settings
 import re
 
@@ -339,16 +340,27 @@ async def chat_completions(
     )
     if not credential:
         required_tier = CredentialPool.get_required_tier(model)
+        # 更新占位日志为错误状态
+        placeholder_log.status_code = 503
+        placeholder_log.latency_ms = (time.time() - start_time) * 1000
+        placeholder_log.error_type = "NO_CREDENTIAL"
+        placeholder_log.error_code = "NO_CREDENTIAL"
         if required_tier == "3":
+            placeholder_log.error_message = "没有可用的 Gemini 3 等级凭证"
+            await db.commit()
             raise HTTPException(
                 status_code=503, 
                 detail="没有可用的 Gemini 3 等级凭证。该模型需要有 Gemini 3 资格的凭证。"
             )
         if not user_has_public:
+            placeholder_log.error_message = "用户没有可用凭证"
+            await db.commit()
             raise HTTPException(
                 status_code=503, 
                 detail="您没有可用凭证。请在凭证管理页面上传凭证，或捐赠凭证以使用公共池。"
             )
+        placeholder_log.error_message = "暂无可用凭证"
+        await db.commit()
         raise HTTPException(status_code=503, detail="暂无可用凭证，请稍后重试")
     
     tried_credential_ids.add(credential.id)
@@ -357,6 +369,15 @@ async def chat_completions(
     access_token = await CredentialPool.get_access_token(credential, db)
     if not access_token:
         await CredentialPool.mark_credential_error(db, credential.id, "Token 刷新失败")
+        # 更新占位日志为错误状态
+        placeholder_log.status_code = 503
+        placeholder_log.latency_ms = (time.time() - start_time) * 1000
+        placeholder_log.error_type = "TOKEN_ERROR"
+        placeholder_log.error_code = "TOKEN_REFRESH_FAILED"
+        placeholder_log.error_message = "Token 刷新失败"
+        placeholder_log.credential_id = credential.id
+        placeholder_log.credential_email = credential.email
+        await db.commit()
         raise HTTPException(status_code=503, detail="Token 刷新失败")
     
     # 获取 project_id

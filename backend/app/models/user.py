@@ -123,3 +123,28 @@ class SystemConfig(Base):
     key = Column(String(100), unique=True, index=True, nullable=False)
     value = Column(Text, nullable=True)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+
+
+class ErrorMessageConfig(Base):
+    """自定义错误消息配置
+    
+    用于配置返回给客户端的友好错误消息。
+    可以按错误类型或关键词匹配，关键词匹配优先级更高。
+    
+    全局开关通过 SystemConfig 中的 'custom_error_messages_enabled' 配置项控制。
+    """
+    __tablename__ = "error_message_configs"
+    
+    id = Column(Integer, primary_key=True, index=True)
+    # 匹配条件
+    error_type = Column(String(50), nullable=True, index=True)  # 错误类型：NETWORK_ERROR, RATE_LIMIT 等
+    keyword = Column(String(200), nullable=True)                # 可选：匹配原始错误文本中的关键词
+    # 自定义消息
+    custom_message = Column(Text, nullable=False)               # 返回给客户端的自定义消息
+    # 状态与优先级
+    is_active = Column(Boolean, default=True)
+    priority = Column(Integer, default=0)                       # 优先级（数值越大越优先）
+    # 时间戳
+    created_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+

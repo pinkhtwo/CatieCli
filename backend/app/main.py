@@ -9,7 +9,7 @@ from app.database import init_db, async_session
 from app.models.user import User
 from app.services.auth import get_password_hash
 from app.config import settings, load_config_from_db
-from app.routers import auth, proxy, admin, oauth, ws, manage
+from app.routers import auth, proxy, admin, oauth, ws, manage, error_config
 from app.routers.test import router as test_router
 from app.middleware.url_normalize import URLNormalizeMiddleware
 from sqlalchemy import select
@@ -124,6 +124,7 @@ app.include_router(admin.router)
 app.include_router(oauth.router)
 app.include_router(ws.router)
 app.include_router(manage.router)
+app.include_router(error_config.router)  # 自定义错误消息配置
 app.include_router(test_router)  # 测试接口（用于模拟报错场景）
 
 

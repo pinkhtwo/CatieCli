@@ -1316,6 +1316,20 @@ export default function Admin() {
                     在「用户管理」页面点击用户的配额数值即可单独修改
                   </p>
                 </div>
+
+                {/* 自定义错误消息 */}
+                <div className="card">
+                  <h3 className="font-semibold mb-4">💬 自定义错误消息</h3>
+                  <p className="text-gray-400 text-sm mb-4">
+                    配置 API 错误时返回给前端的友好提示消息，支持按错误类型或关键词匹配
+                  </p>
+                  <Link 
+                    to="/error-messages"
+                    className="btn bg-purple-600 hover:bg-purple-500 text-white inline-flex items-center gap-2"
+                  >
+                    前往配置
+                  </Link>
+                </div>
               </div>
             )}
           </>
