@@ -77,6 +77,7 @@ class UsageLog(Base):
     error_type = Column(String(50), nullable=True, index=True)  # 错误类型：AUTH_ERROR, RATE_LIMIT, QUOTA_EXHAUSTED 等
     error_code = Column(String(100), nullable=True)  # 错误码：PERMISSION_DENIED, RESOURCE_EXHAUSTED 等
     credential_email = Column(String(100), nullable=True)  # 使用的凭证邮箱（方便排查）
+    retry_count = Column(Integer, default=0)  # 重试次数：0表示首次成功，>0表示经过重试
     
     # 关系
     user = relationship("User", back_populates="usage_logs")

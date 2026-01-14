@@ -418,6 +418,7 @@ async def chat_completions(
                 placeholder_log.error_type = error_type
                 placeholder_log.error_code = error_code
                 placeholder_log.credential_email = credential.email
+                placeholder_log.retry_count = retry_attempt  # 记录重试次数
                 await db.commit()
                 
                 # 更新凭证使用次数
@@ -480,6 +481,7 @@ async def chat_completions(
                 placeholder_log.error_code = error_code
                 placeholder_log.credential_email = credential.email
                 placeholder_log.request_body = request_body_str
+                placeholder_log.retry_count = retry_attempt  # 记录重试次数
                 await db.commit()
                 
                 raise HTTPException(status_code=status_code, detail=f"API调用失败 (已重试 {retry_attempt + 1} 次): {error_str}")
@@ -520,6 +522,7 @@ async def chat_completions(
                     log.error_code = error_code
                     log.credential_email = log_data.get("cred_email")
                     log.request_body = request_body_str if status_code != 200 else None
+                    log.retry_count = log_data.get("retry_count", 0)  # 记录重试次数
                 
                 # 更新凭证使用次数
                 cred_id = log_data.get("cred_id")
@@ -578,7 +581,8 @@ async def chat_completions(
                     "status_code": 200,
                     "cred_id": current_cred_id,
                     "cred_email": current_cred_email,
-                    "latency_ms": latency
+                    "latency_ms": latency,
+                    "retry_count": stream_retry  # 记录重试次数
                 })
                 yield "data: [DONE]\n\n"
                 return  # 成功，退出
@@ -629,7 +633,8 @@ async def chat_completions(
                     "cred_id": current_cred_id,
                     "cred_email": current_cred_email,
                     "error_message": error_str,
-                    "latency_ms": latency
+                    "latency_ms": latency,
+                    "retry_count": stream_retry  # 记录重试次数
                 })
                 yield f"data: {json.dumps({'error': f'API Error (已重试 {stream_retry + 1} 次): {error_str}'})}\n\n"
                 return

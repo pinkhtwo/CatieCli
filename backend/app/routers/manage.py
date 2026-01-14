@@ -1449,6 +1449,7 @@ async def get_log_detail(
         "request_body": log.request_body,
         "client_ip": log.client_ip,
         "user_agent": log.user_agent,
+        "retry_count": log.retry_count or 0,  # 重试次数
         "created_at": log.created_at.isoformat() + "Z" if log.created_at else None
     }
 
