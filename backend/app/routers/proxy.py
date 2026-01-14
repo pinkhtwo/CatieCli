@@ -577,7 +577,7 @@ async def chat_completions(
                 
                 # 成功：记录日志数据
                 latency = (time.time() - start_time) * 1000
-                background_tasks.add_task(save_log_background, {
+                await save_log_background({
                     "status_code": 200,
                     "cred_id": current_cred_id,
                     "cred_email": current_cred_email,
@@ -628,7 +628,7 @@ async def chat_completions(
                 # 无法重试，输出错误并记录日志
                 status_code = extract_status_code(error_str)
                 latency = (time.time() - start_time) * 1000
-                background_tasks.add_task(save_log_background, {
+                await save_log_background({
                     "status_code": status_code,
                     "cred_id": current_cred_id,
                     "cred_email": current_cred_email,
