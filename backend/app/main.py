@@ -25,6 +25,24 @@ async def lifespan(app: FastAPI):
     # 启动时初始化
     await init_db()
     
+    # 自动添加缺失的数据库列（简单迁移）
+    try:
+        async with async_session() as db:
+            from sqlalchemy import text
+            # 检查并添加 retry_count 列
+            try:
+                await db.execute(text("SELECT retry_count FROM usage_logs LIMIT 1"))
+            except Exception:
+                print("🔄 正在添加 retry_count 列...")
+                try:
+                    await db.execute(text("ALTER TABLE usage_logs ADD COLUMN retry_count INTEGER DEFAULT 0"))
+                    await db.commit()
+                    print("✅ 成功添加 retry_count 列")
+                except Exception as e:
+                    print(f"⚠️ 添加 retry_count 列失败（可能已存在）: {e}")
+    except Exception as e:
+        print(f"⚠️ 数据库迁移检查失败: {e}")
+    
     # 从数据库加载持久化配置
     try:
         await load_config_from_db()
