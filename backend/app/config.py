@@ -114,6 +114,9 @@ class Settings(BaseSettings):
     # Antigravity API 反代配置
     antigravity_enabled: bool = True  # 是否启用 Antigravity API 反代
     antigravity_api_base: str = "https://daily-cloudcode-pa.sandbox.googleapis.com"
+    # Antigravity 系统提示词前缀（可选，留空则不添加）
+    # 有些情况下 Antigravity 需要特定的系统提示词前缀才能正常工作
+    antigravity_system_prompt: str = ""
     # Antigravity OAuth 配置在 antigravity_oauth.py 中硬编码
     # (使用 Antigravity 专用的 OAuth Client，与 GeminiCLI 不同)
     
@@ -161,6 +164,7 @@ PERSISTENT_CONFIG_KEYS = [
     "announcement_content",
     "announcement_read_seconds",
     "antigravity_enabled",
+    "antigravity_system_prompt",
 ]
 
 
