@@ -11,6 +11,10 @@ class AntigravityClient:
     # Antigravity User-Agent (与 gcli2api 保持一致)
     USER_AGENT = "antigravity/1.11.3 windows/amd64"
     
+    # 官方系统提示词 (必须添加，否则返回 429 错误)
+    # 来源：Antigravity 官方客户端
+    OFFICIAL_SYSTEM_PROMPT = """You are Antigravity, a powerful agentic AI coding assistant designed by the Google Deepmind team working on Advanced Agentic Coding. You are pair programming with a USER to solve their coding task. The task may require creating a new codebase, modifying or debugging an existing codebase, or simply answering a question."""
+    
     def __init__(self, access_token: str, project_id: str = None):
         self.access_token = access_token
         self.project_id = project_id or ""
@@ -52,23 +56,25 @@ class AntigravityClient:
         if generation_config:
             request_body["generationConfig"] = generation_config
         
-        # 系统指令处理：支持可配置的前缀 + 用户提供的系统指令
+        # 系统指令处理：官方提示词 + 可配置前缀 + 用户提供的系统指令
         final_system_parts = []
         
-        # 添加可配置的系统提示词前缀（如果设置了）
+        # 1. 始终添加官方系统提示词（必须，否则 429）
+        final_system_parts.append({"text": self.OFFICIAL_SYSTEM_PROMPT})
+        
+        # 2. 添加可配置的系统提示词前缀（如果设置了）
         if settings.antigravity_system_prompt:
             final_system_parts.append({"text": settings.antigravity_system_prompt})
         
-        # 添加用户提供的系统指令
+        # 3. 添加用户提供的系统指令
         if system_instruction:
             if "parts" in system_instruction:
                 final_system_parts.extend(system_instruction["parts"])
             elif "text" in system_instruction:
                 final_system_parts.append({"text": system_instruction["text"]})
         
-        # 只有有内容时才添加 systemInstruction
-        if final_system_parts:
-            request_body["systemInstruction"] = {"parts": final_system_parts}
+        # 设置 systemInstruction
+        request_body["systemInstruction"] = {"parts": final_system_parts}
         
         # 添加安全设置 (与 gcli2api 保持一致，使用 BLOCK_NONE)
         request_body["safetySettings"] = [
@@ -125,23 +131,25 @@ class AntigravityClient:
         if generation_config:
             request_body["generationConfig"] = generation_config
         
-        # 系统指令处理：支持可配置的前缀 + 用户提供的系统指令
+        # 系统指令处理：官方提示词 + 可配置前缀 + 用户提供的系统指令
         final_system_parts = []
         
-        # 添加可配置的系统提示词前缀（如果设置了）
+        # 1. 始终添加官方系统提示词（必须，否则 429）
+        final_system_parts.append({"text": self.OFFICIAL_SYSTEM_PROMPT})
+        
+        # 2. 添加可配置的系统提示词前缀（如果设置了）
         if settings.antigravity_system_prompt:
             final_system_parts.append({"text": settings.antigravity_system_prompt})
         
-        # 添加用户提供的系统指令
+        # 3. 添加用户提供的系统指令
         if system_instruction:
             if "parts" in system_instruction:
                 final_system_parts.extend(system_instruction["parts"])
             elif "text" in system_instruction:
                 final_system_parts.append({"text": system_instruction["text"]})
         
-        # 只有有内容时才添加 systemInstruction
-        if final_system_parts:
-            request_body["systemInstruction"] = {"parts": final_system_parts}
+        # 设置 systemInstruction
+        request_body["systemInstruction"] = {"parts": final_system_parts}
         
         # 添加安全设置 (与 gcli2api 保持一致，使用 BLOCK_NONE)
         request_body["safetySettings"] = [
