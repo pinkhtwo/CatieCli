@@ -217,17 +217,21 @@ async def list_models(request: Request, user: User = Depends(get_user_from_api_k
             except Exception as e:
                 print(f"[Antigravity] 获取动态模型列表失败: {e}", flush=True)
     
-    # 回退到静态模型列表
+    # 回退到静态模型列表 (包含 Antigravity 支持的所有模型)
     base_models = [
+        # Gemini 模型
         "gemini-2.5-pro",
         "gemini-2.5-flash",
+        "gemini-3-pro-preview",
+        "gemini-3-flash-preview",
+        # Claude 模型 (Antigravity 独有)
+        "claude-sonnet-4-5",
+        "claude-opus-4-5",
+        # GPT-OSS 模型 (Antigravity 独有)
+        "gpt-oss-120b",
     ]
     
-    if has_tier3:
-        base_models.append("gemini-3-pro-preview")
-        base_models.append("gemini-3-flash-preview")
-    
-    thinking_suffixes = ["-maxthinking", "-nothinking"]
+    thinking_suffixes = ["-maxthinking", "-nothinking", "-thinking"]
     search_suffix = "-search"
     
     models = []
@@ -235,21 +239,17 @@ async def list_models(request: Request, user: User = Depends(get_user_from_api_k
         models.append({"id": base, "object": "model", "owned_by": "google"})
         models.append({"id": f"假流式/{base}", "object": "model", "owned_by": "google"})
         models.append({"id": f"流式抗截断/{base}", "object": "model", "owned_by": "google"})
+        # Antigravity 专用前缀
+        models.append({"id": f"agy-{base}", "object": "model", "owned_by": "google"})
         
+        # 思维模式变体
         for suffix in thinking_suffixes:
             models.append({"id": f"{base}{suffix}", "object": "model", "owned_by": "google"})
-            models.append({"id": f"假流式/{base}{suffix}", "object": "model", "owned_by": "google"})
-            models.append({"id": f"流式抗截断/{base}{suffix}", "object": "model", "owned_by": "google"})
+            models.append({"id": f"agy-{base}{suffix}", "object": "model", "owned_by": "google"})
         
-        models.append({"id": f"{base}{search_suffix}", "object": "model", "owned_by": "google"})
-        models.append({"id": f"假流式/{base}{search_suffix}", "object": "model", "owned_by": "google"})
-        models.append({"id": f"流式抗截断/{base}{search_suffix}", "object": "model", "owned_by": "google"})
-        
-        for suffix in thinking_suffixes:
-            combined = f"{suffix}{search_suffix}"
-            models.append({"id": f"{base}{combined}", "object": "model", "owned_by": "google"})
-            models.append({"id": f"假流式/{base}{combined}", "object": "model", "owned_by": "google"})
-            models.append({"id": f"流式抗截断/{base}{combined}", "object": "model", "owned_by": "google"})
+        # 搜索变体 (仅 Gemini)
+        if base.startswith("gemini"):
+            models.append({"id": f"{base}{search_suffix}", "object": "model", "owned_by": "google"})
     
     return {"object": "list", "data": models}
 
