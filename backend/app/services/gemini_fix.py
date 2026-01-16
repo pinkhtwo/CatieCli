@@ -157,16 +157,16 @@ async def normalize_gemini_request(
         # 移除 -thinking 后缀
         model = model.replace("-thinking", "")
 
-        # 4. Claude 模型关键词映射
+        # 4. Claude 模型关键词映射 - 不要添加 -thinking 后缀！
         original_model = model
         if "opus" in model.lower():
-            model = "claude-opus-4-5-thinking"
+            model = "claude-opus-4-5"
         elif "sonnet" in model.lower():
-            model = "claude-sonnet-4-5-thinking"
+            model = "claude-sonnet-4-5"
         elif "haiku" in model.lower():
             model = "gemini-2.5-flash"
         elif "claude" in model.lower():
-            model = "claude-sonnet-4-5-thinking"
+            model = "claude-sonnet-4-5"
         
         result["model"] = model
         if original_model != model:
