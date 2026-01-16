@@ -194,6 +194,11 @@ frontend_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "static
 if os.path.exists(frontend_path):
     app.mount("/assets", StaticFiles(directory=os.path.join(frontend_path, "assets")), name="assets")
     
+    # 图片存储目录
+    images_path = os.path.join(frontend_path, "images")
+    os.makedirs(images_path, exist_ok=True)
+    app.mount("/images", StaticFiles(directory=images_path), name="images")
+    
     @app.get("/{full_path:path}")
     async def serve_frontend(full_path: str):
         file_path = os.path.join(frontend_path, full_path)

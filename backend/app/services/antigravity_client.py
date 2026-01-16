@@ -719,9 +719,15 @@ class AntigravityClient:
                         mime_type = inline_data.get("mimeType", "image/png")
                         data = inline_data.get("data", "")
                         if data:
-                            # 转换为 Markdown 图片格式（使用 data URL）
-                            data_url = f"data:{mime_type};base64,{data}"
-                            content += f"![Generated Image]({data_url})"
+                            # 保存图片到本地并获取 URL
+                            from app.services.image_storage import ImageStorage
+                            image_url = ImageStorage.save_base64_image(data, mime_type)
+                            if image_url:
+                                content += f"![Generated Image]({image_url})"
+                            else:
+                                # 回退到 data URL
+                                data_url = f"data:{mime_type};base64,{data}"
+                                content += f"![Generated Image]({data_url})"
         
         message = {
             "role": "assistant",
@@ -773,8 +779,14 @@ class AntigravityClient:
                             mime_type = inline_data.get("mimeType", "image/png")
                             data = inline_data.get("data", "")
                             if data:
-                                data_url = f"data:{mime_type};base64,{data}"
-                                content += f"![Generated Image]({data_url})"
+                                # 保存图片到本地并获取 URL
+                                from app.services.image_storage import ImageStorage
+                                image_url = ImageStorage.save_base64_image(data, mime_type)
+                                if image_url:
+                                    content += f"![Generated Image]({image_url})"
+                                else:
+                                    data_url = f"data:{mime_type};base64,{data}"
+                                    content += f"![Generated Image]({data_url})"
             
             delta = {}
             if content:
