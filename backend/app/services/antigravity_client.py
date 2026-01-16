@@ -198,19 +198,31 @@ class AntigravityClient:
         """生成内容 (非流式) - 使用 Antigravity API，完全复制 gcli2api 逻辑"""
         url = f"{self.api_base}/v1internal:generateContent"
         
-        # 使用统一的规范化函数 (复制 gcli2api normalize_gemini_request)
+        # 使用 gcli2api 完整复制的 normalize_gemini_request
+        from app.services.gemini_fix import normalize_gemini_request
+        
         if generation_config is None:
             generation_config = {}
         
-        normalized = self._normalize_antigravity_request(model, contents, generation_config, system_instruction)
-        final_model = normalized["model"]
+        # 构建 Gemini 请求格式
+        gemini_request = {
+            "model": model,
+            "contents": contents,
+            "generationConfig": generation_config,
+        }
+        if system_instruction:
+            gemini_request["systemInstruction"] = system_instruction
+        
+        # 调用 gcli2api 完整的规范化函数
+        normalized = await normalize_gemini_request(gemini_request, mode="antigravity")
+        final_model = normalized.pop("model")
         
         headers = self._build_headers(final_model)
         
         payload = {
             "model": final_model,
             "project": self.project_id,
-            "request": normalized["request"],
+            "request": normalized,
         }
         
         print(f"[AntigravityClient] ★★★★★ 关键信息 ★★★★★", flush=True)
@@ -218,10 +230,10 @@ class AntigravityClient:
         print(f"[AntigravityClient] ★ PROJECT: {self.project_id}", flush=True)
         print(f"[AntigravityClient] ★ URL: {url}", flush=True)
         print(f"[AntigravityClient] ★★★★★★★★★★★★★★★★★★★★", flush=True)
-        print(f"[AntigravityClient] generationConfig: {normalized['request'].get('generationConfig')}", flush=True)
-        print(f"[AntigravityClient] systemInstruction 首个 part 前50字符: {str(normalized['request'].get('systemInstruction', {}).get('parts', [{}])[0])[:100]}", flush=True)
-        print(f"[AntigravityClient] contents 数量: {len(normalized['request'].get('contents', []))}", flush=True)
-        # 打印完整 payload (增加到 5000 字符)
+        print(f"[AntigravityClient] generationConfig: {normalized.get('generationConfig')}", flush=True)
+        print(f"[AntigravityClient] systemInstruction 首个 part 前100字符: {str(normalized.get('systemInstruction', {}).get('parts', [{}])[0])[:100]}", flush=True)
+        print(f"[AntigravityClient] contents 数量: {len(normalized.get('contents', []))}", flush=True)
+        # 打印完整 payload
         import json as json_module
         print(f"[AntigravityClient] ===== 完整 PAYLOAD (前5000字符) =====", flush=True)
         print(json_module.dumps(payload, ensure_ascii=False, indent=2)[:5000], flush=True)
@@ -255,19 +267,31 @@ class AntigravityClient:
         """生成内容 (流式) - 使用 Antigravity API，完全复制 gcli2api 逻辑"""
         url = f"{self.api_base}/v1internal:streamGenerateContent?alt=sse"
         
-        # 使用统一的规范化函数 (复制 gcli2api normalize_gemini_request)
+        # 使用 gcli2api 完整复制的 normalize_gemini_request
+        from app.services.gemini_fix import normalize_gemini_request
+        
         if generation_config is None:
             generation_config = {}
         
-        normalized = self._normalize_antigravity_request(model, contents, generation_config, system_instruction)
-        final_model = normalized["model"]
+        # 构建 Gemini 请求格式
+        gemini_request = {
+            "model": model,
+            "contents": contents,
+            "generationConfig": generation_config,
+        }
+        if system_instruction:
+            gemini_request["systemInstruction"] = system_instruction
+        
+        # 调用 gcli2api 完整的规范化函数
+        normalized = await normalize_gemini_request(gemini_request, mode="antigravity")
+        final_model = normalized.pop("model")
         
         headers = self._build_headers(final_model)
         
         payload = {
             "model": final_model,
             "project": self.project_id,
-            "request": normalized["request"],
+            "request": normalized,
         }
         
         print(f"[AntigravityClient] 流式请求: model={final_model}, project={self.project_id}", flush=True)
