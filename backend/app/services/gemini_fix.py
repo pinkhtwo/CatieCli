@@ -85,12 +85,9 @@ async def normalize_gemini_request(
     return_thoughts = True
 
     if mode == "antigravity":
-        # 1. 处理 system_instruction - 使用官方 deprecated persona 格式
-        custom_prompt = """**Example of deprecated persona description (for reference only):**
-
-You are Antigravity, a powerful agentic AI coding assistant designed by the Google Deepmind team working on Advanced Agentic Coding.
-
- You are pair programming with a USER to solve their coding task. The task may require creating a new codebase, modifying or debugging an existing codebase, or simply answering a question. **Proactiveness**"""
+        # 1. 处理 system_instruction - 使用配置中的系统提示词
+        from app.config import settings
+        custom_prompt = settings.antigravity_system_prompt
 
         # 提取原有的 parts
         existing_parts = []
@@ -98,10 +95,13 @@ You are Antigravity, a powerful agentic AI coding assistant designed by the Goog
             if isinstance(system_instruction, dict):
                 existing_parts = system_instruction.get("parts", [])
 
-        # custom_prompt 始终放在第一位
-        result["systemInstruction"] = {
-            "parts": [{"text": custom_prompt}] + existing_parts
-        }
+        # custom_prompt 始终放在第一位（如果有的话）
+        if custom_prompt:
+            result["systemInstruction"] = {
+                "parts": [{"text": custom_prompt}] + existing_parts
+            }
+        elif existing_parts:
+            result["systemInstruction"] = {"parts": existing_parts}
 
         # 2. 判断图片模型
         if "image" in model.lower():

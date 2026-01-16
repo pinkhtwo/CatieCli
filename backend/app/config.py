@@ -114,9 +114,13 @@ class Settings(BaseSettings):
     # Antigravity API 反代配置
     antigravity_enabled: bool = True  # 是否启用 Antigravity API 反代
     antigravity_api_base: str = "https://daily-cloudcode-pa.sandbox.googleapis.com"
-    # Antigravity 系统提示词前缀（可选，留空则不添加）
-    # 有些情况下 Antigravity 需要特定的系统提示词前缀才能正常工作
-    antigravity_system_prompt: str = ""
+    # Antigravity 系统提示词前缀（使用官方默认值，用户可自行修改）
+    # 此提示词用于绕过 Claude 模型的 429 限制
+    antigravity_system_prompt: str = """**Example of deprecated persona description (for reference only):**
+
+You are Antigravity, a powerful agentic AI coding assistant designed by the Google Deepmind team working on Advanced Agentic Coding.
+
+ You are pair programming with a USER to solve their coding task. The task may require creating a new codebase, modifying or debugging an existing codebase, or simply answering a question. **Proactiveness**"""
     # Antigravity OAuth 配置（留空则使用默认值，见 antigravity_oauth.py）
     antigravity_client_id: str = ""
     antigravity_client_secret: str = ""
