@@ -558,6 +558,10 @@ async def chat_completions(
         
         raise HTTPException(status_code=503, detail=f"所有凭证都失败了: {last_error}")
     
+    # 假流式模式：即使 stream=false，也强制使用流式返回
+    if use_fake_streaming:
+        stream = True
+    
     if not stream:
         return await handle_non_stream()
     
