@@ -649,10 +649,11 @@ class CredentialPool:
             client_secret = decrypt_credential(credential.client_secret)
             print(f"[Token刷新] 使用凭证自己的 client_id: {client_id[:20]}...", flush=True)
         elif credential.api_type == "antigravity":
-            # Antigravity 凭证使用专用的 OAuth 配置
-            client_id = settings.antigravity_client_id
-            client_secret = settings.antigravity_client_secret
-            print(f"[Token刷新] 使用 Antigravity 系统 client_id", flush=True)
+            # Antigravity 凭证使用专用的 OAuth 配置（从 antigravity_oauth.py 导入）
+            from app.routers.antigravity_oauth import ANTIGRAVITY_CLIENT_ID, ANTIGRAVITY_CLIENT_SECRET
+            client_id = settings.antigravity_client_id or ANTIGRAVITY_CLIENT_ID
+            client_secret = settings.antigravity_client_secret or ANTIGRAVITY_CLIENT_SECRET
+            print(f"[Token刷新] 使用 Antigravity client_id: {client_id[:30]}...", flush=True)
         else:
             # GeminiCLI 凭证使用默认的 Google OAuth 配置
             client_id = settings.google_client_id

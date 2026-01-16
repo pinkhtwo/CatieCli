@@ -117,8 +117,9 @@ class Settings(BaseSettings):
     # Antigravity 系统提示词前缀（可选，留空则不添加）
     # 有些情况下 Antigravity 需要特定的系统提示词前缀才能正常工作
     antigravity_system_prompt: str = ""
-    # Antigravity OAuth 配置在 antigravity_oauth.py 中硬编码
-    # (使用 Antigravity 专用的 OAuth Client，与 GeminiCLI 不同)
+    # Antigravity OAuth 配置（留空则使用默认值，见 antigravity_oauth.py）
+    antigravity_client_id: str = ""
+    antigravity_client_secret: str = ""
     
     # Discord OAuth (可选，用于 Discord 登录/注册)
     discord_client_id: str = ""

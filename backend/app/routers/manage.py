@@ -160,9 +160,20 @@ async def export_credentials(
     zip_buffer = io.BytesIO()
     with zipfile.ZipFile(zip_buffer, 'w', zipfile.ZIP_DEFLATED) as zf:
         for cred in credentials:
+            # 根据凭证类型选择正确的 client_id 和 client_secret
+            if cred.api_type == "antigravity":
+                # Antigravity 凭证使用 Antigravity 专用的 client_id
+                from app.routers.antigravity_oauth import ANTIGRAVITY_CLIENT_ID, ANTIGRAVITY_CLIENT_SECRET
+                export_client_id = ANTIGRAVITY_CLIENT_ID
+                export_client_secret = ANTIGRAVITY_CLIENT_SECRET
+            else:
+                # 普通 GeminiCLI 凭证（使用 settings 配置）
+                export_client_id = settings.google_client_id
+                export_client_secret = settings.google_client_secret
+            
             cred_data = {
-                "client_id": "681255809395-oo8ft2oprdrnp9e3aqf6av3hmdib135j.apps.googleusercontent.com",
-                "client_secret": "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",
+                "client_id": export_client_id,
+                "client_secret": export_client_secret,
                 "refresh_token": decrypt_credential(cred.refresh_token) if cred.refresh_token else "",
                 "token": decrypt_credential(cred.api_key) if cred.api_key else "",
                 "project_id": cred.project_id or "",
