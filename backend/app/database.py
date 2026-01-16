@@ -178,3 +178,16 @@ async def init_db(skip_migration_check: bool = False):
                 print(f"[DB Index] ✅ {sql[30:70]}...")
             except Exception as e:
                 pass  # 索引已存在，忽略
+        
+        # 数据修复：将 api_type 为空或 NULL 的凭证更新为 geminicli（排除 antigravity）
+        # 这是为了修复历史数据中未设置 api_type 的凭证
+        try:
+            if is_sqlite:
+                fix_sql = "UPDATE credentials SET api_type = 'geminicli' WHERE api_type IS NULL OR api_type = ''"
+            else:
+                fix_sql = "UPDATE credentials SET api_type = 'geminicli' WHERE api_type IS NULL OR api_type = ''"
+            result = await conn.execute(text(fix_sql))
+            if result.rowcount > 0:
+                print(f"[DB Fix] ✅ 已修复 {result.rowcount} 个凭证的 api_type 字段")
+        except Exception as e:
+            print(f"[DB Fix] ⚠️ 修复 api_type 失败: {e}")
