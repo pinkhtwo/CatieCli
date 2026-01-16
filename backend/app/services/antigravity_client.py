@@ -402,8 +402,8 @@ class AntigravityClient:
             return {"success": False, "error": str(e)}
     
     def is_fake_streaming(self, model: str) -> bool:
-        """Antigravity 不支持假流式，总是返回 False"""
-        return False
+        """检测是否使用假流式模式（模型名以 假流式/ 开头）"""
+        return model.startswith("假流式/")
     
     async def chat_completions(
         self,
