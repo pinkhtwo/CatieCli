@@ -573,6 +573,17 @@ async def list_my_credentials(user: User = Depends(get_current_user), db: AsyncS
     from app.config import settings
     from sqlalchemy import or_
     
+    # 先查询所有凭证（调试用）
+    all_result = await db.execute(
+        select(Credential).where(Credential.user_id == user.id)
+    )
+    all_creds = all_result.scalars().all()
+    
+    # 打印调试信息
+    print(f"[凭证查询] 用户 {user.username} 总凭证数: {len(all_creds)}", flush=True)
+    for c in all_creds:
+        print(f"  - ID={c.id}, email={c.email}, api_type='{c.api_type}' (type={type(c.api_type).__name__})", flush=True)
+    
     # 只返回 GeminiCLI 凭证（api_type 为 geminicli 或 NULL/空）
     result = await db.execute(
         select(Credential)
@@ -585,6 +596,8 @@ async def list_my_credentials(user: User = Depends(get_current_user), db: AsyncS
         .order_by(Credential.created_at.desc())
     )
     creds = result.scalars().all()
+    
+    print(f"[凭证查询] 筛选后 GeminiCLI 凭证数: {len(creds)}", flush=True)
     
     now = datetime.utcnow()
     
