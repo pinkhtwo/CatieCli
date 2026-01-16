@@ -147,7 +147,8 @@ class GeminiClient:
         headers = {
             "Authorization": f"Bearer {self.access_token}",
             "Content-Type": "application/json",
-            "User-Agent": "grpc-java-okhttp/1.68.1",
+            "User-Agent": "antigravity/1.11.3 windows/amd64",  # 必须使用 Antigravity User-Agent
+            "Accept-Encoding": "gzip",
         }
         
         # 构建请求体，包含 project_id
