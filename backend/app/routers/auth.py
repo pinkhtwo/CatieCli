@@ -412,18 +412,31 @@ async def upload_credentials(
             project_id = cred_data.get("project_id", "")
             refresh_token = cred_data.get("refresh_token")
             
-            # 去重检查：根据 email 或 refresh_token 判断是否已存在（全局）
+            # 去重检查：根据 email 或 refresh_token 判断是否已存在（仅在 GeminiCLI 凭证中）
+            from sqlalchemy import or_
             existing = await db.execute(
-                select(Credential).where(Credential.email == email)
+                select(Credential)
+                .where(Credential.email == email)
+                .where(or_(
+                    Credential.api_type == "geminicli",
+                    Credential.api_type == None,
+                    Credential.api_type == ""
+                ))
             )
             if existing.scalar_one_or_none():
                 results.append({"filename": filename, "status": "skip", "message": f"凭证已存在: {email}"})
                 continue
             
-            # 也检查 refresh_token 是否重复
+            # 也检查 refresh_token 是否重复（仅在 GeminiCLI 凭证中）
             from app.services.crypto import encrypt_credential as enc
             existing_token = await db.execute(
-                select(Credential).where(Credential.refresh_token == enc(refresh_token))
+                select(Credential)
+                .where(Credential.refresh_token == enc(refresh_token))
+                .where(or_(
+                    Credential.api_type == "geminicli",
+                    Credential.api_type == None,
+                    Credential.api_type == ""
+                ))
             )
             if existing_token.scalar_one_or_none():
                 results.append({"filename": filename, "status": "skip", "message": f"凭证token已存在: {email}"})
@@ -501,7 +514,8 @@ async def upload_credentials(
                 email=email,
                 is_public=actual_public,
                 is_active=is_valid,
-                model_tier=model_tier
+                model_tier=model_tier,
+                api_type="geminicli"  # 明确设置为 GeminiCLI 凭证
             )
             db.add(credential)
             
