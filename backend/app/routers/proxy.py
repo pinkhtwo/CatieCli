@@ -249,28 +249,24 @@ async def list_models(request: Request, user: User = Depends(get_user_from_api_k
         cli_base_models.extend(tier3_models)
     
     for base in cli_base_models:
-        # 带 gcli- 前缀的基础模型
+        # 带 gcli- 前缀的基础模型（无前缀 + 假流式前缀，移除流式抗截断）
         models.append({"id": f"gcli-{base}", "object": "model", "owned_by": "google"})
         models.append({"id": f"假流式/gcli-{base}", "object": "model", "owned_by": "google"})
-        models.append({"id": f"流式抗截断/gcli-{base}", "object": "model", "owned_by": "google"})
         
         # thinking 变体（gcli- 前缀）
         for suffix in thinking_suffixes:
             models.append({"id": f"gcli-{base}{suffix}", "object": "model", "owned_by": "google"})
             models.append({"id": f"假流式/gcli-{base}{suffix}", "object": "model", "owned_by": "google"})
-            models.append({"id": f"流式抗截断/gcli-{base}{suffix}", "object": "model", "owned_by": "google"})
         
         # search 变体（gcli- 前缀）
         models.append({"id": f"gcli-{base}{search_suffix}", "object": "model", "owned_by": "google"})
         models.append({"id": f"假流式/gcli-{base}{search_suffix}", "object": "model", "owned_by": "google"})
-        models.append({"id": f"流式抗截断/gcli-{base}{search_suffix}", "object": "model", "owned_by": "google"})
         
         # thinking + search 组合（gcli- 前缀）
         for suffix in thinking_suffixes:
             combined = f"{suffix}{search_suffix}"
             models.append({"id": f"gcli-{base}{combined}", "object": "model", "owned_by": "google"})
             models.append({"id": f"假流式/gcli-{base}{combined}", "object": "model", "owned_by": "google"})
-            models.append({"id": f"流式抗截断/gcli-{base}{combined}", "object": "model", "owned_by": "google"})
     
     # === Antigravity 模型（agy- 前缀，从 API 动态获取，无流式前缀和思考/搜索后缀）===
     if has_antigravity and settings.antigravity_enabled:
