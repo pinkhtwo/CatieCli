@@ -235,7 +235,7 @@ async def list_models(request: Request, user: User = Depends(get_user_from_api_k
                         if not is_valid_model(model_id):
                             continue
                         models.append({"id": model_id, "object": "model", "owned_by": "google"})
-                        models.append({"id": f"假流式/{model_id}", "object": "model", "owned_by": "google"})
+                        models.append({"id": f"假非流/{model_id}", "object": "model", "owned_by": "google"})
                         models.append({"id": f"流式抗截断/{model_id}", "object": "model", "owned_by": "google"})
                         
                         # 为图片模型添加 2k 和 4k 分辨率变体
@@ -243,8 +243,8 @@ async def list_models(request: Request, user: User = Depends(get_user_from_api_k
                             # 添加 2k/4k 变体
                             models.append({"id": f"{model_id}-2k", "object": "model", "owned_by": "google"})
                             models.append({"id": f"{model_id}-4k", "object": "model", "owned_by": "google"})
-                            models.append({"id": f"假流式/{model_id}-2k", "object": "model", "owned_by": "google"})
-                            models.append({"id": f"假流式/{model_id}-4k", "object": "model", "owned_by": "google"})
+                            models.append({"id": f"假非流/{model_id}-2k", "object": "model", "owned_by": "google"})
+                            models.append({"id": f"假非流/{model_id}-4k", "object": "model", "owned_by": "google"})
                             # 如果原ID没有 agy- 前缀，额外添加带前缀版本
                             if not model_id.startswith("agy-"):
                                 models.append({"id": f"agy-{model_id}-2k", "object": "model", "owned_by": "google"})
@@ -256,11 +256,11 @@ async def list_models(request: Request, user: User = Depends(get_user_from_api_k
                         "gemini-3-pro-image", "agy-gemini-3-pro-image",
                         # 2k 变体
                         "gemini-3-pro-image-2k", "agy-gemini-3-pro-image-2k",
-                        "假流式/gemini-3-pro-image-2k", "假流式/agy-gemini-3-pro-image-2k",
+                        "假非流/gemini-3-pro-image-2k", "假非流/agy-gemini-3-pro-image-2k",
                         "流式抗截断/gemini-3-pro-image-2k", "流式抗截断/agy-gemini-3-pro-image-2k",
                         # 4k 变体
                         "gemini-3-pro-image-4k", "agy-gemini-3-pro-image-4k",
-                        "假流式/gemini-3-pro-image-4k", "假流式/agy-gemini-3-pro-image-4k",
+                        "假非流/gemini-3-pro-image-4k", "假非流/agy-gemini-3-pro-image-4k",
                         "流式抗截断/gemini-3-pro-image-4k", "流式抗截断/agy-gemini-3-pro-image-4k",
                     ]
                     existing_ids = {m["id"] for m in models}
@@ -301,7 +301,7 @@ async def list_models(request: Request, user: User = Depends(get_user_from_api_k
         # 基础模型
         models.append({"id": f"agy-{base}", "object": "model", "owned_by": "google"})
         models.append({"id": base, "object": "model", "owned_by": "google"})
-        models.append({"id": f"假流式/{base}", "object": "model", "owned_by": "google"})
+        models.append({"id": f"假非流/{base}", "object": "model", "owned_by": "google"})
         models.append({"id": f"流式抗截断/{base}", "object": "model", "owned_by": "google"})
         
         # 思维模式变体 (仅 Claude 和部分 Gemini)
@@ -683,7 +683,7 @@ async def chat_completions(
         raise HTTPException(status_code=503, detail=f"所有凭证都失败了: {last_error}")
     
     # 路由逻辑：
-    # 1. 假非流模式（假流式/前缀）：以流式调用 API，返回普通 JSON
+    # 1. 假非流模式（假非流/前缀）：以流式调用 API，返回普通 JSON
     # 2. 普通非流式：直接调用非流式 API
     # 3. 普通流式：调用流式 API
     if use_fake_streaming:

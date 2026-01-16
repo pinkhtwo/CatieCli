@@ -402,8 +402,8 @@ class AntigravityClient:
             return {"success": False, "error": str(e)}
     
     def is_fake_streaming(self, model: str) -> bool:
-        """检测是否使用假流式模式（模型名以 假流式/ 开头）"""
-        return model.startswith("假流式/")
+        """检测是否使用假流式模式（模型名以 假非流/ 开头）"""
+        return model.startswith("假非流/")
     
     async def chat_completions(
         self,
@@ -721,8 +721,8 @@ class AntigravityClient:
         # 移除 gcli- 前缀 (如果有)
         if model.startswith("gcli-"):
             model = model[5:]
-        # 移除 假流式/ 和 流式抗截断/ 前缀
-        for prefix in ["假流式/", "流式抗截断/"]:
+        # 移除 假非流/ 和 流式抗截断/ 前缀
+        for prefix in ["假非流/", "流式抗截断/"]:
             if model.startswith(prefix):
                 model = model[len(prefix):]
         
