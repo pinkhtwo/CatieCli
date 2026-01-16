@@ -60,6 +60,44 @@ def is_thinking_model(model_name: str) -> bool:
     return "think" in model_name or "pro" in model_name.lower()
 
 
+def check_last_assistant_has_thinking(contents: list) -> bool:
+    """
+    检查最后一个 assistant 消息是否以 thinking 块开始
+    
+    根据 Claude API 要求：当启用 thinking 时，最后一个 assistant 消息必须以 thinking 块开始
+    
+    Args:
+        contents: Gemini 格式的 contents 数组
+        
+    Returns:
+        如果最后一个 assistant 消息以 thinking 块开始则返回 True，否则返回 False
+    """
+    if not contents:
+        return True  # 没有 contents，允许启用 thinking
+    
+    # 从后往前找最后一个 assistant (model) 消息
+    last_assistant_content = None
+    for content in reversed(contents):
+        if isinstance(content, dict) and content.get("role") == "model":
+            last_assistant_content = content
+            break
+    
+    if not last_assistant_content:
+        return True  # 没有 assistant 消息，允许启用 thinking
+    
+    # 检查第一个 part 是否是 thinking 块
+    parts = last_assistant_content.get("parts", [])
+    if not parts:
+        return False  # 有 assistant 消息但没有 parts，不允许 thinking
+    
+    first_part = parts[0]
+    if not isinstance(first_part, dict):
+        return False
+    
+    # 检查是否是 thinking 块（有 thought 或 thoughtSignature 字段）
+    return "thought" in first_part or "thoughtSignature" in first_part
+
+
 async def normalize_gemini_request(
     request: Dict[str, Any],
     mode: str = "antigravity"
@@ -121,13 +159,14 @@ async def normalize_gemini_request(
                 thinking_config["thinkingBudget"] = 1024
             thinking_config["includeThoughts"] = return_thoughts
             
-            # Claude 模型特殊处理
+            # Claude 模型特殊处理 - 使用 check_last_assistant_has_thinking 检查
             contents = result.get("contents", [])
 
-            if "claude" in model.lower():
+            # 检查最后一个 assistant 消息是否已有 thinking 块
+            if not check_last_assistant_has_thinking(contents) and "claude" in model.lower():
                 # 检测是否有工具调用（MCP场景）
                 has_tool_calls = any(
-                    isinstance(content, dict) and 
+                    isinstance(content, dict) and
                     any(
                         isinstance(part, dict) and ("functionCall" in part or "function_call" in part)
                         for part in content.get("parts", [])
@@ -136,22 +175,28 @@ async def normalize_gemini_request(
                 )
                 
                 if has_tool_calls:
-                    print(f"[GEMINI_FIX] 检测到工具调用（MCP场景），移除 thinkingConfig", flush=True)
+                    # MCP 场景：检测到工具调用，移除 thinkingConfig 避免失效
+                    print(f"[GEMINI_FIX] 检测到工具调用（MCP场景），移除 thinkingConfig 避免失效", flush=True)
                     generation_config.pop("thinkingConfig", None)
                 else:
-                    # 非 MCP 场景：为最后一个 model 消息填充思考块
+                    # 非 MCP 场景：填充思考块
+                    print(f"[GEMINI_FIX] 最后一个 assistant 消息不以 thinking 块开始，自动填充思考块", flush=True)
+                    
+                    # 找到最后一个 model 角色的 content
                     for i in range(len(contents) - 1, -1, -1):
                         content = contents[i]
                         if isinstance(content, dict) and content.get("role") == "model":
+                            # 在 parts 开头插入思考块（使用官方跳过验证的虚拟签名）
                             parts = content.get("parts", [])
                             thinking_part = {
-                                "text": "...",
-                                "thoughtSignature": "skip_thought_signature_validator"
+                                "text": "Continuing from previous context...",
+                                # "thought": True,  # 标记为思考块
+                                "thoughtSignature": "skip_thought_signature_validator"  # 官方文档推荐的虚拟签名
                             }
                             # 如果第一个 part 不是 thinking，则插入
                             if not parts or not (isinstance(parts[0], dict) and ("thought" in parts[0] or "thoughtSignature" in parts[0])):
                                 content["parts"] = [thinking_part] + parts
-                                print(f"[GEMINI_FIX] 已在最后一个 assistant 消息开头插入思考块", flush=True)
+                                print(f"[GEMINI_FIX] 已在最后一个 assistant 消息开头插入思考块（含跳过验证签名）", flush=True)
                             break
             
         # 移除 -thinking 后缀

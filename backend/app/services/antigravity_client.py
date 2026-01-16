@@ -71,10 +71,13 @@ class AntigravityClient:
             print(f"[AntigravityClient] 已设置 thinkingConfig: thinkingBudget={thinking_config['thinkingBudget']}", flush=True)
             
             # Claude 模型特殊处理
-            if "claude" in model.lower():
+            # 检查最后一个 assistant 消息是否以 thinking 块开始
+            from app.services.gemini_fix import check_last_assistant_has_thinking
+            
+            if not check_last_assistant_has_thinking(contents) and "claude" in model.lower():
                 # 检测是否有工具调用（MCP场景）
                 has_tool_calls = any(
-                    isinstance(content, dict) and 
+                    isinstance(content, dict) and
                     any(
                         isinstance(part, dict) and ("functionCall" in part or "function_call" in part)
                         for part in content.get("parts", [])
@@ -83,21 +86,28 @@ class AntigravityClient:
                 )
                 
                 if has_tool_calls:
-                    print(f"[AntigravityClient] 检测到工具调用（MCP场景），移除 thinkingConfig", flush=True)
+                    # MCP 场景：检测到工具调用，移除 thinkingConfig
+                    print(f"[AntigravityClient] 检测到工具调用（MCP场景），移除 thinkingConfig 避免失效", flush=True)
                     generation_config.pop("thinkingConfig", None)
                 else:
-                    # 非 MCP 场景：在最后一个 model 消息开头插入思考块
+                    # 非 MCP 场景：填充思考块
+                    print(f"[AntigravityClient] 最后一个 assistant 消息不以 thinking 块开始，自动填充思考块", flush=True)
+                    
+                    # 找到最后一个 model 角色的 content
                     for i in range(len(contents) - 1, -1, -1):
                         content = contents[i]
                         if isinstance(content, dict) and content.get("role") == "model":
+                            # 在 parts 开头插入思考块（使用官方跳过验证的虚拟签名）
                             parts = content.get("parts", [])
                             thinking_part = {
-                                "text": "...",
-                                "thoughtSignature": "skip_thought_signature_validator"
+                                "text": "Continuing from previous context...",
+                                # "thought": True,  # 标记为思考块
+                                "thoughtSignature": "skip_thought_signature_validator"  # 官方文档推荐的虚拟签���
                             }
+                            # 如果第一个 part 不是 thinking，则插入
                             if not parts or not (isinstance(parts[0], dict) and ("thought" in parts[0] or "thoughtSignature" in parts[0])):
                                 content["parts"] = [thinking_part] + parts
-                                print(f"[AntigravityClient] 已插入思考块 (thoughtSignature: skip_thought_signature_validator)", flush=True)
+                                print(f"[AntigravityClient] 已在最后一个 assistant 消息开头插入思考块（含跳过验证签名）", flush=True)
                             break
         
         # ========== 3. 模型名称映射 (gemini_fix.py 第256-274行) ==========
