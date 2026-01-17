@@ -1,31 +1,31 @@
 import {
-  AlertTriangle,
-  ArrowLeft,
-  Cat,
-  Check,
-  ChevronDown,
-  ChevronUp,
-  Download,
-  ExternalLink,
-  Eye,
-  Key,
-  Plus,
-  RefreshCw,
-  ScrollText,
-  Settings,
-  Trash2,
-  Users,
-  X,
+    AlertTriangle,
+    ArrowLeft,
+    Cat,
+    Check,
+    ChevronDown,
+    ChevronUp,
+    Download,
+    ExternalLink,
+    Eye,
+    Key,
+    Plus,
+    RefreshCw,
+    ScrollText,
+    Settings,
+    Trash2,
+    Users,
+    X,
 } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import api from "../api";
 import { useAuth } from "../App";
 import {
-  AlertModal,
-  ConfirmModal,
-  InputModal,
-  QuotaModal,
+    AlertModal,
+    ConfirmModal,
+    InputModal,
+    QuotaModal,
 } from "../components/Modal";
 import { useWebSocket } from "../hooks/useWebSocket";
 
@@ -293,6 +293,30 @@ export default function Admin() {
     } catch (err) {
       showAlert("操作失败", "凭证状态更新失败", "error");
     }
+  };
+
+  // 编辑凭证备注
+  const updateCredNote = (credId, currentNote) => {
+    showInput(
+      "编辑备注",
+      "备注内容（可为空）",
+      currentNote || "",
+      async (newNote) => {
+        try {
+          await api.put(`/api/admin/credentials/${credId}`, {
+            note: newNote || null,
+          });
+          fetchData();
+          showAlert("成功", "备注已更新", "success");
+        } catch (err) {
+          showAlert(
+            "更新失败",
+            err.response?.data?.detail || "备注更新失败",
+            "error",
+          );
+        }
+      },
+    );
   };
 
   const deleteCredential = (credId) => {
@@ -1225,17 +1249,34 @@ export default function Admin() {
                           <tr key={c.id}>
                             <td className="text-gray-400">{c.id}</td>
                             <td>
-                              <div className="flex items-center gap-2">
-                                {c.api_type === "antigravity" ? (
-                                  <span className="px-1.5 py-0.5 bg-pink-500/20 text-pink-400 rounded text-xs">
-                                    🚀 Antigravity
-                                  </span>
-                                ) : (
-                                  <span className="px-1.5 py-0.5 bg-blue-500/20 text-blue-400 rounded text-xs">
-                                    OAuth
-                                  </span>
-                                )}
-                                <span>{c.name}</span>
+                              <div className="flex flex-col gap-0.5">
+                                <div className="flex items-center gap-2">
+                                  {c.api_type === "antigravity" ? (
+                                    <span className="px-1.5 py-0.5 bg-pink-500/20 text-pink-400 rounded text-xs">
+                                      🚀 反重力
+                                    </span>
+                                  ) : (
+                                    <span className="px-1.5 py-0.5 bg-blue-500/20 text-blue-400 rounded text-xs">
+                                      CLI
+                                    </span>
+                                  )}
+                                  <span>{c.name}</span>
+                                </div>
+                                {/* 备注显示 - 点击编辑 */}
+                                <button
+                                  onClick={() => updateCredNote(c.id, c.note)}
+                                  className="text-left text-xs text-gray-500 hover:text-gray-300 flex items-center gap-1 mt-0.5"
+                                >
+                                  {c.note ? (
+                                    <span className="truncate max-w-[150px]">
+                                      📝 {c.note}
+                                    </span>
+                                  ) : (
+                                    <span className="text-gray-600 hover:text-gray-400">
+                                      + 添加备注
+                                    </span>
+                                  )}
+                                </button>
                               </div>
                             </td>
                             <td className="space-x-1">
