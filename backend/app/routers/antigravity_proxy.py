@@ -359,12 +359,12 @@ async def chat_completions(
             .where(UsageLog.created_at >= one_minute_ago)
         )
         current_rpm = rpm_result.scalar() or 0
-        max_rpm = settings.contributor_rpm if user_has_public else settings.base_rpm
+        max_rpm = settings.antigravity_contributor_rpm if user_has_public else settings.antigravity_base_rpm
         
         if current_rpm >= max_rpm:
             raise HTTPException(
                 status_code=429, 
-                detail=f"速率限制: {max_rpm} 次/分钟"
+                detail=f"Antigravity 速率限制: {max_rpm} 次/分钟。{'上传 Antigravity 凭证可提升至 ' + str(settings.antigravity_contributor_rpm) + ' 次/分钟' if not user_has_public else ''}"
             )
     
     # Antigravity 配额检查

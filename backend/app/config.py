@@ -128,6 +128,9 @@ You are Antigravity, a powerful agentic AI coding assistant designed by the Goog
     antigravity_quota_enabled: bool = True         # 是否启用 Antigravity 配额限制
     antigravity_quota_default: int = 100           # 默认 Antigravity 每日配额
     antigravity_quota_contributor: int = 500       # 贡献凭证奖励配额
+    # Antigravity 速率限制 (RPM)
+    antigravity_base_rpm: int = 5                  # 未上传凭证的用户 RPM
+    antigravity_contributor_rpm: int = 10          # 上传凭证的用户 RPM
     
     # Discord OAuth (可选，用于 Discord 登录/注册)
     discord_client_id: str = ""
@@ -177,6 +180,8 @@ PERSISTENT_CONFIG_KEYS = [
     "antigravity_quota_enabled",
     "antigravity_quota_default",
     "antigravity_quota_contributor",
+    "antigravity_base_rpm",
+    "antigravity_contributor_rpm",
 ]
 
 
