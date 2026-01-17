@@ -54,6 +54,36 @@ export default function Dashboard() {
   const [forceDonate, setForceDonate] = useState(false);
   const [rpmConfig, setRpmConfig] = useState({ base: 5, contributor: 10 });
 
+  // localStorage 文件夹映射（纯前端分类，不影响后端）
+  const [credFolders, setCredFolders] = useState(() => {
+    try {
+      return JSON.parse(localStorage.getItem("myCredFolders") || "{}");
+    } catch {
+      return {};
+    }
+  });
+  const [credFolderFilter, setCredFolderFilter] = useState("all");
+
+  const saveCredFolders = (newFolders) => {
+    setCredFolders(newFolders);
+    localStorage.setItem("myCredFolders", JSON.stringify(newFolders));
+  };
+
+  const allFolders = [...new Set(Object.values(credFolders).filter((f) => f))];
+
+  const updateCredFolder = (credId) => {
+    const currentFolder = credFolders[credId] || "";
+    const newFolder = prompt("设置分类/文件夹（留空移除分类）", currentFolder);
+    if (newFolder === null) return;
+    const updated = { ...credFolders };
+    if (newFolder.trim()) {
+      updated[credId] = newFolder.trim();
+    } else {
+      delete updated[credId];
+    }
+    saveCredFolders(updated);
+  };
+
   // 获取捐赠配置
   useEffect(() => {
     api
@@ -681,10 +711,28 @@ export default function Dashboard() {
         {/* Tab: 凭证管理 */}
         {activeTab === "credentials" && (
           <>
-            <div className="flex items-center justify-between mb-4">
-              <h2 className="text-xl font-semibold">
-                我的凭证 ({myCredentials.length})
-              </h2>
+            <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
+              <div className="flex items-center gap-3">
+                <h2 className="text-xl font-semibold">
+                  我的凭证 ({myCredentials.length})
+                </h2>
+                {/* 文件夹筛选 */}
+                {allFolders.length > 0 && (
+                  <select
+                    value={credFolderFilter}
+                    onChange={(e) => setCredFolderFilter(e.target.value)}
+                    className="px-2 py-1 text-sm bg-dark-700 border border-dark-600 rounded text-gray-300"
+                  >
+                    <option value="all">📁 全部</option>
+                    <option value="_none">未分类</option>
+                    {allFolders.map((folder) => (
+                      <option key={folder} value={folder}>
+                        {folder}
+                      </option>
+                    ))}
+                  </select>
+                )}
+              </div>
               <div className="flex gap-2 flex-wrap">
                 {myCredentials.some((c) => !c.is_active) && (
                   <button
@@ -744,143 +792,165 @@ export default function Dashboard() {
               </div>
             ) : (
               <div className="space-y-3">
-                {myCredentials.map((cred) => (
-                  <div
-                    key={cred.id}
-                    className="p-4 bg-dark-800 border border-dark-600 rounded-xl"
-                  >
-                    <div className="flex flex-col gap-3">
-                      <div className="flex-1 min-w-0">
-                        {/* 凭证名称 - 斜体灰色 */}
-                        <div className="text-gray-400 italic mb-1 truncate">
-                          {cred.email || cred.name}
+                {myCredentials
+                  .filter((cred) => {
+                    if (credFolderFilter === "all") return true;
+                    if (credFolderFilter === "_none")
+                      return !credFolders[cred.id];
+                    return credFolders[cred.id] === credFolderFilter;
+                  })
+                  .map((cred) => (
+                    <div
+                      key={cred.id}
+                      className="p-4 bg-dark-800 border border-dark-600 rounded-xl"
+                    >
+                      <div className="flex flex-col gap-3">
+                        <div className="flex-1 min-w-0">
+                          {/* 凭证名称 - 斜体灰色 */}
+                          <div className="text-gray-400 italic mb-1 truncate">
+                            {cred.email || cred.name}
+                          </div>
+                          {/* 备注 - 点击编辑 */}
+                          <button
+                            onClick={() => updateCredNote(cred.id, cred.note)}
+                            className="text-left text-xs text-gray-500 hover:text-gray-300 mb-2 flex items-center gap-1"
+                          >
+                            {cred.note ? (
+                              <span className="truncate max-w-[200px]">
+                                📝 {cred.note}
+                              </span>
+                            ) : (
+                              <span className="text-gray-600 hover:text-gray-400">
+                                + 添加备注
+                              </span>
+                            )}
+                          </button>
+                          {/* 文件夹标签 - 点击编辑 */}
+                          <button
+                            onClick={() => updateCredFolder(cred.id)}
+                            className="text-left text-xs text-gray-500 hover:text-gray-300 mb-2 flex items-center gap-1"
+                          >
+                            {credFolders[cred.id] ? (
+                              <span className="px-1.5 py-0.5 bg-cyan-500/20 text-cyan-400 rounded">
+                                📁 {credFolders[cred.id]}
+                              </span>
+                            ) : (
+                              <span className="text-gray-600 hover:text-gray-400">
+                                + 设置分类
+                              </span>
+                            )}
+                          </button>
+
+                          {/* 状态标签行 */}
+                          <div className="flex items-center gap-2 mb-2 flex-wrap">
+                            {/* 启用状态 - 绿色实心 */}
+                            {cred.is_active !== false ? (
+                              <span className="text-xs px-2.5 py-1 bg-green-600 text-white rounded font-medium">
+                                已启用
+                              </span>
+                            ) : (
+                              <span className="text-xs px-2.5 py-1 bg-red-600 text-white rounded font-medium">
+                                已禁用
+                              </span>
+                            )}
+
+                            {/* 模型等级 - 蓝色边框空心 */}
+                            {cred.model_tier === "3" ? (
+                              <span className="text-xs px-2.5 py-1 border border-blue-500 text-blue-400 rounded font-medium">
+                                3.0可用
+                              </span>
+                            ) : (
+                              <span className="text-xs px-2.5 py-1 border border-gray-500 text-gray-400 rounded font-medium">
+                                2.5
+                              </span>
+                            )}
+
+                            {/* 捐赠状态 - 强制捐赠时隐藏 */}
+                            {!forceDonate && cred.is_public && (
+                              <span className="text-xs px-2.5 py-1 border border-purple-500 text-purple-400 rounded font-medium">
+                                已公开
+                              </span>
+                            )}
+                            {!forceDonate && !cred.is_public && (
+                              <span className="text-xs px-2.5 py-1 border border-gray-600 text-gray-500 rounded font-medium">
+                                私有
+                              </span>
+                            )}
+                          </div>
+
+                          {/* 信息行 */}
+                          <div className="text-xs text-gray-500">
+                            最后成功:{" "}
+                            {cred.last_used_at
+                              ? new Date(cred.last_used_at).toLocaleString()
+                              : "从未使用"}
+                          </div>
                         </div>
-                        {/* 备注 - 点击编辑 */}
-                        <button
-                          onClick={() => updateCredNote(cred.id, cred.note)}
-                          className="text-left text-xs text-gray-500 hover:text-gray-300 mb-2 flex items-center gap-1"
-                        >
-                          {cred.note ? (
-                            <span className="truncate max-w-[200px]">
-                              📝 {cred.note}
-                            </span>
-                          ) : (
-                            <span className="text-gray-600 hover:text-gray-400">
-                              + 添加备注
-                            </span>
-                          )}
-                        </button>
 
-                        {/* 状态标签行 */}
-                        <div className="flex items-center gap-2 mb-2 flex-wrap">
-                          {/* 启用状态 - 绿色实心 */}
-                          {cred.is_active !== false ? (
-                            <span className="text-xs px-2.5 py-1 bg-green-600 text-white rounded font-medium">
-                              已启用
-                            </span>
-                          ) : (
-                            <span className="text-xs px-2.5 py-1 bg-red-600 text-white rounded font-medium">
-                              已禁用
-                            </span>
-                          )}
-
-                          {/* 模型等级 - 蓝色边框空心 */}
-                          {cred.model_tier === "3" ? (
-                            <span className="text-xs px-2.5 py-1 border border-blue-500 text-blue-400 rounded font-medium">
-                              3.0可用
-                            </span>
-                          ) : (
-                            <span className="text-xs px-2.5 py-1 border border-gray-500 text-gray-400 rounded font-medium">
-                              2.5
-                            </span>
-                          )}
-
-                          {/* 捐赠状态 - 强制捐赠时隐藏 */}
-                          {!forceDonate && cred.is_public && (
-                            <span className="text-xs px-2.5 py-1 border border-purple-500 text-purple-400 rounded font-medium">
-                              已公开
-                            </span>
-                          )}
-                          {!forceDonate && !cred.is_public && (
-                            <span className="text-xs px-2.5 py-1 border border-gray-600 text-gray-500 rounded font-medium">
-                              私有
-                            </span>
-                          )}
-                        </div>
-
-                        {/* 信息行 */}
-                        <div className="text-xs text-gray-500">
-                          最后成功:{" "}
-                          {cred.last_used_at
-                            ? new Date(cred.last_used_at).toLocaleString()
-                            : "从未使用"}
-                        </div>
-                      </div>
-
-                      <div className="flex items-center gap-2 flex-wrap">
-                        {/* 配额按钮 */}
-                        <button
-                          onClick={() => fetchQuota(cred.id)}
-                          disabled={loadingQuota}
-                          className="px-3 py-1.5 rounded text-xs font-medium bg-indigo-600 hover:bg-indigo-500 text-white disabled:opacity-50 flex items-center gap-1"
-                          title="查看配额"
-                        >
-                          <BarChart2 size={12} />
-                          配额
-                        </button>
-                        {/* 检测按钮 */}
-                        <button
-                          onClick={() => verifyCred(cred.id, cred.email)}
-                          disabled={verifyingCred === cred.id}
-                          className="px-3 py-1.5 rounded text-xs font-medium bg-cyan-600 hover:bg-cyan-500 text-white disabled:opacity-50 flex items-center gap-1"
-                        >
-                          {verifyingCred === cred.id ? (
-                            <RefreshCw size={12} className="animate-spin" />
-                          ) : (
-                            <CheckCircle size={12} />
-                          )}
-                          检测
-                        </button>
-                        {/* 导出按钮 */}
-                        <button
-                          onClick={() => exportCred(cred.id, cred.email)}
-                          className="px-3 py-1.5 rounded text-xs font-medium bg-blue-600 hover:bg-blue-500 text-white flex items-center gap-1"
-                          title="导出凭证"
-                        >
-                          <Download size={12} />
-                          导出
-                        </button>
-                        {/* 启用/禁用开关 */}
-                        <button
-                          onClick={() =>
-                            toggleCredActive(cred.id, cred.is_active)
-                          }
-                          className={`px-3 py-1.5 rounded text-xs font-medium ${cred.is_active !== false ? "bg-green-600 hover:bg-green-500" : "bg-gray-600 hover:bg-gray-500"} text-white`}
-                        >
-                          {cred.is_active !== false ? "禁用" : "启用"}
-                        </button>
-                        {/* 捐赠/取消捐赠 - 强制捐赠时隐藏 */}
-                        {!forceDonate && (
+                        <div className="flex items-center gap-2 flex-wrap">
+                          {/* 配额按钮 */}
+                          <button
+                            onClick={() => fetchQuota(cred.id)}
+                            disabled={loadingQuota}
+                            className="px-3 py-1.5 rounded text-xs font-medium bg-indigo-600 hover:bg-indigo-500 text-white disabled:opacity-50 flex items-center gap-1"
+                            title="查看配额"
+                          >
+                            <BarChart2 size={12} />
+                            配额
+                          </button>
+                          {/* 检测按钮 */}
+                          <button
+                            onClick={() => verifyCred(cred.id, cred.email)}
+                            disabled={verifyingCred === cred.id}
+                            className="px-3 py-1.5 rounded text-xs font-medium bg-cyan-600 hover:bg-cyan-500 text-white disabled:opacity-50 flex items-center gap-1"
+                          >
+                            {verifyingCred === cred.id ? (
+                              <RefreshCw size={12} className="animate-spin" />
+                            ) : (
+                              <CheckCircle size={12} />
+                            )}
+                            检测
+                          </button>
+                          {/* 导出按钮 */}
+                          <button
+                            onClick={() => exportCred(cred.id, cred.email)}
+                            className="px-3 py-1.5 rounded text-xs font-medium bg-blue-600 hover:bg-blue-500 text-white flex items-center gap-1"
+                            title="导出凭证"
+                          >
+                            <Download size={12} />
+                            导出
+                          </button>
+                          {/* 启用/禁用开关 */}
                           <button
                             onClick={() =>
-                              toggleCredPublic(cred.id, cred.is_public)
+                              toggleCredActive(cred.id, cred.is_active)
                             }
-                            className={`px-3 py-1.5 rounded text-xs font-medium ${cred.is_public ? "bg-gray-600 hover:bg-gray-500" : "bg-green-600 hover:bg-green-500"} text-white`}
+                            className={`px-3 py-1.5 rounded text-xs font-medium ${cred.is_active !== false ? "bg-green-600 hover:bg-green-500" : "bg-gray-600 hover:bg-gray-500"} text-white`}
                           >
-                            {cred.is_public ? "取消公开" : "设为公开"}
+                            {cred.is_active !== false ? "禁用" : "启用"}
                           </button>
-                        )}
-                        {/* 删除 */}
-                        <button
-                          onClick={() => deleteCred(cred.id)}
-                          className="px-3 py-1.5 rounded text-xs font-medium bg-red-600 hover:bg-red-500 text-white"
-                        >
-                          删除
-                        </button>
+                          {/* 捐赠/取消捐赠 - 强制捐赠时隐藏 */}
+                          {!forceDonate && (
+                            <button
+                              onClick={() =>
+                                toggleCredPublic(cred.id, cred.is_public)
+                              }
+                              className={`px-3 py-1.5 rounded text-xs font-medium ${cred.is_public ? "bg-gray-600 hover:bg-gray-500" : "bg-green-600 hover:bg-green-500"} text-white`}
+                            >
+                              {cred.is_public ? "取消公开" : "设为公开"}
+                            </button>
+                          )}
+                          {/* 删除 */}
+                          <button
+                            onClick={() => deleteCred(cred.id)}
+                            className="px-3 py-1.5 rounded text-xs font-medium bg-red-600 hover:bg-red-500 text-white"
+                          >
+                            删除
+                          </button>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
               </div>
             )}
 
