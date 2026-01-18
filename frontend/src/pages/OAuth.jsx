@@ -28,6 +28,7 @@ export default function OAuth() {
   const [countdown, setCountdown] = useState(8);
   const [showQuiz, setShowQuiz] = useState(false);
   const [quizPassed, setQuizPassed] = useState(false);
+  const [shuffledOptions, setShuffledOptions] = useState([]);
 
   // OAuth 弹窗配置
   const [guideEnabled, setGuideEnabled] = useState(true);
@@ -97,11 +98,28 @@ export default function OAuth() {
         window.open(authUrl, "_blank");
       }
     } else {
+      // 点击错误选项，重新回到指引弹窗
+      setShowQuiz(false);
+      setShowGuide(true);
+      setCountdown(guideSeconds);
       setMessage({ type: "error", text: "❌ 答案错误，请仔细阅读操作指引！" });
     }
   };
 
   const handleGuideConfirm = () => {
+    // 随机排列选项
+    const options = [
+      { text: "完整复制该网页链接并回到此页面粘贴", correct: true },
+      { text: "到公益站帖子下求助", correct: false },
+      { text: "刷新页面尝试访问", correct: false },
+      { text: "尝试重新开始认证流程", correct: false },
+    ];
+    // Fisher-Yates 洗牌算法
+    for (let i = options.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [options[i], options[j]] = [options[j], options[i]];
+    }
+    setShuffledOptions(options);
     setShowGuide(false);
     setShowQuiz(true);
   };
@@ -245,30 +263,15 @@ export default function OAuth() {
             </p>
 
             <div className="space-y-3">
-              <button
-                onClick={() => handleQuizAnswer(true)}
-                className="w-full p-4 text-left rounded-lg border border-dark-500 hover:border-gray-500 hover:bg-dark-700 text-gray-300 transition-colors"
-              >
-                完整复制该网页链接并回到此页面粘贴
-              </button>
-              <button
-                onClick={() => handleQuizAnswer(false)}
-                className="w-full p-4 text-left rounded-lg border border-dark-500 hover:border-gray-500 hover:bg-dark-700 text-gray-300 transition-colors"
-              >
-                到公益站帖子下求助
-              </button>
-              <button
-                onClick={() => handleQuizAnswer(false)}
-                className="w-full p-4 text-left rounded-lg border border-dark-500 hover:border-gray-500 hover:bg-dark-700 text-gray-300 transition-colors"
-              >
-                刷新页面尝试访问
-              </button>
-              <button
-                onClick={() => handleQuizAnswer(false)}
-                className="w-full p-4 text-left rounded-lg border border-dark-500 hover:border-gray-500 hover:bg-dark-700 text-gray-300 transition-colors"
-              >
-                尝试重新开始认证流程
-              </button>
+              {shuffledOptions.map((option, index) => (
+                <button
+                  key={index}
+                  onClick={() => handleQuizAnswer(option.correct)}
+                  className="w-full p-4 text-left rounded-lg border border-dark-500 hover:border-gray-500 hover:bg-dark-700 text-gray-300 transition-colors"
+                >
+                  {option.text}
+                </button>
+              ))}
             </div>
           </div>
         </div>
