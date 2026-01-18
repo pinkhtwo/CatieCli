@@ -869,6 +869,22 @@ async def get_stats_overview(
     )
     active_credentials = active_cred_result.scalar() or 0
     
+    # CLI 凭证（api_type 为空或 None）
+    cli_cred_result = await db.execute(
+        select(func.count(Credential.id))
+        .where(Credential.is_active == True)
+        .where((Credential.api_type == None) | (Credential.api_type == ""))
+    )
+    cli_credentials = cli_cred_result.scalar() or 0
+    
+    # AGY 凭证（api_type = "antigravity"）
+    agy_cred_result = await db.execute(
+        select(func.count(Credential.id))
+        .where(Credential.is_active == True)
+        .where(Credential.api_type == "antigravity")
+    )
+    agy_credentials = agy_cred_result.scalar() or 0
+    
     return {
         "requests": {
             "today": today_requests,
@@ -882,6 +898,8 @@ async def get_stats_overview(
         "credentials": {
             "total": total_credentials,
             "active": active_credentials,
+            "cli": cli_credentials,
+            "agy": agy_credentials,
         }
     }
 

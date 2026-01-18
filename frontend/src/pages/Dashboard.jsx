@@ -753,9 +753,17 @@ export default function Dashboard() {
                     <div className="bg-dark-800 border border-dark-600 rounded-xl p-4 text-center">
                       <Zap className="w-6 h-6 text-yellow-400 mx-auto mb-2" />
                       <div className="text-xl font-bold">
-                        {stats?.active_credentials || "-"}
+                        <span className="text-blue-400">
+                          {stats?.credentials?.cli || 0}
+                        </span>
+                        <span className="text-gray-500 mx-1">/</span>
+                        <span className="text-orange-400">
+                          {stats?.credentials?.agy || 0}
+                        </span>
                       </div>
-                      <div className="text-gray-400 text-sm">可用凭证</div>
+                      <div className="text-gray-400 text-sm">
+                        CLI / AGY 凭证
+                      </div>
                     </div>
                     <div className="bg-dark-800 border border-dark-600 rounded-xl p-4 text-center">
                       <Activity className="w-6 h-6 text-green-400 mx-auto mb-2" />
