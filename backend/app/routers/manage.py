@@ -1092,11 +1092,14 @@ async def get_public_config():
 async def get_tutorial():
     """获取教程内容（公开接口）"""
     from app.config import settings
+    from app.defaults import DEFAULT_TUTORIAL_CONTENT
     if not settings.tutorial_enabled:
         return {"enabled": False, "content": ""}
+    # 如果管理员未设置自定义内容，使用内置默认教程
+    content = settings.tutorial_content if settings.tutorial_content.strip() else DEFAULT_TUTORIAL_CONTENT
     return {
         "enabled": True,
-        "content": settings.tutorial_content,
+        "content": content,
     }
 
 
