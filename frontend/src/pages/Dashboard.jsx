@@ -9,6 +9,7 @@ import {
     ExternalLink,
     Gift,
     HelpCircle,
+    Key,
     LogOut,
     RefreshCcw,
     RefreshCw,
