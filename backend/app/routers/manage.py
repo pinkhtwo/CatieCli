@@ -1158,6 +1158,7 @@ async def update_config(
     anthropic_quota_contributor: Optional[int] = Form(None),
     anthropic_base_rpm: Optional[int] = Form(None),
     anthropic_contributor_rpm: Optional[int] = Form(None),
+    stats_timezone: Optional[str] = Form(None),
     user: User = Depends(get_current_admin)
 ):
     """更新配置（持久化保存到数据库）"""
@@ -1395,6 +1396,12 @@ async def update_config(
         settings.anthropic_contributor_rpm = anthropic_contributor_rpm
         await save_config_to_db("anthropic_contributor_rpm", anthropic_contributor_rpm)
         updated["anthropic_contributor_rpm"] = anthropic_contributor_rpm
+    
+    # 统计时区配置
+    if stats_timezone is not None:
+        settings.stats_timezone = stats_timezone
+        await save_config_to_db("stats_timezone", stats_timezone)
+        updated["stats_timezone"] = stats_timezone
     
     return {"message": "配置已保存", "updated": updated}
 
