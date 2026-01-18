@@ -158,6 +158,14 @@ function App() {
               </ProtectedRoute>
             }
           />
+          <Route
+            path="/anthropic-credentials"
+            element={
+              <ProtectedRoute>
+                <AnthropicCredentials />
+              </ProtectedRoute>
+            }
+          />
           <Route path="/" element={<Navigate to="/dashboard" />} />
         </Routes>
       </BrowserRouter>

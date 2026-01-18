@@ -146,6 +146,14 @@ You are Antigravity, a powerful agentic AI coding assistant designed by the Goog
     antigravity_base_rpm: int = 5                  # 未上传凭证的用户 RPM
     antigravity_contributor_rpm: int = 10          # 上传凭证的用户 RPM
     
+    # Anthropic API 反代配置
+    anthropic_enabled: bool = False                # 是否启用 Anthropic API 反代
+    anthropic_quota_enabled: bool = False          # 是否启用配额限制
+    anthropic_quota_default: int = 100             # 默认每日配额
+    anthropic_quota_contributor: int = 500         # 贡献凭证奖励配额
+    anthropic_base_rpm: int = 10                   # 默认 RPM
+    anthropic_contributor_rpm: int = 20            # 贡献者 RPM
+    
     # Discord OAuth (可选，用于 Discord 登录/注册)
     discord_client_id: str = ""
     discord_client_secret: str = ""
@@ -204,6 +212,12 @@ PERSISTENT_CONFIG_KEYS = [
     "tutorial_enabled",
     "tutorial_content",
     "tutorial_force_first_visit",
+    "anthropic_enabled",
+    "anthropic_quota_enabled",
+    "anthropic_quota_default",
+    "anthropic_quota_contributor",
+    "anthropic_base_rpm",
+    "anthropic_contributor_rpm",
 ]
 
 

@@ -107,6 +107,16 @@ export default function Settings() {
         "tutorial_force_first_visit",
         config.tutorial_force_first_visit ?? false,
       );
+      formData.append("anthropic_enabled", config.anthropic_enabled ?? false);
+      formData.append(
+        "anthropic_quota_enabled",
+        config.anthropic_quota_enabled ?? false,
+      );
+      formData.append(
+        "anthropic_quota_default",
+        config.anthropic_quota_default ?? 100,
+      );
+      formData.append("anthropic_base_rpm", config.anthropic_base_rpm ?? 10);
 
       await api.post("/api/manage/config", formData);
       setMessage({ type: "success", text: "配置已保存！" });
@@ -1134,6 +1144,80 @@ You are Antigravity, a powerful agentic AI coding assistant designed by the Goog
                     <p className="text-gray-500 text-xs mt-1">
                       贡献凭证用户每分钟请求数
                     </p>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Anthropic 反代 */}
+          <div className="pt-4 border-t border-gray-700">
+            <div className="flex justify-between items-center">
+              <div>
+                <h3 className="font-semibold">🧠 Anthropic 反代</h3>
+                <p className="text-gray-400 text-sm">
+                  启用 Anthropic API 反代功能（/anthropic 路径）
+                </p>
+              </div>
+              <label className="relative inline-flex items-center cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={config?.anthropic_enabled || false}
+                  onChange={(e) =>
+                    setConfig({
+                      ...config,
+                      anthropic_enabled: e.target.checked,
+                    })
+                  }
+                  className="sr-only peer"
+                />
+                <div className="w-11 h-6 bg-gray-600 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-pink-600"></div>
+              </label>
+            </div>
+            {config?.anthropic_enabled && (
+              <div className="mt-4 bg-gray-700/30 rounded-lg p-4">
+                <p className="text-gray-400 text-sm mb-3">
+                  用户可以添加自己的 Anthropic API Key，通过
+                  <code className="bg-dark-700 px-1 rounded mx-1">
+                    /anthropic/v1
+                  </code>
+                  端点使用 Claude 模型。
+                </p>
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className="text-sm text-gray-400 mb-1 block">
+                      默认配额
+                    </label>
+                    <input
+                      type="number"
+                      min="0"
+                      value={config?.anthropic_quota_default ?? 100}
+                      onChange={(e) =>
+                        setConfig({
+                          ...config,
+                          anthropic_quota_default:
+                            parseInt(e.target.value) || 0,
+                        })
+                      }
+                      className="w-full bg-gray-700 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-pink-500"
+                    />
+                  </div>
+                  <div>
+                    <label className="text-sm text-gray-400 mb-1 block">
+                      默认 RPM
+                    </label>
+                    <input
+                      type="number"
+                      min="1"
+                      value={config?.anthropic_base_rpm ?? 10}
+                      onChange={(e) =>
+                        setConfig({
+                          ...config,
+                          anthropic_base_rpm: parseInt(e.target.value) || 1,
+                        })
+                      }
+                      className="w-full bg-gray-700 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-pink-500"
+                    />
                   </div>
                 </div>
               </div>

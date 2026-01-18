@@ -1044,6 +1044,12 @@ async def get_config(user: User = Depends(get_current_admin)):
         "tutorial_enabled": settings.tutorial_enabled,
         "tutorial_content": settings.tutorial_content,
         "tutorial_force_first_visit": settings.tutorial_force_first_visit,
+        "anthropic_enabled": settings.anthropic_enabled,
+        "anthropic_quota_enabled": settings.anthropic_quota_enabled,
+        "anthropic_quota_default": settings.anthropic_quota_default,
+        "anthropic_quota_contributor": settings.anthropic_quota_contributor,
+        "anthropic_base_rpm": settings.anthropic_base_rpm,
+        "anthropic_contributor_rpm": settings.anthropic_contributor_rpm,
     }
 
 
@@ -1078,6 +1084,7 @@ async def get_public_config():
         "help_link_text": settings.help_link_text,
         "tutorial_enabled": settings.tutorial_enabled,
         "tutorial_force_first_visit": settings.tutorial_force_first_visit,
+        "anthropic_enabled": settings.anthropic_enabled,
     }
 
 
@@ -1142,6 +1149,12 @@ async def update_config(
     tutorial_enabled: Optional[bool] = Form(None),
     tutorial_content: Optional[str] = Form(None),
     tutorial_force_first_visit: Optional[bool] = Form(None),
+    anthropic_enabled: Optional[bool] = Form(None),
+    anthropic_quota_enabled: Optional[bool] = Form(None),
+    anthropic_quota_default: Optional[int] = Form(None),
+    anthropic_quota_contributor: Optional[int] = Form(None),
+    anthropic_base_rpm: Optional[int] = Form(None),
+    anthropic_contributor_rpm: Optional[int] = Form(None),
     user: User = Depends(get_current_admin)
 ):
     """更新配置（持久化保存到数据库）"""
@@ -1353,6 +1366,32 @@ async def update_config(
         settings.tutorial_force_first_visit = tutorial_force_first_visit
         await save_config_to_db("tutorial_force_first_visit", tutorial_force_first_visit)
         updated["tutorial_force_first_visit"] = tutorial_force_first_visit
+    
+    # Anthropic 配置
+    if anthropic_enabled is not None:
+        settings.anthropic_enabled = anthropic_enabled
+        await save_config_to_db("anthropic_enabled", anthropic_enabled)
+        updated["anthropic_enabled"] = anthropic_enabled
+    if anthropic_quota_enabled is not None:
+        settings.anthropic_quota_enabled = anthropic_quota_enabled
+        await save_config_to_db("anthropic_quota_enabled", anthropic_quota_enabled)
+        updated["anthropic_quota_enabled"] = anthropic_quota_enabled
+    if anthropic_quota_default is not None:
+        settings.anthropic_quota_default = anthropic_quota_default
+        await save_config_to_db("anthropic_quota_default", anthropic_quota_default)
+        updated["anthropic_quota_default"] = anthropic_quota_default
+    if anthropic_quota_contributor is not None:
+        settings.anthropic_quota_contributor = anthropic_quota_contributor
+        await save_config_to_db("anthropic_quota_contributor", anthropic_quota_contributor)
+        updated["anthropic_quota_contributor"] = anthropic_quota_contributor
+    if anthropic_base_rpm is not None:
+        settings.anthropic_base_rpm = anthropic_base_rpm
+        await save_config_to_db("anthropic_base_rpm", anthropic_base_rpm)
+        updated["anthropic_base_rpm"] = anthropic_base_rpm
+    if anthropic_contributor_rpm is not None:
+        settings.anthropic_contributor_rpm = anthropic_contributor_rpm
+        await save_config_to_db("anthropic_contributor_rpm", anthropic_contributor_rpm)
+        updated["anthropic_contributor_rpm"] = anthropic_contributor_rpm
     
     return {"message": "配置已保存", "updated": updated}
 

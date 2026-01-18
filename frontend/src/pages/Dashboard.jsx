@@ -36,6 +36,7 @@ export default function Dashboard() {
   const [stats, setStats] = useState(null);
   const [statsLoading, setStatsLoading] = useState(true);
   const [helpLink, setHelpLink] = useState(null);
+  const [anthropicEnabled, setAnthropicEnabled] = useState(false);
 
   // API Key 相关
   const [showKeyModal, setShowKeyModal] = useState(false);
@@ -179,6 +180,10 @@ export default function Dashboard() {
             text: configRes.data.help_link_text || "使用教程",
             isInternal: false,
           });
+        }
+        // Anthropic 功能状态
+        if (configRes?.data?.anthropic_enabled) {
+          setAnthropicEnabled(true);
         }
       })
       .finally(() => setStatsLoading(false));
@@ -463,6 +468,15 @@ export default function Dashboard() {
               <Rocket size={16} />
               Antigravity 凭证
             </Link>
+            {anthropicEnabled && (
+              <Link
+                to="/anthropic-credentials"
+                className="text-pink-400 hover:text-pink-300 flex items-center gap-1 text-sm whitespace-nowrap"
+              >
+                <Key size={16} />
+                Anthropic 凭证
+              </Link>
+            )}
             {helpLink &&
               (helpLink.isInternal ? (
                 <Link
