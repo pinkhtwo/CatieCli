@@ -1,31 +1,31 @@
 import {
-  AlertTriangle,
-  ArrowLeft,
-  Cat,
-  Check,
-  ChevronDown,
-  ChevronUp,
-  Download,
-  ExternalLink,
-  Eye,
-  Key,
-  Plus,
-  RefreshCw,
-  ScrollText,
-  Settings,
-  Trash2,
-  Users,
-  X,
+    AlertTriangle,
+    ArrowLeft,
+    Cat,
+    Check,
+    ChevronDown,
+    ChevronUp,
+    Download,
+    ExternalLink,
+    Eye,
+    Key,
+    Plus,
+    RefreshCw,
+    ScrollText,
+    Settings,
+    Trash2,
+    Users,
+    X,
 } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import api from "../api";
 import { useAuth } from "../App";
 import {
-  AlertModal,
-  ConfirmModal,
-  InputModal,
-  QuotaModal,
+    AlertModal,
+    ConfirmModal,
+    InputModal,
+    QuotaModal,
 } from "../components/Modal";
 import { useWebSocket } from "../hooks/useWebSocket";
 
@@ -864,6 +864,14 @@ export default function Admin() {
                           {userSort.field === "credential_count" &&
                             (userSort.order === "asc" ? "↑" : "↓")}
                         </th>
+                        <th
+                          className="cursor-pointer hover:text-purple-400"
+                          onClick={() => handleUserSort("created_at")}
+                        >
+                          注册日期{" "}
+                          {userSort.field === "created_at" &&
+                            (userSort.order === "asc" ? "↑" : "↓")}
+                        </th>
                         <th>状态</th>
                         <th>操作</th>
                       </tr>
@@ -911,6 +919,11 @@ export default function Admin() {
                             }
                           >
                             {u.credential_count || 0}
+                          </td>
+                          <td className="text-gray-400 text-sm">
+                            {u.created_at
+                              ? new Date(u.created_at).toLocaleDateString()
+                              : "-"}
                           </td>
                           <td>
                             {u.is_active ? (
