@@ -447,18 +447,19 @@ export default function AntigravityCredentials() {
               </div>
             )}
 
-            <div className="flex items-center justify-between">
+            {/* 上传选项 - 移动端垂直堆叠 */}
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:justify-between">
               <label className="flex items-center gap-3 cursor-pointer p-3 bg-orange-500/10 border border-orange-500/30 rounded-lg hover:bg-orange-500/20 transition-colors">
                 <input
                   type="checkbox"
                   checked={uploadPublic}
                   onChange={(e) => setUploadPublic(e.target.checked)}
-                  className="w-5 h-5 rounded"
+                  className="w-5 h-5 rounded flex-shrink-0"
                 />
-                <div>
-                  <div className="text-orange-400 font-medium flex items-center gap-2">
-                    <Gift size={16} />
-                    上传到公共池
+                <div className="min-w-0">
+                  <div className="text-orange-400 font-medium flex items-center gap-2 text-sm sm:text-base">
+                    <Gift size={16} className="flex-shrink-0" />
+                    <span className="truncate">上传到公共池</span>
                   </div>
                   <div className="text-xs text-orange-300/70">
                     分享凭证，共同使用
@@ -469,7 +470,7 @@ export default function AntigravityCredentials() {
               <button
                 onClick={uploadCredential}
                 disabled={uploading || uploadFiles.length === 0}
-                className="px-6 py-3 bg-orange-600 hover:bg-orange-700 disabled:opacity-50 text-white rounded-lg flex items-center gap-2 font-medium"
+                className="px-4 sm:px-6 py-3 bg-orange-600 hover:bg-orange-700 disabled:opacity-50 text-white rounded-lg flex items-center justify-center gap-2 font-medium whitespace-nowrap flex-shrink-0"
               >
                 {uploading ? (
                   <RefreshCw className="animate-spin" size={18} />
