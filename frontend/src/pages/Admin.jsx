@@ -1340,11 +1340,11 @@ export default function Admin() {
                               <div className="flex flex-col gap-0.5">
                                 <div className="flex items-center gap-2">
                                   {c.api_type === "antigravity" ? (
-                                    <span className="px-1.5 py-0.5 bg-pink-500/20 text-pink-400 rounded text-xs">
-                                      🚀 反重力
+                                    <span className="px-1.5 py-0.5 bg-orange-500/20 text-orange-400 rounded text-xs font-medium">
+                                      AGY
                                     </span>
                                   ) : (
-                                    <span className="px-1.5 py-0.5 bg-blue-500/20 text-blue-400 rounded text-xs">
+                                    <span className="px-1.5 py-0.5 bg-blue-500/20 text-blue-400 rounded text-xs font-medium">
                                       CLI
                                     </span>
                                   )}

@@ -160,6 +160,52 @@ async def get_me(user: User = Depends(get_current_user), db: AsyncSession = Depe
     )
     pro30_usage = pro30_result.scalar() or 0
     
+    # 按 Provider 分类统计（Claude / Gemini / 其他）
+    from sqlalchemy import or_, and_
+    
+    # Claude 使用量
+    claude_result = await db.execute(
+        select(func.count(UsageLog.id))
+        .where(UsageLog.user_id == user.id)
+        .where(UsageLog.created_at >= start_of_day)
+        .where(UsageLog.model.ilike('%claude%'))
+    )
+    claude_usage = claude_result.scalar() or 0
+    
+    # Gemini 使用量（包含 gemini 或常见 Gemini 模型名）
+    gemini_result = await db.execute(
+        select(func.count(UsageLog.id))
+        .where(UsageLog.user_id == user.id)
+        .where(UsageLog.created_at >= start_of_day)
+        .where(or_(
+            UsageLog.model.ilike('%gemini%'),
+            UsageLog.model.ilike('%flash%'),
+            UsageLog.model.ilike('%pro%'),
+            UsageLog.model.ilike('%agy-%')
+        ))
+        .where(UsageLog.model.notilike('%claude%'))  # 排除 claude
+    )
+    gemini_usage = gemini_result.scalar() or 0
+    
+    # 其他使用量
+    other_usage = max(0, today_usage - claude_usage - gemini_usage)
+    
+    # 按 API 类型分类（CLI vs Antigravity）
+    # Antigravity 请求通过 /agy/ 或 /antigravity/ 端点
+    antigravity_result = await db.execute(
+        select(func.count(UsageLog.id))
+        .where(UsageLog.user_id == user.id)
+        .where(UsageLog.created_at >= start_of_day)
+        .where(or_(
+            UsageLog.endpoint.ilike('%/agy/%'),
+            UsageLog.endpoint.ilike('%/antigravity/%')
+        ))
+    )
+    antigravity_usage = antigravity_result.scalar() or 0
+    
+    # CLI 使用量 = 总使用量 - Antigravity 使用量
+    cli_usage = max(0, today_usage - antigravity_usage)
+    
     # 获取用户凭证数量
     cred_result = await db.execute(
         select(func.count(Credential.id))
@@ -239,6 +285,15 @@ async def get_me(user: User = Depends(get_current_user), db: AsyncSession = Depe
             "flash": {"used": flash_usage, "quota": quota_flash},
             "pro25": {"used": pro25_usage, "quota": quota_25pro},
             "pro30": {"used": pro30_usage, "quota": quota_30pro}
+        },
+        "usage_by_provider": {
+            "claude": claude_usage,
+            "gemini": gemini_usage,
+            "other": other_usage
+        },
+        "usage_by_api_type": {
+            "cli": cli_usage,
+            "antigravity": antigravity_usage
         },
         "cred_25_count": cred_25_count,
         "cred_30_count": cred_30_count
