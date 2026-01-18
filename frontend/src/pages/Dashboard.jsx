@@ -1,26 +1,26 @@
 import {
-    Activity,
-    BarChart2,
-    Cat,
-    Check,
-    CheckCircle,
-    Copy,
-    Download,
-    ExternalLink,
-    Gift,
-    HelpCircle,
-    Key,
-    LogOut,
-    RefreshCcw,
-    RefreshCw,
-    Rocket,
-    Settings,
-    Shield,
-    Trash2,
-    Upload,
-    Users,
-    X,
-    Zap,
+  Activity,
+  BarChart2,
+  Cat,
+  Check,
+  CheckCircle,
+  Copy,
+  Download,
+  ExternalLink,
+  Gift,
+  HelpCircle,
+  Key,
+  LogOut,
+  RefreshCcw,
+  RefreshCw,
+  Rocket,
+  Settings,
+  Shield,
+  Trash2,
+  Upload,
+  Users,
+  X,
+  Zap,
 } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
@@ -577,7 +577,7 @@ export default function Dashboard() {
               <div className="bg-gradient-to-br from-cyan-900/30 to-cyan-800/10 border border-cyan-700/30 rounded-xl p-5">
                 <div className="text-center">
                   <div className="text-sm text-cyan-400 mb-2 font-medium">
-                    🖥️ CLI Flash
+                    CLI Flash
                   </div>
                   <div className="text-3xl font-bold mb-1">
                     <span className="text-cyan-300">
@@ -593,7 +593,7 @@ export default function Dashboard() {
               <div className="bg-gradient-to-br from-orange-900/30 to-orange-800/10 border border-orange-700/30 rounded-xl p-5">
                 <div className="text-center">
                   <div className="text-sm text-orange-400 mb-2 font-medium">
-                    🖥️ CLI 2.5 Pro
+                    CLI 2.5 Pro
                   </div>
                   <div className="text-3xl font-bold mb-1">
                     <span className="text-orange-300">
@@ -609,7 +609,7 @@ export default function Dashboard() {
               <div className="bg-gradient-to-br from-pink-900/30 to-pink-800/10 border border-pink-700/30 rounded-xl p-5">
                 <div className="text-center">
                   <div className="text-sm text-pink-400 mb-2 font-medium">
-                    🖥️ CLI 3.0
+                    CLI 3.0
                   </div>
                   <div className="text-3xl font-bold mb-1">
                     <span className="text-pink-300">
@@ -630,7 +630,7 @@ export default function Dashboard() {
               <div className="bg-gradient-to-br from-amber-900/30 to-amber-800/10 border border-amber-700/30 rounded-xl p-4">
                 <div className="text-center">
                   <div className="text-sm text-amber-400 mb-1 font-medium">
-                    🚀 AGY Claude
+                    AGY Claude
                   </div>
                   <div className="text-2xl font-bold text-amber-300">
                     {userInfo?.usage_by_provider?.claude || 0}
@@ -643,7 +643,7 @@ export default function Dashboard() {
               <div className="bg-gradient-to-br from-blue-900/30 to-blue-800/10 border border-blue-700/30 rounded-xl p-4">
                 <div className="text-center">
                   <div className="text-sm text-blue-400 mb-1 font-medium">
-                    🚀 AGY Gemini
+                    AGY Gemini
                   </div>
                   <div className="text-2xl font-bold text-blue-300">
                     {userInfo?.usage_by_provider?.gemini || 0}
@@ -656,7 +656,7 @@ export default function Dashboard() {
               <div className="bg-gradient-to-br from-gray-800/50 to-gray-700/30 border border-gray-600/30 rounded-xl p-4">
                 <div className="text-center">
                   <div className="text-sm text-gray-400 mb-1 font-medium">
-                    🚀 AGY 其他
+                    AGY 其他
                   </div>
                   <div className="text-2xl font-bold text-gray-300">
                     {userInfo?.usage_by_provider?.other || 0}
@@ -669,7 +669,7 @@ export default function Dashboard() {
               <div className="bg-gradient-to-br from-purple-900/30 to-purple-800/10 border border-purple-700/30 rounded-xl p-4">
                 <div className="text-center">
                   <div className="text-sm text-purple-400 mb-1 font-medium">
-                    📊 API 调用
+                    API 调用
                   </div>
                   <div className="flex items-center justify-center gap-3">
                     <div className="text-center">
