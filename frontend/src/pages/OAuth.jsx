@@ -76,7 +76,8 @@ export default function OAuth() {
         setShowGuide(true);
         setCountdown(guideSeconds);
       } else {
-        // 弹窗禁用，直接跳问答或打开链接
+        // 弹窗禁用，直接跳问答 - 需要先初始化选项
+        initShuffledOptions();
         setShowQuiz(true);
       }
     } catch (err) {
@@ -106,8 +107,8 @@ export default function OAuth() {
     }
   };
 
-  const handleGuideConfirm = () => {
-    // 随机排列选项
+  // 初始化并随机排列选项
+  const initShuffledOptions = () => {
     const options = [
       { text: "完整复制该网页链接并回到此页面粘贴", correct: true },
       { text: "到公益站帖子下求助", correct: false },
@@ -120,6 +121,10 @@ export default function OAuth() {
       [options[i], options[j]] = [options[j], options[i]];
     }
     setShuffledOptions(options);
+  };
+
+  const handleGuideConfirm = () => {
+    initShuffledOptions();
     setShowGuide(false);
     setShowQuiz(true);
   };
