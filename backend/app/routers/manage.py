@@ -1096,7 +1096,10 @@ async def get_tutorial():
     if not settings.tutorial_enabled:
         return {"enabled": False, "content": ""}
     # 如果管理员未设置自定义内容，使用内置默认教程
-    content = settings.tutorial_content if settings.tutorial_content.strip() else DEFAULT_TUTORIAL_CONTENT
+    # 同时过滤无效值（如 '1', 'true', 'false' 等可能由于 bug 保存的布尔字符串）
+    raw_content = settings.tutorial_content.strip() if settings.tutorial_content else ""
+    invalid_values = {'1', '0', 'true', 'false', 'True', 'False', 'yes', 'no'}
+    content = raw_content if raw_content and raw_content not in invalid_values and len(raw_content) > 5 else DEFAULT_TUTORIAL_CONTENT
     return {
         "enabled": True,
         "content": content,
