@@ -170,6 +170,21 @@ async def public_stats():
         active_credentials = (await db.execute(
             select(func.count(Credential.id)).where(Credential.is_active == True)
         )).scalar() or 0
+        
+        # CLI 凭证（api_type 为空、None 或 'geminicli'）
+        cli_credentials = (await db.execute(
+            select(func.count(Credential.id))
+            .where(Credential.is_active == True)
+            .where((Credential.api_type == None) | (Credential.api_type == "") | (Credential.api_type == "geminicli"))
+        )).scalar() or 0
+        
+        # AGY 凭证（api_type = "antigravity"）
+        agy_credentials = (await db.execute(
+            select(func.count(Credential.id))
+            .where(Credential.is_active == True)
+            .where(Credential.api_type == "antigravity")
+        )).scalar() or 0
+        
         today = date.today()
         today_requests = (await db.execute(
             select(func.count(UsageLog.id)).where(func.date(UsageLog.created_at) == today)
@@ -186,6 +201,10 @@ async def public_stats():
         return {
             "user_count": user_count,
             "active_credentials": active_credentials,
+            "credentials": {
+                "cli": cli_credentials,
+                "agy": agy_credentials,
+            },
             "today_requests": today_requests,
             "today_success": today_success,
             "today_failed": today_failed
