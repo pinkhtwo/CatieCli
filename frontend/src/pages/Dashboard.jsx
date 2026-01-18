@@ -147,13 +147,23 @@ export default function Dashboard() {
       .then(([meRes, statsRes, configRes]) => {
         if (meRes?.data) setUserInfo(meRes.data);
         if (statsRes?.data) setStats(statsRes.data);
-        if (
+        // 优先使用内置教程，其次使用外链
+        if (configRes?.data?.tutorial_enabled) {
+          // 内置教程
+          setHelpLink({
+            url: "/tutorial",
+            text: configRes.data.help_link_text || "使用教程",
+            isInternal: true,
+          });
+        } else if (
           configRes?.data?.help_link_enabled &&
           configRes?.data?.help_link_url
         ) {
+          // 外链
           setHelpLink({
             url: configRes.data.help_link_url,
             text: configRes.data.help_link_text || "使用教程",
+            isInternal: false,
           });
         }
       })
@@ -439,17 +449,26 @@ export default function Dashboard() {
               <Rocket size={16} />
               Antigravity 凭证
             </Link>
-            {helpLink && (
-              <a
-                href={helpLink.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-cyan-400 hover:text-cyan-300 flex items-center gap-1 text-sm whitespace-nowrap"
-              >
-                <HelpCircle size={16} />
-                {helpLink.text}
-              </a>
-            )}
+            {helpLink &&
+              (helpLink.isInternal ? (
+                <Link
+                  to={helpLink.url}
+                  className="text-cyan-400 hover:text-cyan-300 flex items-center gap-1 text-sm whitespace-nowrap"
+                >
+                  <HelpCircle size={16} />
+                  {helpLink.text}
+                </Link>
+              ) : (
+                <a
+                  href={helpLink.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-cyan-400 hover:text-cyan-300 flex items-center gap-1 text-sm whitespace-nowrap"
+                >
+                  <HelpCircle size={16} />
+                  {helpLink.text}
+                </a>
+              ))}
           </div>
         </div>
       </nav>

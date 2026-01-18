@@ -101,6 +101,8 @@ export default function Settings() {
       formData.append("help_link_enabled", config.help_link_enabled ?? false);
       formData.append("help_link_url", config.help_link_url || "");
       formData.append("help_link_text", config.help_link_text || "使用教程");
+      formData.append("tutorial_enabled", config.tutorial_enabled ?? false);
+      formData.append("tutorial_content", config.tutorial_content || "");
 
       await api.post("/api/manage/config", formData);
       setMessage({ type: "success", text: "配置已保存！" });
@@ -855,6 +857,56 @@ export default function Settings() {
                   />
                   <p className="text-gray-500 text-sm mt-1">
                     可设置为视频教程、文档等链接
+                  </p>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* 内置教程 */}
+          <div className="pt-4 border-t border-gray-700">
+            <div className="flex justify-between items-center">
+              <div>
+                <h3 className="font-semibold">📖 内置教程页面</h3>
+                <p className="text-gray-400 text-sm">
+                  启用后用户点击教程链接将打开站内页面（优先于外链）
+                </p>
+              </div>
+              <label className="relative inline-flex items-center cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={config?.tutorial_enabled || false}
+                  onChange={(e) =>
+                    setConfig({
+                      ...config,
+                      tutorial_enabled: e.target.checked,
+                    })
+                  }
+                  className="sr-only peer"
+                />
+                <div className="w-11 h-6 bg-gray-600 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600"></div>
+              </label>
+            </div>
+            {config?.tutorial_enabled && (
+              <div className="mt-4 space-y-4 pl-4 border-l-2 border-cyan-500/30">
+                <div>
+                  <label className="block text-sm font-medium mb-2">
+                    教程内容（支持简单Markdown格式）
+                  </label>
+                  <textarea
+                    value={config?.tutorial_content || ""}
+                    onChange={(e) =>
+                      setConfig({
+                        ...config,
+                        tutorial_content: e.target.value,
+                      })
+                    }
+                    placeholder={`# 使用教程\n\n## 什么是本站？\n本站是一个 Gemini API 反向代理服务...\n\n## 如何使用？\n1. 首先，您需要...\n2. 然后，...\n\n### 注意事项\n- 不要分享您的 API Key\n- ...`}
+                    rows={15}
+                    className="w-full bg-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-cyan-500 font-mono text-sm"
+                  />
+                  <p className="text-gray-500 text-sm mt-1">
+                    支持 #标题、##二级标题、###三级标题、- 列表、1. 数字列表
                   </p>
                 </div>
               </div>

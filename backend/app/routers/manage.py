@@ -1041,6 +1041,8 @@ async def get_config(user: User = Depends(get_current_admin)):
         "help_link_enabled": settings.help_link_enabled,
         "help_link_url": settings.help_link_url,
         "help_link_text": settings.help_link_text,
+        "tutorial_enabled": settings.tutorial_enabled,
+        "tutorial_content": settings.tutorial_content,
     }
 
 
@@ -1073,6 +1075,19 @@ async def get_public_config():
         "help_link_enabled": settings.help_link_enabled,
         "help_link_url": settings.help_link_url,
         "help_link_text": settings.help_link_text,
+        "tutorial_enabled": settings.tutorial_enabled,
+    }
+
+
+@router.get("/tutorial")
+async def get_tutorial():
+    """获取教程内容（公开接口）"""
+    from app.config import settings
+    if not settings.tutorial_enabled:
+        return {"enabled": False, "content": ""}
+    return {
+        "enabled": True,
+        "content": settings.tutorial_content,
     }
 
 
@@ -1122,6 +1137,8 @@ async def update_config(
     help_link_enabled: Optional[bool] = Form(None),
     help_link_url: Optional[str] = Form(None),
     help_link_text: Optional[str] = Form(None),
+    tutorial_enabled: Optional[bool] = Form(None),
+    tutorial_content: Optional[str] = Form(None),
     user: User = Depends(get_current_admin)
 ):
     """更新配置（持久化保存到数据库）"""
@@ -1319,6 +1336,16 @@ async def update_config(
         settings.help_link_text = help_link_text
         await save_config_to_db("help_link_text", help_link_text)
         updated["help_link_text"] = help_link_text
+    
+    # 内置教程配置
+    if tutorial_enabled is not None:
+        settings.tutorial_enabled = tutorial_enabled
+        await save_config_to_db("tutorial_enabled", tutorial_enabled)
+        updated["tutorial_enabled"] = tutorial_enabled
+    if tutorial_content is not None:
+        settings.tutorial_content = tutorial_content
+        await save_config_to_db("tutorial_content", tutorial_content)
+        updated["tutorial_content"] = tutorial_content
     
     return {"message": "配置已保存", "updated": updated}
 

@@ -109,8 +109,12 @@ class Settings(BaseSettings):
 
     # 帮助文档链接
     help_link_enabled: bool = False    # 是否显示帮助链接
-    help_link_url: str = ""            # 帮助文档链接地址
+    help_link_url: str = ""            # 帮助文档链接地址（外链）
     help_link_text: str = "使用教程"   # 帮助链接显示文字
+    
+    # 内置教程页面
+    tutorial_enabled: bool = False     # 是否启用内置教程页面
+    tutorial_content: str = ""         # 教程内容（支持Markdown）
     
     # Google OAuth (Gemini CLI 官方配置)
     google_client_id: str = "681255809395-oo8ft2oprdrnp9e3aqf6av3hmdib135j.apps.googleusercontent.com"
@@ -196,6 +200,8 @@ PERSISTENT_CONFIG_KEYS = [
     "help_link_enabled",
     "help_link_url",
     "help_link_text",
+    "tutorial_enabled",
+    "tutorial_content",
 ]
 
 
