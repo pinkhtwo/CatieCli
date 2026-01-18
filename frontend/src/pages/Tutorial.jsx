@@ -57,14 +57,14 @@ function renderLine(line, key) {
   if (line.startsWith("- ") || line.startsWith("* ")) {
     return (
       <li key={key} className="text-gray-300 ml-4">
-        {line.slice(2)}
+        {parseInlineFormatting(line.slice(2))}
       </li>
     );
   }
   if (/^\d+\.\s/.test(line)) {
     return (
       <li key={key} className="text-gray-300 ml-4 list-decimal">
-        {line.replace(/^\d+\.\s/, "")}
+        {parseInlineFormatting(line.replace(/^\d+\.\s/, ""))}
       </li>
     );
   }
@@ -76,12 +76,80 @@ function renderLine(line, key) {
   if (line.trim() === "") {
     return <br key={key} />;
   }
-  // 普通段落
+  // 普通段落 - 解析行内格式
   return (
     <p key={key} className="text-gray-300 leading-relaxed mb-2">
-      {line}
+      {parseInlineFormatting(line)}
     </p>
   );
+}
+
+// 解析行内格式（粗体、斜体、代码）
+function parseInlineFormatting(text) {
+  const parts = [];
+  let remaining = text;
+  let keyIndex = 0;
+
+  while (remaining.length > 0) {
+    // 粗体 **text**
+    const boldMatch = remaining.match(/\*\*(.+?)\*\*/);
+    // 行内代码 `code`
+    const codeMatch = remaining.match(/`([^`]+)`/);
+
+    // 找最早出现的匹配
+    let earliestMatch = null;
+    let matchType = null;
+
+    if (
+      boldMatch &&
+      (!earliestMatch || boldMatch.index < earliestMatch.index)
+    ) {
+      earliestMatch = boldMatch;
+      matchType = "bold";
+    }
+    if (
+      codeMatch &&
+      (!earliestMatch || codeMatch.index < earliestMatch.index)
+    ) {
+      earliestMatch = codeMatch;
+      matchType = "code";
+    }
+
+    if (earliestMatch) {
+      // 添加匹配前的普通文本
+      if (earliestMatch.index > 0) {
+        parts.push(remaining.slice(0, earliestMatch.index));
+      }
+
+      // 添加格式化的内容
+      if (matchType === "bold") {
+        parts.push(
+          <strong key={keyIndex++} className="font-bold text-white">
+            {earliestMatch[1]}
+          </strong>,
+        );
+      } else if (matchType === "code") {
+        parts.push(
+          <code
+            key={keyIndex++}
+            className="bg-dark-900 px-1.5 py-0.5 rounded text-cyan-400 font-mono text-sm"
+          >
+            {earliestMatch[1]}
+          </code>,
+        );
+      }
+
+      remaining = remaining.slice(
+        earliestMatch.index + earliestMatch[0].length,
+      );
+    } else {
+      // 没有更多匹配，添加剩余文本
+      parts.push(remaining);
+      break;
+    }
+  }
+
+  return parts.length > 0 ? parts : text;
 }
 
 // 解析内容，处理折叠块
