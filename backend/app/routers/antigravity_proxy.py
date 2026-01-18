@@ -218,13 +218,17 @@ async def list_models(request: Request, user: User = Depends(get_user_from_api_k
                         # 排除条件：包含这些关键字的跳过
                         invalid_patterns = [
                             "chat_", "rev", "tab_", "uic", "test", "exp", "lite_preview",
-                            "2.5", "gemini-2", "gcli-", "search"  # search模型反重力不支持
+                            "gcli-", "search"  # search模型反重力不支持
                         ]
                         for pattern in invalid_patterns:
                             if pattern in model_lower:
                                 return False
                         # 允许条件：必须是 gemini, claude, gpt 开头的模型
-                        valid_prefixes = ["gemini-3", "claude", "gpt-oss", "agy-gemini-3", "agy-claude", "agy-gpt"]
+                        # 反重力支持 gemini-2.5 和 gemini-3 系列
+                        valid_prefixes = [
+                            "gemini-2.5", "gemini-3", "claude", "gpt-oss",
+                            "agy-gemini-2.5", "agy-gemini-3", "agy-claude", "agy-gpt"
+                        ]
                         for prefix in valid_prefixes:
                             if model_lower.startswith(prefix):
                                 return True
@@ -280,16 +284,22 @@ async def list_models(request: Request, user: User = Depends(get_user_from_api_k
             except Exception as e:
                 print(f"[Antigravity] 获取动态模型列表失败: {e}", flush=True)
     
-    # 回退到静态模型列表 (仅 3.0 级别模型，2.5已移除)
+    # 回退到静态模型列表
     base_models = [
+        # Gemini 2.5 模型
+        "gemini-2.5-flash",
+        "gemini-2.5-flash-lite",
+        "gemini-2.5-pro",
+        "gemini-2.5-flash-thinking",
         # Gemini 3.0 模型
-        "gemini-3-pro-preview",
-        "gemini-3-flash-preview",
+        "gemini-3-flash",
+        "gemini-3-pro-low",
+        "gemini-3-pro-high",
         # Gemini 3.0 图片生成模型
         "gemini-3-pro-image",
         "gemini-3-pro-image-2k",
         "gemini-3-pro-image-4k",
-        # Claude 模型 (Antigravity 独有) - 使用用户友好的名称
+        # Claude 模型 (Antigravity 独有)
         "claude-sonnet-4-5",
         "claude-opus-4-5",
         # GPT-OSS 模型 (Antigravity 独有)
